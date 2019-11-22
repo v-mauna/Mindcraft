@@ -8,6 +8,7 @@ import Journals from './components/screens/journals'
 import Meditations from './components/screens/meditations'
 import SingleMeditation from './components/screens/singleMeditation'
 import Drawer from './components/screens/drawer'
+import JournalEntry from './components/screens/journalEntryForm'
 
 
 // export default function App() {
@@ -20,7 +21,8 @@ const HomeNavigator = createStackNavigator({
     Home: {screen: HomePage},
     Journals: {screen: Journals},
     Meditations: {screen: Meditations},
-    SingleMeditation: {screen: SingleMeditation}
+    SingleMeditation: {screen: SingleMeditation},
+    JournalEntry: {screen: JournalEntry}
 })
 
 const BottomTabNavigator = createBottomTabNavigator({
