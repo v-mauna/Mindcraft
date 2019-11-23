@@ -27,7 +27,7 @@ class UsersList extends Component{
         return(
             <View style={styles.container}>
                 <Text> UsersList</Text>
-                {/* {data.map(obj=>(
+                {data.map(obj=>(
                     <View key={obj.id}>
                     <Text>{obj.firstName}</Text>
                     <Text>{obj.lastName}</Text>
@@ -39,7 +39,7 @@ class UsersList extends Component{
                     <Text style={styles.hesader}> Click here to get user</Text>
                 </TouchableOpacity>
                     </View>
-                ))} */}
+                ))}
             </View>
         )
         
@@ -48,7 +48,7 @@ class UsersList extends Component{
 
 const mapStateToProps = state => {
     return {
-        users: state.users
+        users: state.usersReducer.users
     }
 }
 
