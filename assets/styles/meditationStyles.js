@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
       fontSize: 20,
       opacity: 0.8,
       textTransform: 'uppercase',
-      fontWeight: '600'
+      fontWeight: '800',
+      marginBottom: 20
     },
     image: {
       width: '100%',

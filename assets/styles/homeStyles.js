@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     textTransform: 'uppercase',
-    backgroundColor: 'white',
-    color:'black',
+    color:'white',
     fontWeight: '800',
     opacity: .8,
     marginBottom: 15,
