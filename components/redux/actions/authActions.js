@@ -84,7 +84,7 @@ export const signup = (email, password) => async dispatch => {
 export const createdUser = newUser => {
   return async dispatch => {
     try {
-      const response = await fetch('https://mindcraft-api.herokuapp.com//api/users/signup', {
+      const response = await fetch('https://mindcraft-api.herokuapp.com/api/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -105,15 +105,12 @@ export const createdUser = newUser => {
   }
 }
 
-/**
- * REDUCER
- */
 const authReducer = (state = initialState, action) =>{
   switch (action.type) {
     case GET_USER:
       return action.user
     case REMOVE_USER:
-      return defaultUser
+      return state
     case CREATE_USER:
       return {...state, user: action.newUser}
     default:
