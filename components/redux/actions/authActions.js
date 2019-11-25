@@ -83,12 +83,12 @@ export const createdUser = newUser => {
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case GET_USER:
       return action.user
     case REMOVE_USER:
-      return defaultUser
+      return state
     case CREATE_USER:
       return {...state, user: action.newUser}
     default:
