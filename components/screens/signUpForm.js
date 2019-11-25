@@ -22,7 +22,7 @@ class Signup extends React.Component {
         saveUser(this.state)
         let user = await loadUser()
         console.log(user, "something")
-        this.props.navigation.navigate('HomePage')
+        this.props.navigation.navigate('Home')
 
     render() {
         return (
@@ -59,6 +59,7 @@ class Signup extends React.Component {
             </ImageBackground>
         )
     }
+}
 }
 
 const mapState = state => ({
