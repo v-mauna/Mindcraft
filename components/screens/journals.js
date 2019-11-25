@@ -17,6 +17,11 @@ export default class Journals extends React.Component{
                   <View style={styles.container}>
                       <Text style={styles.header}>Journals</Text>
                   </View>
+                  <View>
+                      <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalEntry')}>
+                          <Text style={styles.header}> Make a new entry</Text>
+                      </TouchableOpacity>
+                      </View>
               </ImageBackground>
               
           )

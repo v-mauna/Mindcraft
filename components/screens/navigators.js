@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { Provider} from 'react-redux'
 import HomePage from './home'
 import Journals from './journals'
+import JournalEntry from './journalEntryForm'
 import Meditations from './meditations'
 import SingleMeditation from './singleMeditation'
 import SingleJournal from './singleJournal'
@@ -12,7 +13,6 @@ import UsersList from './usersList'
 import Login from './loginForm'
 import Signup from './signUpForm'
 import Icon from "react-native-vector-icons/Ionicons"
-
 export const authNavigator = createStackNavigator({
     Login: {screen: Login},
     Signup: {screen: Signup}
@@ -35,6 +35,7 @@ export const MeditationsNavigator = createStackNavigator({
 export const JournalsNavigator = createStackNavigator({
   Journals: {screen: Journals},
   Journal: {screen: SingleJournal},
+  JournalEntry: {screen: JournalEntry},
   Home: {screen: HomePage},
 })
 
