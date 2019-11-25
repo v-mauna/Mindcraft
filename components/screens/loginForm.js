@@ -29,7 +29,7 @@ class Login extends Component {
 
     async logIn() {
       await this.props.userAuth(this.state.email, this.state.password)
-        if (this.props.user.email === this.state.email) {
+        if (this.props.user.email=== this.state.email) {
           saveUser(this.state)
           this.props.navigation.navigate('Home')
         } else {
@@ -66,10 +66,8 @@ class Login extends Component {
                     placeholderTextColor = 'white'
                     secureTextEntry={true}
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {this.logIn}/>
+                <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {()=>this.logIn}/>
                 <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' 
-                onPress={()=>this.props.navigation.navigate('Signup')}/>
-               <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611'
                 onPress={()=>this.props.navigation.navigate('Signup')}/>
 
           </ScrollView>
@@ -87,5 +85,7 @@ class Login extends Component {
       const mapDispatch = dispatch => ({
         userAuth: (email, password) => dispatch(auth(email, password))
       })
+
+      export default connect(mapState,mapDispatch)(Login)
       
 
