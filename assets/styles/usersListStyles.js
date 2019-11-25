@@ -10,12 +10,11 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     text:{
-      color:'white',
+      color:'black',
       fontSize: 20,
       opacity: 0.8,
-      textTransform: 'uppercase',
-      fontWeight: '800',
-      marginBottom: 20
+      marginBottom: 20,
+      textTransform: 'uppercase'
     },
     image: {
       width: '100%',
@@ -37,7 +36,8 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color:'white',
     fontWeight: '800',
-    marginBottom: 20,
+    opacity: .8,
+    marginBottom: 15,
     alignItems: "stretch"
   }
  

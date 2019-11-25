@@ -4,38 +4,45 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center',
+      marginTop: 20
     },
     text:{
-      backgroundColor: 'white',
-      color:'black',
-      fontSize: 20,
-      opacity: 0.8,
+    fontSize: 20,
+    textTransform: 'capitalize',
+    color:'black',
+    fontWeight: '800',
+    opacity: .8,
+    marginBottom: 25,
+    alignItems: "stretch",
+    marginBottom: 10
     },
     image: {
       width: '100%',
       height: '100%'
   },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-    width: 180,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-    marginBottom: 2,
-    opacity: 0.8
-  },
   header: {
     fontSize: 20,
-    textTransform: 'uppercase',
-    backgroundColor: 'white',
-    color:'black',
+    textTransform: 'capitalize',
+    color:'white',
     fontWeight: '800',
     opacity: .8,
-    marginBottom: 15,
+    marginBottom: 25,
     alignItems: "stretch"
+  },
+  journals: {
+    width: 300,
+    maxWidth: '80%',
+    alignItems: 'stretch',
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 6,
+    shadowOpacity: .25,
+    backgroundColor: 'white',
+    opacity: .5,
+    padding: 20,
+    borderRadius: 5,
+    marginBottom: 30
+
   }
  
   });
