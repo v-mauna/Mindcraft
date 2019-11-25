@@ -1,16 +1,23 @@
 import React from 'react'
 import { View, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Text } from 'react-native'
 import styles from '../../assets/styles/signupStyles'
+import {signup} from '../redux/actions/authActions'
+import authReducer from '../redux/actions/authActions'
+import {connect} from 'react-redux'
 
 class Signup extends React.Component {
-    state = {
+    constructor(){
+        super()
+        this.state = {
         name: '',
         email: '',
         password: ''
-    }
+        }
+        this.handleSignup = this.handleSignup.bind(this)
+    }   
     handleSignup = () => {
-        this.props.signUp()
-        this.props.navigation.navigate('Login')
+        this.props.signup(this.state.email, this.state.password)
+        this.props.navigation.navigate('Home')
     }
 
     render() {
@@ -50,4 +57,12 @@ class Signup extends React.Component {
     }
 }
 
-export default Signup
+const mapState = state => ({
+    user: state.authReducer
+  })
+  
+  const mapDispatch = dispatch => ({
+    signup: (email, password) => dispatch(signup(email, password))
+  })
+  
+  export default connect(mapState, mapDispatch)(Signup)

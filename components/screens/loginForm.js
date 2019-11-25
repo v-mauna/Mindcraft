@@ -5,19 +5,37 @@ import colors from "../../assets/styles/color";
 import InputField from "../form/inputField";
 import NextArrowButton from "../buttons/nextArrowButton"
 import RoundedButton from "../buttons/RoundedButton";
+import authReducer from '../redux/actions/authActions'
+import {auth} from '../redux/actions/authActions'
+import {connect} from 'react-redux'
 
-export default class Login extends Component {
-    state = {
+class Login extends Component {
+    constructor(){
+    super()
+      this.state = {
         email: '',
-        password: ''
-    }
-    handleLogin = () => {
-        // this.props.login()
-        this.props.navigation.navigate('Home')
+        password: '',
+        showMessage: false
+    };
+    this.logIn = this.logIn.bind(this)
     }
 
-    render() {
-        
+    async logIn() {
+      await this.props.userAuth(this.state.email, this.state.password)
+        if (this.props.user.email === this.state.email) {
+          this.props.navigation.navigate('Home')
+        } else {
+            this.toggleMessage()
+        }
+      } 
+   
+     toggleMessage() {
+       this.setState({
+         showMessage: !this.state.showMessage
+       })
+      }
+
+      render(){
         return (
             <ImageBackground style={styles.image} source={require('../../assets/images/cabin.jpg')}>
             <KeyboardAvoidingView style={styles.wrapper} behavior="padding">
@@ -40,28 +58,10 @@ export default class Login extends Component {
                     placeholderTextColor = 'white'
                     secureTextEntry={true}
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {this.handleLogin}/>
-                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' />
-            {/* <InputField 
-              labelText="EMAIL ADDRESS" 
-              labelTextSize={14} 
-              labelColor={colors.white} 
-              textColor={colors.white} 
-              borderBottomColor={colors.white} 
-              inputType="email" 
-              customStyle={{marginBottom:30}} 
-                
-            />
-            <InputField 
-              labelText="PASSWORD" 
-              labelTextSize={14} 
-              labelColor={colors.white} 
-              textColor={colors.white} 
-              borderBottomColor={colors.white} 
-              inputType="password"  
-              customStyle={{marginBottom:30}}
-
-            /> */}
+                <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {this.logIn}/>
+                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' 
+                onPress={()=>this.props.navigation.navigate('Signup')}/>
+            
           </ScrollView>
                </View>
              </KeyboardAvoidingView>
@@ -69,3 +69,13 @@ export default class Login extends Component {
           );
         }
       }
+
+      const mapState = state => ({
+        user: state.authReducer
+      })
+      
+      const mapDispatch = dispatch => ({
+        userAuth: (email, password) => dispatch(auth(email, password))
+      })
+      
+      export default connect(mapState, mapDispatch)(Login)
