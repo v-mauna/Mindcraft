@@ -4,6 +4,7 @@ import styles from '../../assets/styles/signupStyles'
 import {signup} from '../redux/actions/authActions'
 import authReducer from '../redux/actions/authActions'
 import {connect} from 'react-redux'
+import { loadUser, saveUser} from '../storage/userStorage'
 
 class Signup extends React.Component {
     constructor(){
@@ -15,10 +16,13 @@ class Signup extends React.Component {
         }
         this.handleSignup = this.handleSignup.bind(this)
     }   
-    handleSignup = () => {
+
+    handleSignup = async () => {
         this.props.signup(this.state.email, this.state.password)
-        this.props.navigation.navigate('Home')
-    }
+        saveUser(this.state)
+        let user = await loadUser()
+        console.log(user, "something")
+        this.props.navigation.navigate('HomePage')
 
     render() {
         return (
@@ -60,6 +64,7 @@ class Signup extends React.Component {
 const mapState = state => ({
     user: state.authReducer
   })
+
   
   const mapDispatch = dispatch => ({
     signup: (email, password) => dispatch(signup(email, password))

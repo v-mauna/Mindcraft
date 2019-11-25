@@ -10,10 +10,12 @@ import SingleMeditation from './singleMeditation'
 import SingleJournal from './singleJournal'
 import UsersList from './usersList'
 import Login from './loginForm'
+import Signup from './signUpForm'
 import Icon from "react-native-vector-icons/Ionicons"
 
 export const authNavigator = createStackNavigator({
     Login: {screen: Login},
+    Signup: {screen: Signup}
 })
 
 export const HomeNavigator = createStackNavigator({
@@ -39,7 +41,8 @@ export const JournalsNavigator = createStackNavigator({
 export const BottomTabNavigator = createBottomTabNavigator({
   Home : HomeNavigator,
   Meditations: MeditationsNavigator,
-  Journals: JournalsNavigator
+  Journals: JournalsNavigator,
+  Login: authNavigator
 },{
   defaultNavigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ focused, horizontal, tintColor }) => {
@@ -52,6 +55,8 @@ export const BottomTabNavigator = createBottomTabNavigator({
         iconName = `ios-leaf`;
       } else if (routeName === 'Journals') {
         iconName = `ios-book`;
+      }else if (routeName === 'Login') {
+        iconName = `ios-key`;
       }
       return <Icon name={iconName} size={20} color={tintColor} />;
     },tabBarOptions: {
@@ -59,7 +64,7 @@ export const BottomTabNavigator = createBottomTabNavigator({
       inactiveTintColor: '#636b61',
     },
   })})
-    export default MainNavigator = createAppContainer(BottomTabNavigator)
+ const MainNavigator = createAppContainer(BottomTabNavigator)
   export const SwitchNavigator = createSwitchNavigator(
     {
       Login: authNavigator,
@@ -71,5 +76,4 @@ export const BottomTabNavigator = createBottomTabNavigator({
   );
 
 
- 
-
+ export default MainNavigator
