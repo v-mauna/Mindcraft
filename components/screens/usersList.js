@@ -32,12 +32,6 @@ class UsersList extends Component{
                     <Text>{obj.firstName}</Text>
                     <Text>{obj.lastName}</Text>
                     <Text>{obj.email}</Text>
-                    <TouchableOpacity style={styles.header} onPress={this.saveUser}>
-                    <Text style={styles.hesader}> Click here to save user</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.header} onPress={()=>{this.getUser}}>
-                    <Text style={styles.hesader}> Click here to get user</Text>
-                </TouchableOpacity>
                     </View>
                 ))}
             </View>

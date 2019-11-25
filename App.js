@@ -1,8 +1,7 @@
 import React from 'react';
-import {createStackNavigator} from 'react-navigation-stack'
-import {createAppContainer,DrawerNavigator} from 'react-navigation'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { Provider} from 'react-redux'
+import store from './components/redux/store'
+import MainNavigator from './components/screens/navigators'
 import HomePage from './components/screens/home'
 import Journals from './components/screens/journals'
 import Meditations from './components/screens/meditations'
@@ -16,6 +15,8 @@ import Drawer from './components/screens/drawer'
 export default function App() {
 
   return (
+    <Provider store={store}>
       <Login/>
+    </Provider>
   );
-}
+
