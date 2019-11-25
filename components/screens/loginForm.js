@@ -10,6 +10,7 @@ import {auth} from '../redux/actions/authActions'
 import {connect} from 'react-redux'
 import {loadUser, saveUser} from '../storage/userStorage'
 
+
 class Login extends Component {
     constructor(){
     super()
@@ -30,11 +31,11 @@ class Login extends Component {
       await this.props.userAuth(this.state.email, this.state.password)
         if (this.props.user.email === this.state.email) {
           saveUser(this.state)
-          this.props.navigation.navigate('HomePage')
+          this.props.navigation.navigate('Home')
         } else {
             this.toggleMessage()
         }
-      }
+      } 
 
      toggleMessage() {
        this.setState({
@@ -66,7 +67,9 @@ class Login extends Component {
                     secureTextEntry={true}
                 />
                 <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {this.logIn}/>
-                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611'
+                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' 
+                onPress={()=>this.props.navigation.navigate('Signup')}/>
+               <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611'
                 onPress={()=>this.props.navigation.navigate('Signup')}/>
 
           </ScrollView>
@@ -84,5 +87,5 @@ class Login extends Component {
       const mapDispatch = dispatch => ({
         userAuth: (email, password) => dispatch(auth(email, password))
       })
+      
 
-      export default connect(mapState, mapDispatch)(Login)

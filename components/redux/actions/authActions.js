@@ -36,7 +36,7 @@ export const me = () => async dispatch => {
 export const auth = (email, password) => async dispatch => {
   let res
   try {
-    res = await fetch(`https://mindcraft-api.herokuapp.com/auth/login`, {
+    res = await fetch(`https://mindcraft-api.herokuapp.com/api/auth/login`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -51,7 +51,7 @@ export const auth = (email, password) => async dispatch => {
     );
     const resData = await res.json();
     console.log(resData);
-    dispatch({ type: GET_USER});
+    dispatch(getUser(resData));
     }catch (authError) {
     return dispatch(getUser({error: authError}))
   }
@@ -98,7 +98,7 @@ export const createdUser = newUser => {
     );
     const resData = await response.json();
     console.log(resData);
-    dispatch({ type: CREATE_USER });
+    dispatch(createUser(resData));
     } catch (err) {
       console.log('User was not created. See: ', err)
     }
