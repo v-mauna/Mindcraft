@@ -27,7 +27,7 @@ export const me = () => async dispatch => {
     );
     const resData = await res.json();
     console.log(resData);
-    dispatch({ type: GET_USER});
+    dispatch(getUser(resData));
   } catch (err) {
     console.error(err)
   }
@@ -74,7 +74,7 @@ export const signup = (email, password) => async dispatch => {
     })
     const resData = await res.json();
     console.log(resData);
-    dispatch({ type: GET_USER});
+    dispatch(createUser(resData));
     }catch (authError) {
     return dispatch(getUser({error: authError}))
   }
