@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Button } from "react-native";
 import styles from '../../assets/styles/loginStyles'
-import colors from "../../assets/styles/color";
-import InputField from "../form/inputField";
-import NextArrowButton from "../buttons/nextArrowButton"
 import RoundedButton from "../buttons/RoundedButton";
 import authReducer from '../redux/actions/authActions'
 import {auth} from '../redux/actions/authActions'
@@ -28,7 +25,9 @@ class Login extends Component {
     }
 
     async logIn() {
+      console.log('Pressed login')
       await this.props.userAuth(this.state.email, this.state.password)
+      console.log(this.props)
         if (this.props.user.email=== this.state.email) {
           saveUser(this.state)
           this.props.navigation.navigate('Home')
@@ -64,9 +63,11 @@ class Login extends Component {
                     onChangeText={password => this.setState({ password })}
                     placeholder='Password'
                     placeholderTextColor = 'white'
-                    secureTextEntry={true}
+                    secureTextEntry
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {()=>this.logIn}/>
+                <RoundedButton text="Login" color = "white" backgroundColor= '#FFA611' 
+                onPress={this.logIn}/>
+               
                 <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' 
                 onPress={()=>this.props.navigation.navigate('Signup')}/>
 
