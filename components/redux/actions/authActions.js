@@ -12,10 +12,11 @@ const createUser = newUser => ({type: CREATE_USER, newUser})
 
 export const me = () => async dispatch => {
   try {
-    const res = await fetch('https://mindcraft-api.herokuapp.com/api/auth/me',  {
+    const res = await fetch('https://mindcraft-api.herokuapp.com/auth/login',  {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          Accept: 'application/json',
+        'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           email: email,
@@ -32,13 +33,14 @@ export const me = () => async dispatch => {
   }
 }
 
-export const auth = (email, password, method) => async dispatch => {
+export const auth = (email, password) => async dispatch => {
   let res
   try {
-    res = await fetch(`https://mindcraft-api.herokuapp.com/api/auth/${method}`, {
+    res = await fetch(`https://mindcraft-api.herokuapp.com/auth/login`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          Accept: 'application/json',
+        'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           email: email,
@@ -47,6 +49,29 @@ export const auth = (email, password, method) => async dispatch => {
         })
       }
     );
+    const resData = await res.json();
+    console.log(resData);
+    dispatch({ type: GET_USER});
+    }catch (authError) {
+    return dispatch(getUser({error: authError}))
+  }
+}
+
+export const signup = (email, password) => async dispatch => {
+  let res
+  try {
+      res = await fetch('http://mindcraft-api.herokuapp.com/auth/signup', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        method: 'signup'
+      })
+    })
     const resData = await res.json();
     console.log(resData);
     dispatch({ type: GET_USER});
@@ -83,7 +108,7 @@ export const createdUser = newUser => {
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+const authReducer = (state = initialState, action) =>{
   switch (action.type) {
     case GET_USER:
       return action.user
@@ -95,3 +120,5 @@ export default function(state = defaultUser, action) {
       return state
   }
 }
+
+export default authReducer
