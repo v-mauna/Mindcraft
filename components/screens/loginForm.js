@@ -30,18 +30,12 @@ class Login extends Component {
     async logIn() {
       await this.props.userAuth(this.state.email, this.state.password)
         if (this.props.user.email === this.state.email) {
+          saveUser(this.state)
           this.props.navigation.navigate('Home')
         } else {
             this.toggleMessage()
         }
       } 
-   
-          saveUser(this.state)
-          this.props.navigation.navigate('HomePage')
-        } else {
-            this.toggleMessage()
-        }
-      }
 
      toggleMessage() {
        this.setState({
