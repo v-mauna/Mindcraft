@@ -10,6 +10,7 @@ import LoggedOut from './components/screens/loggedOut'
 import Login from './components/screens/loginForm'
 import Signup from './components/screens/signUpForm'
 import Drawer from './components/screens/drawer'
+import JournalEntry from './components/screens/journalEntryForm'
 
 
 export default function App() {
@@ -19,4 +20,3 @@ export default function App() {
       <Login/>
     </Provider>
   );
-

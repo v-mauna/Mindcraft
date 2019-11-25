@@ -25,6 +25,10 @@ export default class HomePage extends React.Component{
                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('Meditations')}>
                           <Text style={styles.text}>Meditations</Text>
                       </TouchableOpacity>
+
+                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('JournalEntry')}>
+                          <Text style={styles.header}>Journal Entry</Text>
+                      </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('UsersList')}>
@@ -34,7 +38,7 @@ export default class HomePage extends React.Component{
                   </View>
             
               </ImageBackground>
-              
+
           )
       }
 }
