@@ -10,10 +10,10 @@ import styles from "../../assets/styles/meditationStyles";
 import PulsatingSphere from "./pulsatingsphere";
 
 export default class SingleMeditation extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = { time: '0' }
-    }
+  constructor(props) {
+    super(props);
+    this.state = { timeToRun: "0" };
+  }
 
   static navigationOptions = {
     title: "Mindcraft",
@@ -26,8 +26,6 @@ export default class SingleMeditation extends React.Component {
     }
   };
 
-
-
   render() {
     return (
       <ImageBackground
@@ -37,22 +35,19 @@ export default class SingleMeditation extends React.Component {
         <View style={styles.container}>
           <Text style={styles.text}>...breathe in...breathe out</Text>
 
-          <PulsatingSphere
-            onPress={() => this.props.handlePress()}
+          <PulsatingSphere timeToRun={this.state.timeToRun} />
 
-          />
-
-        <Text>Set the time:</Text>
-        <Picker
-          selectedValue={this.state.time}
-          style={{ height: 50, width: 100 }}
-          onValueChange={value => this.setState({ time: value })}
-        >
-          <Picker.Item label="1 minute" value="60000" />
-          <Picker.Item label="2 minutes" value="12000" />
-          <Picker.Item label="3 minutes" value="18000" />
-          <Picker.Item label="5 minutes" value="300000" />
-        </Picker>
+          <Text>Set the time:</Text>
+          <Picker
+            selectedValue={this.state.time}
+            style={{ height: 50, width: 100 }}
+            onValueChange={value => this.setState({ timeToRun: value })}
+          >
+            <Picker.Item label="1 minute" value="60000" />
+            <Picker.Item label="2 minutes" value="12000" />
+            <Picker.Item label="3 minutes" value="18000" />
+            <Picker.Item label="5 minutes" value="300000" />
+          </Picker>
         </View>
       </ImageBackground>
     );
