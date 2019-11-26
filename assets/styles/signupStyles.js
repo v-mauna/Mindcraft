@@ -10,16 +10,19 @@ const styles = StyleSheet.create({
     Header: {
         fontSize: 28,
         color: colors.white,
-        fontWeight: "300",
+        fontWeight: '800',
         marginBottom: 40,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'Avenir-Medium',
       },
     inputBox: {
         width: '85%',
         margin: 10,
         padding: 15,
         fontSize: 16,
-        color: colors.white,
+        fontFamily: 'Avenir-Medium',
+        fontWeight: '800',
+        color: 'white',
         borderColor: '#d3d3d3',
         borderBottomWidth: 1,
         textAlign: 'center'
@@ -45,7 +48,8 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     buttonSignup: {
-        fontSize: 12
+        fontSize: 12,
+        fontWeight: '800',
     }
 })
 

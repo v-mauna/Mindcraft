@@ -19,7 +19,7 @@ class Signup extends React.Component {
 
     handleSignup = async () => {
         this.props.signup(this.state.email, this.state.password)
-        // saveUser(this.state)
+        let user = await loadUser()
         this.props.navigation.navigate('Home')
     }
 
@@ -27,7 +27,7 @@ class Signup extends React.Component {
         return (
             <ImageBackground style={styles.image} source={require('../../assets/images/bluestones.jpg')}>
             <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-            <Text style={styles.Header}>Registration</Text>
+            <Text style={styles.Header}>Create an Account</Text>
                 <TextInput
                     style={styles.inputBox}
                     value={this.state.name}

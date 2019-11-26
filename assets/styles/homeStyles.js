@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     color:'black',
     fontWeight: '800',
+    fontFamily: 'Avenir-Medium',
     opacity: .8,
     marginBottom: 25,
     alignItems: "stretch",
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    textTransform: 'capitalize',
+    fontFamily: 'Avenir-Medium',
     color:'white',
     fontWeight: '800',
     opacity: .8,

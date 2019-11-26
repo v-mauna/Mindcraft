@@ -1,17 +1,20 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet ,Dimensions} from 'react-native'
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#0A2239'
   },
   text: {
-    color: 'black',
-    fontSize: 20,
+    marginTop: 30,
+    marginLeft: 30,
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '800',
     opacity: 0.8,
-    marginBottom: 20,
-    textTransform: 'uppercase',
+    marginBottom: 10,
+    fontFamily: 'Avenir-Medium'
   },
   image: {
     width: '100%',
@@ -30,7 +33,6 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    textTransform: 'uppercase',
     color: 'white',
     fontWeight: '800',
     opacity: 0.8,
@@ -46,22 +48,37 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomWidth: 1,
     height: 50,
-    fontSize: 25,
+    fontSize: 12,
     paddingLeft:20,
-    paddingRight: 20
+    paddingRight: 20,
+    width: 300,
+    marginLeft: 20
+  }
+  ,textInput2: {
+    backgroundColor: 'white',
+    borderColor: '#CCCCCC',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    height: 200,
+    fontSize: 12,
+    paddingLeft:20,
+    paddingRight: 20,
+    width: 320,
+    marginLeft: 20,
+    marginRight: 20,
+    justifyContent: 'flex-start'
   },
   saveButton: {
     borderWidth: 1,
-    borderColor: '#007BFF',
-    backgroundColor: '#007BFF',
+    borderColor: 'white',
+    backgroundColor: 'white',
+    opacity: .8,
     padding: 15,
-    margin: 5
+    margin: 5,
+    justifyContent: 'flex-end',
+    width: 100,
+    alignContent: "center"
   },
-  saveButtonText: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    textAlign: 'center'
-  }
 })
 
 export default styles

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     },
     scrollViewWrapper: {
       marginTop: 70,
-      flex: 1
+      flex: 1,
     },
     avoidView: {
       paddingLeft: 30,
@@ -21,10 +21,12 @@ const styles = StyleSheet.create({
         margin: 10,
         padding: 15,
         fontSize: 16,
-        color: colors.white,
+        color: 'white',
         borderColor: '#d3d3d3',
         borderBottomWidth: 1,
         textAlign: 'center',
+        fontFamily: 'Avenir-Medium',
+        fontWeight: '600'
     },
     image: {
         width: '100%',
@@ -38,29 +40,38 @@ const styles = StyleSheet.create({
       },
     loginHeader: {
       fontSize: 28,
-      color: colors.white,
-      fontWeight: "300",
+      color: 'white',
       marginBottom: 40,
-      textAlign: 'center'
+      textAlign: 'center',
+      fontFamily: 'Avenir-Medium',
+      fontWeight: '800'
     },
     button: {
         marginTop: 30,
-        marginBottom: 20,
+        marginBottom: 10,
         paddingVertical: 5,
         alignItems: 'center',
         backgroundColor: '#F6820D',
         borderColor: '#F6820D',
+        justifyContent: 'center',
+        alignSelf:'center',
         borderWidth: 1,
         borderRadius: 5,
-        width: 200
+        width: 200,
+        fontFamily: 'Avenir-Medium',
+        fontWeight: '800',
+        color: 'white'
+
     },
     buttonText: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: 'bold',
-        color: '#fff'
+        color: 'white',
+        fontFamily: 'Avenir-Medium'
     },
     buttonSignup: {
-        fontSize: 12
+        fontSize: 12,
+        fontFamily: 'Avenir-Medium'
     },
     nextButtonWrapper: {
         alignItems: "flex-end",

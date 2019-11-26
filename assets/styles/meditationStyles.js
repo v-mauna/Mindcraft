@@ -1,19 +1,18 @@
-import {StyleSheet} from 'react-native'
-import {sanFranciscoWeights} from 'react-native-typography'
-import { systemWeights } from 'react-native-typography'
-
+import {StyleSheet, Dimensions} from 'react-native'
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
-      justifyContent: 'center',
+      marginTop: 30,
+      marginLeft: 20
+
     },
     text:{
       color:'white',
       fontSize: 20,
       opacity: 0.8,
-      textTransform: 'uppercase',
+      fontFamily: 'Avenir-Medium',
       fontWeight: '800',
       marginBottom: 20
     },
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    textTransform: 'uppercase',
+    fontFamily: 'Avenir-Medium',
     color:'white',
     fontWeight: '800',
     marginBottom: 20,
