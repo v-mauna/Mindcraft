@@ -8,11 +8,14 @@ import {
   TouchableWithoutFeedback,
   Easing
 } from "react-native";
+import Timer from "./timer"
+import {connect} from 'react-redux'
+import {getTime, TimeToBe} from '../redux/actions/singleMeditationActions'
 
-export default class PulsatingSphere extends React.Component {
+class PulsatingSphere extends React.Component {
   state = {
     size: new Animated.Value(200),
-    timeToRun: this.props.timeToRun
+    time: this.props
   };
 
   checkTime = ()=> {
@@ -20,7 +23,7 @@ export default class PulsatingSphere extends React.Component {
       width: this.state.size,
       height: this.state.size
     };
-    if (this.props.timeToRun > 0) {
+    if (this.props.time > 0) {
       return (
 
           <TouchableWithoutFeedback onPress={this.startAnimation}>
@@ -51,7 +54,7 @@ export default class PulsatingSphere extends React.Component {
   };
   render() {
 
-    console.log("time to run:", this.timeToRun);
+    console.log("props in pulsating sphere:", this.props);
     return  <View style={styles.container}>{this.checkTime()}</View>;
   }
 }
@@ -68,3 +71,15 @@ const styles = StyleSheet.create({
     borderRadius: 200 / 2
   }
 });
+
+
+const mapStateToProps = state => ({
+  time: state.time
+});
+
+const mapDispatch = dispatch => ({
+    getTime: () => dispatch(getTime()),
+    TimeToBe: (newTime) => dispatch(TimeToBe(newTime))
+});
+
+export default connect(mapStateToProps, mapDispatch)(PulsatingSphere)
