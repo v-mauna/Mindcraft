@@ -49,7 +49,7 @@ class SingleMeditation extends React.Component {
         </View>
         <View style={currentStyles.container}>
           <PulsatingSphere />
-          <Timer />
+
         </View>
         <View style={currentStyles.pickercontainer}>
           <View style={currentStyles.textcontainer}>
@@ -108,7 +108,9 @@ const mapStateToProps = state => {
 
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
-  TimeToBe: newTime => dispatch(TimeToBe(newTime))
+  TimeToBe: newTime => dispatch(TimeToBe(newTime)),
+  reduceTime: time => dispatch(reduceTime(time))
 });
+
 
 export default connect(mapStateToProps, mapDispatch)(SingleMeditation);

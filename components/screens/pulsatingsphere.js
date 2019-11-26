@@ -8,9 +8,13 @@ import {
   TouchableWithoutFeedback,
   Easing
 } from "react-native";
-import Timer from "./timer"
-import {connect} from 'react-redux'
-import {getTime, TimeToBe} from '../redux/actions/singleMeditationActions'
+import Timer from "./timer";
+import { connect } from "react-redux";
+import {
+  getTime,
+  TimeToBe,
+  reduceTime
+} from "../redux/actions/singleMeditationActions";
 
 class PulsatingSphere extends React.Component {
   state = {
@@ -18,20 +22,20 @@ class PulsatingSphere extends React.Component {
     time: this.props
   };
 
-  checkTime = ()=> {
+  checkTime = () => {
     const animatedStyles = {
       width: this.state.size,
       height: this.state.size
     };
     if (this.props.time > 0) {
       return (
-
-          <TouchableWithoutFeedback onPress={this.startAnimation}>
+        <View>
+          <TouchableWithoutFeedback onPress={this.handlePress}>
             <Animated.View
               style={[styles.circle, animatedStyles]}
             ></Animated.View>
           </TouchableWithoutFeedback>
-
+        </View>
       );
     } else {
       return <Text style={styles.text}>Please select time to start</Text>;
@@ -52,10 +56,19 @@ class PulsatingSphere extends React.Component {
       }).start(() => this.startAnimation());
     });
   };
-  render() {
 
+  startCountdown = () => {
+    setInterval(this.props.reduceTime(this.props.time), 1000);
+  };
+
+  handlePress = () => {
+    this.startAnimation();
+    // this.startCountdown();
+  };
+
+  render() {
     console.log("props in pulsating sphere:", this.props);
-    return  <View style={styles.container}>{this.checkTime()}</View>;
+    return <View style={styles.container}>{this.checkTime()}</View>;
   }
 }
 
@@ -72,7 +85,6 @@ const styles = StyleSheet.create({
   }
 });
 
-
 const mapStateToProps = state => {
   return {
     time: state.singleMeditationReducer.time
@@ -81,7 +93,8 @@ const mapStateToProps = state => {
 
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
-  TimeToBe: newTime => dispatch(TimeToBe(newTime))
+  TimeToBe: newTime => dispatch(TimeToBe(newTime)),
+  reduceTime: time => dispatch(reduceTime(time))
 });
 
 export default connect(mapStateToProps, mapDispatch)(PulsatingSphere);

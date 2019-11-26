@@ -11,12 +11,24 @@ export const setTime = time=> ({
 });
 
 export const getTime = ()=>{
-  console.log('got to thunk get time')
+
   return dispatch => dispatch(gotTime())
 }
 
 
 export const TimeToBe = (time) =>{
-  console.log('got to thunk time to be, time:', time)
+
   return dispatch => dispatch(setTime(time))
+}
+
+
+export const reduceTime = (time) =>{
+  console.log('got to thunk reduce time, time:', time)
+  if(time===0){
+    return dispatch =>dispatch(TimeToBe(0))
+  }
+  else{
+    return dispatch => dispatch(TimeToBe(time-1000))
+  }
+
 }
