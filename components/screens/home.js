@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text,ImageBackground ,TouchableOpacity} from 'react-native';
+import {View, Text,ImageBackground ,TouchableOpacity, AsyncStorage} from 'react-native';
 import styles from '../../assets/styles/homeStyles'
 
 export default class HomePage extends React.Component{
@@ -35,8 +35,16 @@ export default class HomePage extends React.Component{
                           <Text style={styles.text}>Users List</Text>
                       </TouchableOpacity>
                       </View>
+                      <View style={styles.journals}>
+                      <TouchableOpacity onPress={async () => {
+                          await AsyncStorage.clear()
+                          this.props.navigation.navigate('AuthLoading')
+                      }}>
+                          <Text style={styles.text}>Logout</Text>
+                      </TouchableOpacity>
+                      </View>
                   </View>
-            
+
               </ImageBackground>
 
           )

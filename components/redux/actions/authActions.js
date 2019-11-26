@@ -1,4 +1,5 @@
 import {GET_USER, CREATE_USER, REMOVE_USER} from './types'
+import { saveUser } from '../../storage/userStorage'
 
 const initialState = {
     user: {}
@@ -50,6 +51,7 @@ export const auth = (email, password) => async dispatch => {
     })
     const resData = await res.json();
     console.log('resData',resData);
+    saveUser(resData)
     dispatch(getUser(resData));
     }catch (authError) {
     return dispatch(getUser({error: authError}))
@@ -73,7 +75,7 @@ export const signup = (email, password) => async dispatch => {
       })
     })
     const resData = await res.json();
-    console.log(resData);
+    saveUser(resData)
     dispatch(createUser(resData));
     }catch (authError) {
     return dispatch(getUser({error: authError}))

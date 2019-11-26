@@ -1,33 +1,30 @@
-import React from 'react';
-import {
-  ActivityIndicator,
-  AsyncStorage,
-  StatusBar,
-  StyleSheet,
-  View,
-} from 'react-native';
+import React from 'react'
+import { View } from 'react-native'
+import { loadUser } from '../storage/userStorage'
 
-class AuthLoadingScreen extends React.Component {
+class AuthLoading extends React.Component {
   componentDidMount() {
-    this._bootstrapAsync();
+    this.checkId()
   }
 
-  // Fetch the token from storage then navigate to our appropriate place
-  _bootstrapAsync = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
+  checkId = async () => {
+    const user = await loadUser()
+    console.log("AUTH USER", user)
 
-    // This will switch to the App screen or Auth screen and this loading
-    // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(userToken ? 'App' : 'Auth');
-  };
+    if (user.id !== null) {
+      this.props.navigation.navigate('App')
+    } else {
+      this.props.navigation.navigate('Login')
+    }
+  }
 
-  // Render any loading content that you like here
   render() {
     return (
       <View>
-        <ActivityIndicator />
-        <StatusBar barStyle="default" />
+
       </View>
-    );
+    )
   }
 }
+
+export default AuthLoading
