@@ -21,6 +21,7 @@ export const me = () => async dispatch => {
           email: email,
           password: password,
           method: 'login',
+          returnSecureToken: true,
           returnSecureToken: true
         })
       }
@@ -45,7 +46,8 @@ export const auth = (email, password) => async dispatch => {
       body: JSON.stringify({
         email: email,
         password: password,
-        method: 'login'
+        method: 'login',
+        returnSecureToken: true
       })
     })
     const resData = await res.json();
@@ -86,11 +88,11 @@ export const signup = (email, password) => async dispatch => {
 const authReducer = (state = initialState, action) =>{
   switch (action.type) {
     case GET_USER:
-      return action.user
+      return {userId: action.userId, token: action.token}
     case REMOVE_USER:
       return state
     case CREATE_USER:
-      return {...state, user: action.newUser}
+      return {token: action.token,userId: action.newUser.id}
     default:
       return state
   }
