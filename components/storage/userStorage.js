@@ -6,9 +6,9 @@ const DEFAULT_SETTINGS = {
   email: '',
   googleId: '',
   id: null,
-  totalJournalEntries: null,
-  totalMeditations: null,
-  totalQuizzes: null
+  totalJournalEntries: 0,
+  totalMeditations: 0,
+  totalQuizzes: 0
 }
 
 export const loadUser = async () => {
