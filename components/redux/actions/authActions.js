@@ -1,11 +1,11 @@
 import {GET_USER, CREATE_USER, REMOVE_USER} from './types'
+import { saveUser } from '../../storage/userStorage'
 
 const initialState = {
     user: {}
   }
 
 const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
 const createUser = newUser => ({type: CREATE_USER, newUser})
 
 //Thunks
@@ -21,13 +21,15 @@ export const me = () => async dispatch => {
         body: JSON.stringify({
           email: email,
           password: password,
+          method: 'login',
+          returnSecureToken: true,
           returnSecureToken: true
         })
       }
     );
     const resData = await res.json();
     console.log(resData);
-    dispatch({ type: GET_USER});
+    dispatch(getUser(resData));
   } catch (err) {
     console.error(err)
   }
@@ -36,26 +38,28 @@ export const me = () => async dispatch => {
 export const auth = (email, password) => async dispatch => {
   let res
   try {
-    res = await fetch(`https://mindcraft-api.herokuapp.com/auth/login`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
+      res = await fetch('http://mindcraft-api.herokuapp.com/auth/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
         'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-          returnSecureToken: true
-        })
-      }
-    );
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        method: 'login',
+        returnSecureToken: true
+      })
+    })
     const resData = await res.json();
-    console.log(resData);
-    dispatch({ type: GET_USER});
+    console.log('resData',resData);
+    saveUser(resData)
+    dispatch(getUser(resData));
     }catch (authError) {
     return dispatch(getUser({error: authError}))
   }
 }
+
 
 export const signup = (email, password) => async dispatch => {
   let res
@@ -73,46 +77,24 @@ export const signup = (email, password) => async dispatch => {
       })
     })
     const resData = await res.json();
-    console.log(resData);
-    dispatch({ type: GET_USER});
+    saveUser(resData)
+    dispatch(createUser(resData));
     }catch (authError) {
     return dispatch(getUser({error: authError}))
   }
 }
 
 
-export const createdUser = newUser => {
-  return async dispatch => {
-    try {
-      const response = await fetch('https://mindcraft-api.herokuapp.com/api/users/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-          returnSecureToken: true
-        })
-      }
-    );
-    const resData = await response.json();
-    console.log(resData);
-    dispatch({ type: CREATE_USER });
-    } catch (err) {
-      console.log('User was not created. See: ', err)
-    }
-  }
-}
+
 
 const authReducer = (state = initialState, action) =>{
   switch (action.type) {
     case GET_USER:
-      return action.user
+      return {userId: action.userId, token: action.token}
     case REMOVE_USER:
       return state
     case CREATE_USER:
-      return {...state, user: action.newUser}
+      return {token: action.token,userId: action.newUser.id}
     default:
       return state
   }

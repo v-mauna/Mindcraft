@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Button } from "react-native";
 import styles from '../../assets/styles/loginStyles'
-import colors from "../../assets/styles/color";
-import InputField from "../form/inputField";
-import NextArrowButton from "../buttons/nextArrowButton"
 import RoundedButton from "../buttons/RoundedButton";
 import authReducer from '../redux/actions/authActions'
 import {auth} from '../redux/actions/authActions'
 import {connect} from 'react-redux'
 import {loadUser, saveUser} from '../storage/userStorage'
+
 
 class Login extends Component {
     constructor(){
@@ -21,16 +19,11 @@ class Login extends Component {
     this.logIn = this.logIn.bind(this)
     }
 
-    componentDidMount= async () => {
-      let user = await loadUser()
-      console.log("USER", user)
-    }
-
     async logIn() {
       await this.props.userAuth(this.state.email, this.state.password)
-        if (this.props.user.email === this.state.email) {
-          saveUser(this.state)
-          this.props.navigation.navigate('HomePage')
+        if (this.props.user.email=== this.state.email) {
+          saveUser(this.props.user)
+          this.props.navigation.navigate('Home')
         } else {
             this.toggleMessage()
         }
@@ -63,9 +56,11 @@ class Login extends Component {
                     onChangeText={password => this.setState({ password })}
                     placeholder='Password'
                     placeholderTextColor = 'white'
-                    secureTextEntry={true}
+                    secureTextEntry
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {this.logIn}/>
+                <RoundedButton text="Login" color = "white" backgroundColor= '#FFA611'
+                onPress={this.logIn}/>
+
                 <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611'
                 onPress={()=>this.props.navigation.navigate('Signup')}/>
 
@@ -85,4 +80,6 @@ class Login extends Component {
         userAuth: (email, password) => dispatch(auth(email, password))
       })
 
-      export default connect(mapState, mapDispatch)(Login)
+      export default connect(mapState,mapDispatch)(Login)
+
+

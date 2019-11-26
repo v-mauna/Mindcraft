@@ -16,19 +16,18 @@ class Signup extends React.Component {
         }
         this.handleSignup = this.handleSignup.bind(this)
     }
+
     handleSignup = async () => {
         this.props.signup(this.state.email, this.state.password)
-        saveUser(this.state)
         let user = await loadUser()
-        console.log(user, "something")
-        this.props.navigation.navigate('HomePage')
+        this.props.navigation.navigate('Home')
     }
 
     render() {
         return (
             <ImageBackground style={styles.image} source={require('../../assets/images/bluestones.jpg')}>
             <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-            <Text style={styles.Header}>Registration</Text>
+            <Text style={styles.Header}>Create an Account</Text>
                 <TextInput
                     style={styles.inputBox}
                     value={this.state.name}
@@ -61,13 +60,14 @@ class Signup extends React.Component {
     }
 }
 
+
 const mapState = state => ({
     user: state.authReducer
   })
+
 
   const mapDispatch = dispatch => ({
     signup: (email, password) => dispatch(signup(email, password))
   })
 
   export default connect(mapState, mapDispatch)(Signup)
-

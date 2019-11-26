@@ -1,36 +1,35 @@
-import {FETCHING_USERS_FAILURE, 
-        FETCHING_USERS_SUCCESS, 
-        FETCHING_USERS_REQUEST}from './types'
-import {Alert} from 'react-native'
-import { Constants, Google } from 'expo';
+import {FETCHING_USER_FAILURE, 
+        FETCHING_USER_SUCCESS, 
+        FETCHING_USER_REQUEST}from './types'
 
-export const fetchingUsersRequest = () => {
-    type: FETCHING_USERS_REQUEST
+
+export const fetchingUserRequest = () => {
+    type: FETCHING_USER_REQUEST
 }
 
-export const fetchingUsersSuccess = (users) =>({
-    type: FETCHING_USERS_SUCCESS,
-    users
+export const fetchingUserSuccess = (user) =>({
+    type: FETCHING_USER_SUCCESS,
+    user
 })
 
-export const fetchingUsersFailure = (error) =>({
-    type: FETCHING_USERS_FAILURE,
+export const fetchingUserFailure = (error) =>({
+    type: FETCHING_USER_FAILURE,
     error})
 
 export const getUser = user => ({type: GET_USER, user})
 export const removeUser = () => ({type: REMOVE_USER})
 export const createUser = newUser => ({type: CREATE_USER, newUser})
 
-export const fetchUsers = () => {
+export const fetchUser = (id) => {
     return async dispatch=>{
         try{
-            let response = await fetch('https://mindcraft-api.herokuapp.com/api/users')
+            let response = await fetch(`https://mindcraft-api.herokuapp.com/api/users/${id}`)
             response = await response.json()
             console.log('Response',response)
-            dispatch(fetchingUsersSuccess(response))
+            dispatch(fetchingUserSuccess(response))
         }catch(error){
             console.error('Here is your error', error)
-            dispatch(fetchingUsersFailure(error))
+            dispatch(fetchingUserFailure(error))
         }
     }
 }

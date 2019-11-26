@@ -1,33 +1,33 @@
 import React from 'react';
-import {View, Text,ImageBackground ,TouchableOpacity} from 'react-native';
+import {View, Text,ImageBackground ,TouchableOpacity, AsyncStorage} from 'react-native';
 import styles from '../../assets/styles/homeStyles'
 
 export default class HomePage extends React.Component{
     static navigationOptions = { title : 'Mindcraft',  headerStyle: {
-        backgroundColor: '#7a89c2',
+        backgroundColor: '#72788d',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',
       },}
-
       render(){
           return(
-              <ImageBackground style={styles.image} source={require('../../assets/images/aboveTheClouds.jpg')}>
+              <ImageBackground style={styles.image} source={require('../../assets/images/home.jpg')}>
                   <View style={styles.container}>
                       <Text style={styles.header}>Welcome</Text>
                       <View style={styles.journals}>
-                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('Journals')}>
-                       <Text style={styles.text}>Journals</Text>
+                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('Meditations')}>
+                          <Text style={styles.text}>Explore Meditations</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
-                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('Meditations')}>
-                          <Text style={styles.text}>Meditations</Text>
+                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('Journals')}>
+                       <Text style={styles.text}>View Journals</Text>
                       </TouchableOpacity>
-
+                      </View>
+                      <View style={styles.journals}>
                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('JournalEntry')}>
-                          <Text style={styles.header}>Journal Entry</Text>
+                        <Text style={styles.text}>Make a Journal Entry</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
@@ -35,10 +35,17 @@ export default class HomePage extends React.Component{
                           <Text style={styles.text}>Users List</Text>
                       </TouchableOpacity>
                       </View>
+                      <View style={styles.journals}>
+                      <TouchableOpacity onPress={async () => {
+                          await AsyncStorage.clear()
+                          this.props.navigation.navigate('AuthLoading')
+                      }}>
+                          <Text style={styles.text}>Logout</Text>
+                      </TouchableOpacity>
+                      </View>
                   </View>
-            
-              </ImageBackground>
 
+              </ImageBackground>
           )
       }
 }

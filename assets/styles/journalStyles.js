@@ -1,7 +1,4 @@
 import {StyleSheet} from 'react-native'
-import {sanFranciscoWeights} from 'react-native-typography'
-import { systemWeights } from 'react-native-typography'
-
 
 const styles = StyleSheet.create({
     container: {
@@ -14,7 +11,8 @@ const styles = StyleSheet.create({
       fontSize: 20,
       opacity: 0.8,
       marginBottom: 20,
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      fontFamily: 'Avenir-Medium',
     },
     image: {
       width: '100%',
@@ -38,6 +36,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     opacity: .8,
     marginBottom: 15,
+    fontFamily: 'Avenir-Medium',
     alignItems: "stretch"
   }
  

@@ -15,8 +15,13 @@ export default class JournalEntry extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { mood: '' }
-    this.handleMoodChange = this.handleMoodChange.bind(this)
+    this.state = {
+      mood: '',
+      hoursSlept: '',
+      favorite: '',
+      least: '',
+      theRest: ''
+   }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -26,54 +31,68 @@ export default class JournalEntry extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Mindcraft',
+    title: 'Daily Journal',
     headerStyle: {
-      backgroundColor: '#72788d',
+      backgroundColor: '#4F0147',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
     },
   }
-
-  handleMoodChange(mood) {
-    this.setState({ mood })
-  }
-
   handleSubmit() {
     saveSettings(this.state)
   }
 
   render() {
     return (
-      <ImageBackground
-        style={styles.image}
-        source={require('../../assets/images/tiles.jpg')}
-      >
-        <View style={styles.container}>
-          <Text style={styles.header}>Hi, How Are You?</Text>
-        </View>
+      <View style={styles.container}>
         <ScrollView>
-          <View style={styles.inputContainer}>
-            <TextInput
+          <Text style={styles.text}>What was your favorite moment today?</Text>
+          <TextInput
               style={styles.textInput}
-              placeholder="Your Feelings"
+              placeholder='Favorite'
               maxLength={20}
               onBlur={Keyboard.dismiss}
+              value={this.state.favorite}
+              onChangeText={(text)=>this.setState({favorite:text})}
+            />
+          <Text style={styles.text}>What was your least favorite?</Text>
+          <TextInput
+              style={styles.textInput}
+              placeholder='Least Favorite'
+              maxLength={20}
+              onBlur={Keyboard.dismiss}
+              value={this.state.least}
+              onChangeText={(text)=>this.setState({least:text})}
+            />
+            <Text style={styles.text}>Did you get enough sleep last night?</Text>
+          <TextInput
+              style={styles.textInput}
+              placeholder='Hours Slept'
+              maxLength={20}
+              onBlur={Keyboard.dismiss}
+              value={this.state.hoursSlept}
+              onChangeText={(text)=>this.setState({hoursSlept: text})}
+            />
+          <View style={styles.inputContainer}>
+          <Text style={styles.text}>Share away...</Text>
+
+            <TextInput
+              style={styles.textInput2}
+              placeholder="Whatever you want"
+              onBlur={Keyboard.dismiss}
               value={this.state.mood}
-              onChangeText={this.handleMoodChange}
+              onChangeText={(text)=>this.setState({theRest:text})}
             />
           </View>
-          <View style={styles.inputContainer}>
             <TouchableOpacity
-              style={styles.saveButton}
               onPress={this.handleSubmit}
             >
-              <Text style={styles.saveButtonText}>Save</Text>
+              <Text style={styles.text}>Save</Text>
             </TouchableOpacity>
-          </View>
         </ScrollView>
-      </ImageBackground>
+      </View>
     )
   }
 }
