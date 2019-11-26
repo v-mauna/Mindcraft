@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         padding: 20
       },
     loginHeader: {
-      fontSize: 28,
+      fontSize: 25,
       color: 'white',
       marginBottom: 40,
       textAlign: 'center',
