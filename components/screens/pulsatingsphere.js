@@ -73,13 +73,15 @@ const styles = StyleSheet.create({
 });
 
 
-const mapStateToProps = state => ({
-  time: state.time
-});
+const mapStateToProps = state => {
+  return {
+    time: state.singleMeditationReducer.time
+  };
+};
 
 const mapDispatch = dispatch => ({
-    getTime: () => dispatch(getTime()),
-    TimeToBe: (newTime) => dispatch(TimeToBe(newTime))
+  getTime: () => dispatch(getTime()),
+  TimeToBe: newTime => dispatch(TimeToBe(newTime))
 });
 
-export default connect(mapStateToProps, mapDispatch)(PulsatingSphere)
+export default connect(mapStateToProps, mapDispatch)(PulsatingSphere);

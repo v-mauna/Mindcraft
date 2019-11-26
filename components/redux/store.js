@@ -6,7 +6,7 @@ import usersReducer from './reducers/usersReducer'
 import authReducer from './reducers/authReducer'
 import singleMeditationReducer from './reducers/singleMeditationReducer'
 
-const reducer = combineReducers({ usersReducer,authReducer, singleMeditationReducer});
+const reducer = combineReducers({ usersReducer,authReducer,singleMeditationReducer});
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware )
 );
