@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Text } from 'react-native'
+import { ImageBackground, KeyboardAvoidingView, Text } from 'react-native'
 import styles from '../../assets/styles/signupStyles'
 import {signup} from '../redux/actions/authActions'
 import {connect} from 'react-redux'
@@ -9,7 +9,7 @@ class Profile extends React.Component {
     constructor(){
         super()
         this.state = {
-          id: 4,
+          id: null,
           name: "",
           totalJournalEntries: 0,
           totalMeditations: 0,
