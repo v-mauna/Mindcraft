@@ -7,6 +7,13 @@ import {connect} from 'react-redux'
 import { loadUser, saveUser} from '../storage/userStorage'
 
 class Signup extends React.Component {
+    static navigationOptions = { title : 'Sign Up',  headerStyle: {
+        backgroundColor: '#F6820D',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },}
     constructor(){
         super()
         this.state = {
