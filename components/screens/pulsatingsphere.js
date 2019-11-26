@@ -9,41 +9,31 @@ import {
   Easing
 } from "react-native";
 
-// export default class  PulsatingSphere extends React.Component {
-
-//   handlePress = () => {
-//     startAnimation()
-//   }
-
-// render(){
-//   return (
-//     <PulsatingCircle ref="myCircle"
-//       delay={4000}
-//       mainBackgroundColor={"transparent"}
-//       mainCircleBorder={5}
-//       mainCircleColor={"#6cdbd2"}
-//       mainCircleSize={200}
-//       pulseCircleBorder={5}
-//       pulseCircleColor={"#6cdbd2"}
-//       pulseCircleSize={200}
-//       playAnimation={true}
-//       toggleOnPress={false}
-//       handlePress={this.startAnimation}
-//     >
-//       <Text>press to start</Text>
-//     </PulsatingCircle>
-
-//   );
-// }
-// }
 export default class PulsatingSphere extends React.Component {
+  state = {
+    size: new Animated.Value(200),
+    timeToRun: this.props.timeToRun
+  };
 
-
-    state = {
-      size: new Animated.Value(200),
-
+  checkTime = ()=> {
+    const animatedStyles = {
+      width: this.state.size,
+      height: this.state.size
     };
+    if (this.props.timeToRun > 0) {
+      return (
 
+          <TouchableWithoutFeedback onPress={this.startAnimation}>
+            <Animated.View
+              style={[styles.circle, animatedStyles]}
+            ></Animated.View>
+          </TouchableWithoutFeedback>
+
+      );
+    } else {
+      return <Text style={styles.text}>Please select time to start</Text>;
+    }
+  };
 
   startAnimation = () => {
     Animated.timing(this.state.size, {
@@ -60,20 +50,9 @@ export default class PulsatingSphere extends React.Component {
     });
   };
   render() {
-    const animatedStyles = {
-      width: this.state.size,
-      height: this.state.size
-    };
-    console.log("time to run:", this.props.timeToRun);
-    return (
-      <View style={styles.container}>
-        <TouchableWithoutFeedback onPress={this.startAnimation}>
-          <Animated.View
-            style={[styles.circle, animatedStyles]}
-          ></Animated.View>
-        </TouchableWithoutFeedback>
-      </View>
-    );
+
+    console.log("time to run:", this.timeToRun);
+    return  <View style={styles.container}>{this.checkTime()}</View>;
   }
 }
 
