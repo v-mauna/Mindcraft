@@ -37,13 +37,13 @@ import {
 // }
 // }
 export default class PulsatingSphere extends React.Component {
-  // constructor(props) {
-  //   super(props)
+
+
     state = {
       size: new Animated.Value(200),
-      timeToRun: this.props.timeToRun
+
     };
-  // }
+
 
   startAnimation = () => {
     Animated.timing(this.state.size, {
@@ -64,7 +64,7 @@ export default class PulsatingSphere extends React.Component {
       width: this.state.size,
       height: this.state.size
     };
-    console.log(timeToRun);
+    console.log("time to run:", this.props.timeToRun);
     return (
       <View style={styles.container}>
         <TouchableWithoutFeedback onPress={this.startAnimation}>

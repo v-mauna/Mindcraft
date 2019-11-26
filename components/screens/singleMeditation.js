@@ -4,7 +4,8 @@ import {
   Text,
   ImageBackground,
   TouchableOpacity,
-  Picker
+  Picker,
+  StyleSheet
 } from "react-native";
 import styles from "../../assets/styles/meditationStyles";
 import PulsatingSphere from "./pulsatingsphere";
@@ -32,24 +33,56 @@ export default class SingleMeditation extends React.Component {
         style={styles.image}
         source={require("../../assets/images/water.jpg")}
       >
-        <View style={styles.container}>
-          <Text style={styles.text}>...breathe in...breathe out</Text>
+          <View style={currentStyles.textcontainer}><Text style={styles.text}>...breathe in...breathe out</Text></View>
+        <View style={currentStyles.container}>
 
           <PulsatingSphere timeToRun={this.state.timeToRun} />
+          </View>
 
-          <Text>Set the time:</Text>
-          <Picker
-            selectedValue={this.state.time}
-            style={{ height: 50, width: 100 }}
-            onValueChange={value => this.setState({ timeToRun: value })}
-          >
-            <Picker.Item label="1 minute" value="60000" />
-            <Picker.Item label="2 minutes" value="12000" />
-            <Picker.Item label="3 minutes" value="18000" />
-            <Picker.Item label="5 minutes" value="300000" />
-          </Picker>
-        </View>
+
+
+            <View style={currentStyles.pickercontainer}>
+            <View style={currentStyles.textcontainer}><Text style={styles.text}>Set the time:</Text></View>
+            <Picker
+              selectedValue={this.state.time}
+              onValueChange={value => this.setState({ timeToRun: value })}
+            >
+              <Picker.Item label="1 minute" value="60000" />
+              <Picker.Item label="2 minutes" value="12000" />
+              <Picker.Item label="3 minutes" value="18000" />
+              <Picker.Item label="5 minutes" value="300000" />
+            </Picker>
+          </View>
+
       </ImageBackground>
     );
   }
 }
+
+const currentStyles = StyleSheet.create({
+  pickercontainer: {
+    // height: 50,
+    // width: 100,
+    flex:1,
+    alignContent: "flex-start",
+    // alignItems: "center",
+    borderWidth: 2,
+    borderColor: "purple",
+  },
+  container: {
+    borderWidth: 2,
+    borderColor: "black",
+    flex: 0.7,
+    padding: 20,
+    margin: 10
+    // alignContent: "flex-end"
+    // marginTop: 10,
+    // marginLeft: 10
+  },
+  textcontainer: {
+      padding: 12,
+      alignItems: "center",
+      borderWidth: 2,
+    borderColor: "pink",
+  }
+});
