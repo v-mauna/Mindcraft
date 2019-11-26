@@ -59,12 +59,14 @@ const styles = StyleSheet.create({
     borderColor: '#CCCCCC',
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    height: 88,
+    height: 200,
     fontSize: 12,
     paddingLeft:20,
     paddingRight: 20,
-    width: 300,
-    marginLeft: 20
+    width: 320,
+    marginLeft: 20,
+    marginRight: 20,
+    justifyContent: 'flex-start'
   },
   saveButton: {
     borderWidth: 1,

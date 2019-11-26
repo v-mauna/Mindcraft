@@ -15,8 +15,13 @@ export default class JournalEntry extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { mood: '' }
-    this.handleMoodChange = this.handleMoodChange.bind(this)
+    this.state = {
+      mood: '',
+      hoursSlept: '',
+      favorite: '',
+      least: '',
+      theRest: ''
+   }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -35,11 +40,6 @@ export default class JournalEntry extends React.Component {
       fontWeight: 'bold',
     },
   }
-
-  handleMoodChange(mood) {
-    this.setState({ mood })
-  }
-
   handleSubmit() {
     saveSettings(this.state)
   }
@@ -54,8 +54,8 @@ export default class JournalEntry extends React.Component {
               placeholder='Favorite'
               maxLength={20}
               onBlur={Keyboard.dismiss}
-              value={this.state.mood}
-              onChangeText={this.handleMoodChange}
+              value={this.state.favorite}
+              onChangeText={(text)=>this.setState({favorite:text})}
             />
           <Text style={styles.text}>What was your least favorite?</Text>
           <TextInput
@@ -63,8 +63,8 @@ export default class JournalEntry extends React.Component {
               placeholder='Least Favorite'
               maxLength={20}
               onBlur={Keyboard.dismiss}
-              value={this.state.mood}
-              onChangeText={this.handleMoodChange}
+              value={this.state.least}
+              onChangeText={(text)=>this.setState({least:text})}
             />
             <Text style={styles.text}>Did you get enough sleep last night?</Text>
           <TextInput
@@ -72,8 +72,8 @@ export default class JournalEntry extends React.Component {
               placeholder='Hours Slept'
               maxLength={20}
               onBlur={Keyboard.dismiss}
-              value={this.state.mood}
-              onChangeText={this.handleMoodChange}
+              value={this.state.hoursSlept}
+              onChangeText={(text)=>this.setState({hoursSlept: text})}
             />
           <View style={styles.inputContainer}>
           <Text style={styles.text}>Share away...</Text>
@@ -83,7 +83,7 @@ export default class JournalEntry extends React.Component {
               placeholder="Whatever you want"
               onBlur={Keyboard.dismiss}
               value={this.state.mood}
-              onChangeText={this.handleMoodChange}
+              onChangeText={(text)=>this.setState({theRest:text})}
             />
           </View>
             <TouchableOpacity
