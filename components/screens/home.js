@@ -35,14 +35,6 @@ export default class HomePage extends React.Component{
                           <Text style={styles.text}>Users List</Text>
                       </TouchableOpacity>
                       </View>
-                      <View style={styles.journals}>
-                      <TouchableOpacity onPress={async () => {
-                          await AsyncStorage.clear()
-                          this.props.navigation.navigate('AuthLoading')
-                      }}>
-                          <Text style={styles.text}>Logout</Text>
-                      </TouchableOpacity>
-                      </View>
                   </View>
 
               </ImageBackground>
