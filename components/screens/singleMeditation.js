@@ -38,7 +38,7 @@ export default class SingleMeditation extends React.Component {
           <Text style={styles.text}>...breathe in...breathe out</Text>
 
           <PulsatingSphere
-            onPress={() => this.handlePress()}
+            onPress={() => this.props.handlePress()}
 
           />
 
