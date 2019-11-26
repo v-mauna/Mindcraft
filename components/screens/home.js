@@ -12,7 +12,7 @@ export default class HomePage extends React.Component{
       },}
       render(){
           return(
-              <ImageBackground style={styles.image} source={require('../../assets/images/aboveTheClouds.jpg')}>
+              <ImageBackground style={styles.image} source={require('../../assets/images/home.jpg')}>
                   <View style={styles.container}>
                       <Text style={styles.header}>Welcome</Text>
                       <View style={styles.journals}>
