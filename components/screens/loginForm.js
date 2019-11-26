@@ -19,22 +19,15 @@ class Login extends Component {
     this.logIn = this.logIn.bind(this)
     }
 
-    componentDidMount= async () => {
-      let user = await loadUser()
-      console.log("USER", user)
-    }
-
     async logIn() {
-      console.log('Pressed login')
       await this.props.userAuth(this.state.email, this.state.password)
-      console.log(this.props)
         if (this.props.user.email=== this.state.email) {
-          saveUser(this.state)
+          saveUser(this.props.user)
           this.props.navigation.navigate('Home')
         } else {
             this.toggleMessage()
         }
-      } 
+      }
 
      toggleMessage() {
        this.setState({
@@ -65,10 +58,10 @@ class Login extends Component {
                     placeholderTextColor = 'white'
                     secureTextEntry
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= '#FFA611' 
+                <RoundedButton text="Login" color = "white" backgroundColor= '#FFA611'
                 onPress={this.logIn}/>
-               
-                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' 
+
+                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611'
                 onPress={()=>this.props.navigation.navigate('Signup')}/>
 
           </ScrollView>
@@ -88,5 +81,5 @@ class Login extends Component {
       })
 
       export default connect(mapState,mapDispatch)(Login)
-      
+
 

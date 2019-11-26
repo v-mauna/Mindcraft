@@ -15,11 +15,10 @@ class Signup extends React.Component {
         password: ''
         }
         this.handleSignup = this.handleSignup.bind(this)
-    }   
+    }
 
     handleSignup = async () => {
         this.props.signup(this.state.email, this.state.password)
-        saveUser(this.state)
         let user = await loadUser()
         this.props.navigation.navigate('Home')
     }
@@ -66,9 +65,9 @@ const mapState = state => ({
     user: state.authReducer
   })
 
-  
+
   const mapDispatch = dispatch => ({
     signup: (email, password) => dispatch(signup(email, password))
   })
-  
+
   export default connect(mapState, mapDispatch)(Signup)
