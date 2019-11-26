@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
 import {
@@ -18,6 +19,7 @@ import Login from './loginForm'
 import Signup from './signUpForm'
 import Icon from 'react-native-vector-icons/Ionicons'
 import AuthLoading from './authLoading'
+import Logout from './Logout'
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -53,7 +55,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
     Home: HomeNavigator,
     Meditations: MeditationsNavigator,
     Journals: JournalsNavigator,
-    Login: authNavigator,
+    Logout: Logout
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -67,7 +69,7 @@ export const BottomTabNavigator = createBottomTabNavigator(
           iconName = `ios-leaf`
         } else if (routeName === 'Journals') {
           iconName = `ios-book`
-        } else if (routeName === 'Login') {
+        } else if (routeName === 'Logout') {
           iconName = `ios-key`
         }
         return <Icon name={iconName} size={20} color={tintColor} />
@@ -91,15 +93,4 @@ const MainNavigator = createAppContainer(
     }
   )
 )
-// export const SwitchNavigator = createSwitchNavigator(
-//   {
-//     AuthLoading: AuthLoading,
-//     Login: authNavigator,
-//     App: BottomTabNavigator
-//   },
-//   {
-//     initialRouteName: 'AuthLoading'
-//   }
-// );
-
 export default MainNavigator
