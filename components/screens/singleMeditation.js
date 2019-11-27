@@ -5,7 +5,8 @@ import {
   ImageBackground,
   TouchableOpacity,
   Picker,
-  StyleSheet
+  StyleSheet,
+  ScrollView
 } from "react-native";
 import { connect } from "react-redux";
 import styles from "../../assets/styles/meditationStyles";
@@ -75,6 +76,7 @@ console.log("user in render:", this.user)
         style={styles.image}
         source={require("../../assets/images/water.jpg")}
       >
+        <ScrollView>
         <View style={currentStyles.textcontainer}>
           <Text style={styles.text}>...breathe in...breathe out</Text>
         </View>
@@ -102,6 +104,7 @@ console.log("user in render:", this.user)
             <Picker.Item label="5 minutes" value="300000" />
           </Picker>
         </View>
+        </ScrollView>
       </ImageBackground>
     );
   }

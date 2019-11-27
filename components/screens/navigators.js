@@ -12,7 +12,7 @@ import JournalEntry from './journalEntryForm'
 import Meditations from './meditations'
 import SingleMeditation from './singleMeditation'
 import SingleJournal from './singleJournal'
-import UsersList from './usersList'
+import Quizzes from './quizzes'
 import Login from './loginForm'
 import Signup from './signUpForm'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -30,7 +30,7 @@ export const HomeNavigator = createStackNavigator({
   Journals: { screen: Journals },
   Meditations: { screen: Meditations },
   SingleMeditation: { screen: SingleMeditation },
-  UsersList: { screen: UsersList },
+  Quizzes: {screen: Quizzes},
   Profile: {screen: Profile}
 })
 
