@@ -11,24 +11,28 @@ import LoggedOut from './components/screens/loggedOut'
 import Login from './components/screens/loginForm'
 import Signup from './components/screens/signUpForm'
 import Drawer from './components/screens/drawer'
+import SleepTracker from './components/screens/sleepTracker'
+import MoodMeter from './components/screens/moodMeterDemo'
+import MoodTracker from './components/screens/moodRating'
 
 
-export default function App() {
+// export default function App() {
 
-  return (
-      <Login/>
-  );
-}
-// const HomeNavigator = createStackNavigator({
-//     Home: {screen: HomePage},
-//     Journals: {screen: Journals},
-//     Meditations: {screen: Meditations},
-//     SingleMeditation: {screen: SingleMeditation}
-// })
+//   return (
+//       <MoodTracker/>
+//   );
+// }
 
-// const BottomTabNavigator = createBottomTabNavigator({
-//   Home : HomeNavigator
-// })
+const HomeNavigator = createStackNavigator({
+    Home: {screen: HomePage},
+    Journals: {screen: Journals},
+    Meditations: {screen: Meditations},
+    SingleMeditation: {screen: SingleMeditation}
+})
+
+const BottomTabNavigator = createBottomTabNavigator({
+  Home : HomeNavigator
+})
 
 
-// export default createAppContainer(BottomTabNavigator)
+export default createAppContainer(BottomTabNavigator)
