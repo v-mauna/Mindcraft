@@ -3,16 +3,18 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
+      marginLeft: 30,
+      marginTop: 20
+
     },
     text:{
       color:'black',
       fontSize: 20,
       opacity: 0.8,
       marginBottom: 20,
-      textTransform: 'uppercase',
       fontFamily: 'Avenir-Medium',
+      fontWeight: '800'
     },
     image: {
       width: '100%',
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    textTransform: 'uppercase',
     color:'white',
     fontWeight: '800',
     opacity: .8,

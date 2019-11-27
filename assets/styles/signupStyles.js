@@ -8,21 +8,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     Header: {
-        fontSize: 28,
-        color: colors.white,
+        fontSize: 25,
+        color: 'black',
         fontWeight: '800',
         marginBottom: 40,
         textAlign: 'center',
         fontFamily: 'Avenir-Medium',
       },
     inputBox: {
-        width: '85%',
+        width: '75%',
         margin: 10,
         padding: 15,
         fontSize: 16,
         fontFamily: 'Avenir-Medium',
         fontWeight: '800',
-        color: 'white',
+        color: 'black',
         borderColor: '#d3d3d3',
         borderBottomWidth: 1,
         textAlign: 'center'
