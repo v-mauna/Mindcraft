@@ -1,5 +1,6 @@
-import {FETCHING_USERS_FAILURE, 
-    FETCHING_USERS_SUCCESS, 
+
+import {FETCHING_USERS_FAILURE,
+    FETCHING_USERS_SUCCESS,
     FETCHING_USERS_REQUEST}from '../actions/types'
 
     const initialState = {
@@ -12,11 +13,11 @@ import {FETCHING_USERS_FAILURE,
         switch(action.type){
             case FETCHING_USERS_REQUEST:
                 return {...state, isFetching: true}
-            case FETCHING_USERS_FAILURE: 
+            case FETCHING_USERS_FAILURE:
                 return {...state, errorMessage: action.error}
             case FETCHING_USERS_SUCCESS:
                 return {...state, isFetching: false, users:action.users}
-            default: 
+            default:
                 return state
             }
     }

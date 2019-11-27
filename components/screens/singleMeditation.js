@@ -61,10 +61,10 @@ class SingleMeditation extends React.Component {
 
 
   updateMeditations = () =>{
-    this.user.totalMeditations=this.user.totalMeditations+1
+    newNumberOfMeditations=this.user.totalMeditations+1
     if(this.checkTimer(this.props.timeLeft)){
-      updateUser(this.user.id, this.user)
-      console.log('user after update:', this.user)
+      updateUser(this.user.id, newNumberOfMeditations)
+
     }
   }
 
