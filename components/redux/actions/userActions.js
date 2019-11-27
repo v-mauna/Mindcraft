@@ -37,7 +37,10 @@ export const fetchUser = (id) => {
 export const updateUser =(id) =>{
     return async dispatch=>{
         try{
-            let data = await postData(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {meditations: meditations+1})
+            let response = await fetch(`https://mindcraft-api.herokuapp.com/api/users/${id}`)
+            response = await response.json()
+            console.log('Response',response)
+            let data = await postData(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {newUser})
         }catch(error){
             console.error('Here is your error', error)
 

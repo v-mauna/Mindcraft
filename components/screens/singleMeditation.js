@@ -10,21 +10,23 @@ import {
 import { connect } from "react-redux";
 import styles from "../../assets/styles/meditationStyles";
 import PulsatingSphere from "./pulsatingsphere";
-
 import { getTime, TimeToBe } from "../redux/actions/singleMeditationActions";
+import { updateUser } from "../redux/actions/userActions";
 import singleMeditationReducer from "../redux/reducers/singleMeditationReducer";
+import { loadUser, saveUser } from "../storage/userStorage";
 
 class SingleMeditation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       time: "0",
-
+      user: {}
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.getTime();
+    this.user = await loadUser();
   }
 
   static navigationOptions = {
@@ -38,8 +40,36 @@ class SingleMeditation extends React.Component {
     }
   };
 
-  render() {
+  checkTimer = (time) => {
+    if (time < 0) {
+      return true
+    }
+    else{
+      return false
+    }
+  };
 
+  renderSphere = () =>{
+    if(this.checkTimer(this.props.timeLeft)){
+      this.updateMeditations()
+      return <View><Text>Hello world</Text></View>
+    }
+    else{
+      return <View><PulsatingSphere /></View>
+    }
+  }
+
+
+  updateMeditations = () =>{
+    this.user.totalMeditations=this.user.totalMeditations+1
+    if(this.checkTimer(this.props.timeLeft)){
+      updateUser(this.user.id, this.user)
+      console.log('user after update:', this.user)
+    }
+  }
+
+  render() {
+console.log("user in render:", this.user)
     return (
       <ImageBackground
         style={styles.image}
@@ -49,8 +79,7 @@ class SingleMeditation extends React.Component {
           <Text style={styles.text}>...breathe in...breathe out</Text>
         </View>
         <View style={currentStyles.container}>
-          <PulsatingSphere />
-
+          {this.renderSphere()}
         </View>
         <View style={currentStyles.pickercontainer}>
           <View style={currentStyles.textcontainer}>
@@ -63,9 +92,8 @@ class SingleMeditation extends React.Component {
             selectedValue={this.props.time}
             onValueChange={value => {
               this.props.TimeToBe(value);
-              console.log("this state props:", this.state.props);
-              console.log("this props", this.props);
-              console.log("after time to be:", this.props.time);
+              console.log("Single meditation props:", this.props);
+              console.log("SignleMedittion timeLeft:", this.props.timeLeft);
             }}
           >
             <Picker.Item label="select time:" value="0" />
@@ -101,25 +129,21 @@ const currentStyles = StyleSheet.create({
   }
 });
 
-checkTimer = () =>{
-  if(this.props.timeLeft<0){
-
-  }
-}
-
 
 const mapStateToProps = state => {
-  console.log('props in single meditation:', this.props)
   return {
     time: state.singleMeditationReducer.time,
-    // timeLeft: state.singleMeditationReducer.timeLeft
+    timeLeft: state.singleMeditationReducer.timeLeft
   };
 };
 
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
-  TimeToBe: newTime => dispatch(TimeToBe(newTime))
+  TimeToBe: newTime => dispatch(TimeToBe(newTime)),
+  updateUser: userId => dispatch(updateUser(userId)),
+  loadUser: () => dispatch(loadUser()),
+  saveUser: (user) => dispatch(saveUser(user)),
+  checkTimer: (time) => dispatch(checkTimer(time))
 });
-
 
 export default connect(mapStateToProps, mapDispatch)(SingleMeditation);

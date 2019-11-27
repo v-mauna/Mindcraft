@@ -61,9 +61,11 @@ class PulsatingSphere extends React.Component {
       if (timeToReduce < 0) {
         this.stopFunction();
       } else {
-        console.log("time left", timeToReduce);
+        console.log("time to reduce in sphere component:", timeToReduce);
+
         timeToReduce -= 1000;
         this.props.setTimeLeft(timeToReduce)
+        console.log("time left in sphere", this.props.timeLeft)
       }
     }, 1000);
   };
@@ -83,7 +85,7 @@ class PulsatingSphere extends React.Component {
   };
 
   render() {
-    console.log("props in pulsating sphere:", this.props);
+
     return <View style={styles.container}>{this.checkTime()}</View>;
   }
 }
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-  console.log('state in sphere component:',state)
+
   return {
     time: state.singleMeditationReducer.time,
     timeLeft: state.singleMeditationReducer.timeLeft
