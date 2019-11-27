@@ -3,11 +3,9 @@ import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
 import {
   createAppContainer,
-  DrawerNavigator,
   createSwitchNavigator,
 } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { Provider } from 'react-redux'
 import HomePage from './home'
 import Journals from './journals'
 import JournalEntry from './journalEntryForm'
@@ -20,6 +18,7 @@ import Signup from './signUpForm'
 import Icon from 'react-native-vector-icons/Ionicons'
 import AuthLoading from './authLoading'
 import Logout from './Logout'
+import Profile from './userProfile'
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -32,6 +31,7 @@ export const HomeNavigator = createStackNavigator({
   Meditations: { screen: Meditations },
   SingleMeditation: { screen: SingleMeditation },
   UsersList: { screen: UsersList },
+  Profile: {screen: Profile}
 })
 
 export const MeditationsNavigator = createStackNavigator(

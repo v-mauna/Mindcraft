@@ -9,6 +9,13 @@ import {loadUser, saveUser} from '../storage/userStorage'
 
 
 class Login extends Component {
+  static navigationOptions = { title : 'Mindcraft',  headerStyle: {
+    backgroundColor: '#F6820D',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },}
     constructor(){
     super()
       this.state = {
@@ -58,12 +65,13 @@ class Login extends Component {
                     placeholderTextColor = 'white'
                     secureTextEntry
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= '#FFA611'
-                onPress={this.logIn}/>
-
-                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611'
-                onPress={()=>this.props.navigation.navigate('Signup')}/>
-
+                <TouchableOpacity onPress={this.logIn} style={styles.button}>
+                  <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Signup')} 
+                style={styles.button}>
+                  <Text style={styles.buttonText}>Create an Account</Text>
+                </TouchableOpacity>
           </ScrollView>
                </View>
              </KeyboardAvoidingView>

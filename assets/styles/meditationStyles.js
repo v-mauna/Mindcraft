@@ -3,7 +3,6 @@ import {StyleSheet, Dimensions} from 'react-native'
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      alignItems: 'center',
       marginTop: 30,
       marginLeft: 20
 
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
       opacity: 0.8,
       fontFamily: 'Avenir-Medium',
       fontWeight: '800',
-      marginBottom: 20
+      marginBottom: 15
     },
     image: {
       width: '100%',
