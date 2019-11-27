@@ -10,7 +10,7 @@ import {
 import { connect } from "react-redux";
 import styles from "../../assets/styles/meditationStyles";
 import PulsatingSphere from "./pulsatingsphere";
-import Timer from "./timer";
+
 import { getTime, TimeToBe } from "../redux/actions/singleMeditationActions";
 import singleMeditationReducer from "../redux/reducers/singleMeditationReducer";
 
@@ -18,7 +18,8 @@ class SingleMeditation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: "0"
+      time: "0",
+
     };
   }
 
@@ -54,7 +55,7 @@ class SingleMeditation extends React.Component {
         <View style={currentStyles.pickercontainer}>
           <View style={currentStyles.textcontainer}>
             <Text style={styles.text}>
-              Time to meditate: {this.props.time / 6000} min
+              Time to meditate: {this.props.time / 60000} min
               {"\n"} Set the time:
             </Text>
           </View>
@@ -67,8 +68,8 @@ class SingleMeditation extends React.Component {
               console.log("after time to be:", this.props.time);
             }}
           >
-            <Picker.Item label="1 minute" value="60000" />
-            <Picker.Item label="2 minutes" value="12000" />
+            <Picker.Item label="select time:" value="0" />
+            <Picker.Item label="1 minutes" value="3000" />
             <Picker.Item label="3 minutes" value="18000" />
             <Picker.Item label="5 minutes" value="300000" />
           </Picker>
@@ -100,16 +101,24 @@ const currentStyles = StyleSheet.create({
   }
 });
 
+checkTimer = () =>{
+  if(this.props.timeLeft<0){
+
+  }
+}
+
+
 const mapStateToProps = state => {
+  console.log('props in single meditation:', this.props)
   return {
-    time: state.singleMeditationReducer.time
+    time: state.singleMeditationReducer.time,
+    // timeLeft: state.singleMeditationReducer.timeLeft
   };
 };
 
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
-  TimeToBe: newTime => dispatch(TimeToBe(newTime)),
-  reduceTime: time => dispatch(reduceTime(time))
+  TimeToBe: newTime => dispatch(TimeToBe(newTime))
 });
 
 

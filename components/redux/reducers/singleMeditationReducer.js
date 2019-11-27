@@ -1,8 +1,9 @@
-import {GOT_TIME, SET_TIME} from '../../redux/actions/types'
+import {GOT_TIME, SET_TIME, SET_TIME_LEFT} from '../../redux/actions/types'
 
 
 const initialState = {
-  time: '0'
+  time: '0',
+  timeLeft: '500'
 };
 
 const singleMeditationReducer  = (state = initialState, action) =>{
@@ -13,6 +14,8 @@ const singleMeditationReducer  = (state = initialState, action) =>{
       console.log('got to reducer, time', action.time )
       console.log('state in reducer:', state)
       return {...state, time: action.time}
+    case SET_TIME_LEFT:
+      return {...state, timeLeft: action.time}
     default:
         return state
   }

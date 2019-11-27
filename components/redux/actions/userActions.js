@@ -1,5 +1,5 @@
-import {FETCHING_USER_FAILURE, 
-        FETCHING_USER_SUCCESS, 
+import {FETCHING_USER_FAILURE,
+        FETCHING_USER_SUCCESS,
         FETCHING_USER_REQUEST}from './types'
 
 
@@ -32,4 +32,15 @@ export const fetchUser = (id) => {
             dispatch(fetchingUserFailure(error))
         }
     }
+}
+
+export const updateUser =(id) =>{
+    return async dispatch=>{
+        try{
+            let data = await postData(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {meditations: meditations+1})
+        }catch(error){
+            console.error('Here is your error', error)
+
+    }
+}
 }

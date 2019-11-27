@@ -5,7 +5,7 @@ export const FETCHING_USERS_SUCCESS = 'FETCHING_USERS_SUCCESS'
 export const FETCHING_USERS_FAILURE = 'FETCHING_USERS_FAILURE'
 export const SET_TIME = "SET_TIME"
 export const GOT_TIME = "GOT_TIME"
-
+export const SET_TIME_LEFT = "SET_TIME_LEFT"
 
 export const GET_USER = 'GET_USER'
 export const REMOVE_USER = 'REMOVE_USER'

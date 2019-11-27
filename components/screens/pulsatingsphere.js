@@ -8,18 +8,16 @@ import {
   TouchableWithoutFeedback,
   Easing
 } from "react-native";
-import Timer from "./timer";
+
 import { connect } from "react-redux";
-import {
-  getTime,
-  TimeToBe,
-  reduceTime
-} from "../redux/actions/singleMeditationActions";
+import { getTime, TimeToBe, setTimeLeft } from "../redux/actions/singleMeditationActions";
+
 
 class PulsatingSphere extends React.Component {
   state = {
     size: new Animated.Value(200),
-    time: this.props
+    // time: this.props,
+    // timeLeft: this.props
   };
 
   checkTime = () => {
@@ -58,12 +56,30 @@ class PulsatingSphere extends React.Component {
   };
 
   startCountdown = () => {
-    setInterval(this.props.reduceTime(this.props.time), 1000);
+    let timeToReduce=this.props.time
+    setInterval(() => {
+      if (timeToReduce < 0) {
+        this.stopFunction();
+      } else {
+        console.log("time left", timeToReduce);
+        timeToReduce -= 1000;
+        this.props.setTimeLeft(timeToReduce)
+      }
+    }, 1000);
+  };
+
+  stopAnimation = () => {
+    Animated.timing(this.state.size).stop();
+  };
+
+  stopFunction = () => {
+    clearInterval(this.startCountdown);
+
   };
 
   handlePress = () => {
     this.startAnimation();
-    // this.startCountdown();
+    this.startCountdown();
   };
 
   render() {
@@ -86,15 +102,17 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
+  console.log('state in sphere component:',state)
   return {
-    time: state.singleMeditationReducer.time
+    time: state.singleMeditationReducer.time,
+    timeLeft: state.singleMeditationReducer.timeLeft
   };
 };
 
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
   TimeToBe: newTime => dispatch(TimeToBe(newTime)),
-  reduceTime: time => dispatch(reduceTime(time))
+  setTimeLeft: time => dispatch(setTimeLeft(time))
 });
 
 export default connect(mapStateToProps, mapDispatch)(PulsatingSphere);
