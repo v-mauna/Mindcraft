@@ -100,73 +100,73 @@ class SingleMeditation extends React.Component {
     if (value !== this.props.time) {
       this.props.TimeToBe(value);
     }
-  };
+  }
   displayPicker = () => {
     if (this.props.timeWentOff === false) {
       console.log("got here");
       return (
         <View>
         <Picker
-          selectedValue={0}
-          onValueChange={this.onValueChange(8000)} >
-          <Picker.Item label="select time to start:" value='0' />
-          <Picker.Item label="test for dev 3 sec" value="3000" />
-          <Picker.Item label="1 minute" value="60000" />
-          <Picker.Item label="3 minutes" value="180000" />
-          <Picker.Item label="5 minutes" value="300000" />
-          <Picker.Item label="7 minutes" value="420000" />
-          <Picker.Item label="10 minutes" value="600000" />
-          <Picker.Item label="15 minutes" value="900000" />
+          selectedValue={this.props.time}
+          onValueChange={value => {
+            this.props.TimeToBe(value);
+            this.props.setLeftTime(value)
+            console.log("Single meditation props:", this.props);
+            console.log("SignleMedittion timeLeft:", this.props.timeLeft);
+          }}
+        >
+          <Picker.Item label="select time to start:" value={0} />
+          <Picker.Item label="test for dev 3 sec" value={3000} />
+          <Picker.Item label="1 minute" value={60000} />
+          <Picker.Item label="3 minutes" value={180000} />
+          <Picker.Item label="5 minutes" value={300000} />
+          <Picker.Item label="7 minutes" value={420000} />
+          <Picker.Item label="10 minutes" value={600000} />
+          <Picker.Item label="15 minutes" value={900000} />
         </Picker>
       </View>
-      )}
-
+      );
+    }
   };
 
   render() {
     let minutes = Math.floor(this.props.timeLeft / 60000);
     let seconds = Math.floor((this.props.timeLeft - minutes * 60000) / 1000);
-console.log("user in render:", this.user)
+    console.log("user in render:", this.user);
     return (
       <ImageBackground
         style={styles.image}
         source={require("../../assets/images/water.jpg")}
       >
         <View style={currentStyles.textcontainer}>
-        <Text style={styles.text}>
-            Time to meditate: {minutes} min {seconds} sec
+          <Text style={styles.text}> Time to meditate: {minutes} min {seconds} sec
             {"\n"}
           </Text>
         </View>
-        <View style={currentStyles.container}>
-          {this.renderSphere()}
-        </View>
-        {/* <View style={currentStyles.Spherecontainer}>{this.renderSphere()}</View> */}
+        <View style={currentStyles.Spherecontainer}>{this.renderSphere()}</View>
 
         <View style={currentStyles.pickercontainer}>
-          <View style={currentStyles.textcontainer}>
-            <Text style={styles.text}>
-              Time to meditate: {this.props.time / 60000} min
-              {"\n"} Set the time:
-            </Text>
-          </View>
-          <Picker
-            selectedValue={this.props.time}
-            onValueChange={value => {
-              this.props.TimeToBe(value);
-              console.log("Single meditation props:", this.props);
-              console.log("SignleMedittion timeLeft:", this.props.timeLeft);
-            }}
-          >
-         <Picker.Item label="select time to start:" value='0' />
-          <Picker.Item label="test for dev 3 sec" value="3000" />
-          <Picker.Item label="1 minute" value="60000" />
-          <Picker.Item label="3 minutes" value="180000" />
-          <Picker.Item label="5 minutes" value="300000" />
-          <Picker.Item label="7 minutes" value="420000" />
-          <Picker.Item label="10 minutes" value="600000" />
-          <Picker.Item label="15 minutes" value="900000" />
-          </Picker>
+          {this.displayPicker()}
+          {/* <View>
+            <Picker
+              selectedValue={this.props.time}
+              onValueChange={value => {
+                this.props.TimeToBe(value);
+                this.props.setLeftTime(value)
+                console.log("Single meditation props:", this.props);
+                console.log("SignleMedittion timeLeft:", this.props.timeLeft);
+              }}
+            >
+              <Picker.Item label="select time to start:" value={0} />
+              <Picker.Item label="test for dev 3 sec" value={3000} />
+              <Picker.Item label="1 minute" value={60000} />
+              <Picker.Item label="3 minutes" value={180000} />
+              <Picker.Item label="5 minutes" value={300000} />
+              <Picker.Item label="7 minutes" value={420000} />
+              <Picker.Item label="10 minutes" value={600000} />
+              <Picker.Item label="15 minutes" value={900000} />
+            </Picker>
+          </View> */}
         </View>
       </ImageBackground>
     );
@@ -176,12 +176,16 @@ console.log("user in render:", this.user)
 const currentStyles = StyleSheet.create({
   pickercontainer: {
     flex: 1,
-    alignContent: "flex-start"
+    alignContent: "flex-start",
+    borderColor: "black",
+    borderWidth: 3
   },
   Spherecontainer: {
     flex: 0.7,
     padding: 20,
-    margin: 10
+    margin: 10,
+    borderColor: "orange",
+    borderWidth: 3
   },
   textcontainer: {
     padding: 12,

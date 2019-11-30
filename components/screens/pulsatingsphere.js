@@ -10,12 +10,17 @@ import {
 } from "react-native";
 
 import { connect } from "react-redux";
-import { getTime, TimeToBe, setTimeLeft } from "../redux/actions/singleMeditationActions";
-
+import {
+  getTime,
+  TimeToBe,
+  setTimeLeft,
+  startTimer,
+  tickTimer
+} from "../redux/actions/singleMeditationActions";
 
 class PulsatingSphere extends React.Component {
   state = {
-    size: new Animated.Value(200),
+    size: new Animated.Value(200)
     // time: this.props,
     // timeLeft: this.props
   };
@@ -56,7 +61,7 @@ class PulsatingSphere extends React.Component {
   };
 
   startCountdown = () => {
-    let timeToReduce=this.props.time
+    let timeToReduce = this.props.time;
     setInterval(() => {
       if (timeToReduce < 0) {
         this.stopFunction();
@@ -64,8 +69,8 @@ class PulsatingSphere extends React.Component {
         console.log("time to reduce in sphere component:", timeToReduce);
 
         timeToReduce -= 1000;
-        this.props.setTimeLeft(timeToReduce)
-        console.log("time left in sphere", this.props.timeLeft)
+        this.props.setTimeLeft(timeToReduce);
+        console.log("time left in sphere", this.props.timeLeft);
       }
     }, 1000);
   };
@@ -76,16 +81,15 @@ class PulsatingSphere extends React.Component {
 
   stopFunction = () => {
     clearInterval(this.startCountdown);
-
   };
 
   handlePress = () => {
     this.startAnimation();
     this.startCountdown();
+    this.props.startTimer();
   };
 
   render() {
-
     return <View style={styles.container}>{this.checkTime()}</View>;
   }
 }
@@ -104,17 +108,19 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-
   return {
     time: state.singleMeditationReducer.time,
-    timeLeft: state.singleMeditationReducer.timeLeft
+    timeLeft: state.singleMeditationReducer.timeLeft,
+    timeWentOff: state.singleMeditationReducer.timeWentOff
   };
 };
 
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
   TimeToBe: newTime => dispatch(TimeToBe(newTime)),
-  setTimeLeft: time => dispatch(setTimeLeft(time))
+  setTimeLeft: time => dispatch(setTimeLeft(time)),
+  tickTimer: () => dispatch(tickTimer()),
+  startTimer: () => dispatch(startTimer())
 });
 
 export default connect(mapStateToProps, mapDispatch)(PulsatingSphere);
