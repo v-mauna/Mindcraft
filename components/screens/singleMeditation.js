@@ -126,29 +126,47 @@ class SingleMeditation extends React.Component {
   render() {
     let minutes = Math.floor(this.props.timeLeft / 60000);
     let seconds = Math.floor((this.props.timeLeft - minutes * 60000) / 1000);
-
-    // this.props.timeWentOff;
-
-    // console.log('user in render:', this.user)
-    // console.log('props in single meditation:', this.props)
-    // console.log('single meditation time:', this.props.time);
-    // console.log('single meditation time left:', this.props.timeLeft);
+console.log("user in render:", this.user)
     return (
       <ImageBackground
         style={styles.image}
         source={require("../../assets/images/water.jpg")}
       >
         <View style={currentStyles.textcontainer}>
-          <Text style={styles.text}>
+        <Text style={styles.text}>
             Time to meditate: {minutes} min {seconds} sec
             {"\n"}
           </Text>
-          <Button title="reset" onPress={this.onReset()} />
+        </View>
+        <View style={currentStyles.container}>
+          {this.renderSphere()}
         </View>
         {/* <View style={currentStyles.Spherecontainer}>{this.renderSphere()}</View> */}
 
         <View style={currentStyles.pickercontainer}>
-       {this.displayPicker()}
+          <View style={currentStyles.textcontainer}>
+            <Text style={styles.text}>
+              Time to meditate: {this.props.time / 60000} min
+              {"\n"} Set the time:
+            </Text>
+          </View>
+          <Picker
+            selectedValue={this.props.time}
+            onValueChange={value => {
+              this.props.TimeToBe(value);
+              console.log("Single meditation props:", this.props);
+              console.log("SignleMedittion timeLeft:", this.props.timeLeft);
+            }}
+          >
+         <Picker.Item label="select time to start:" value='0' />
+          <Picker.Item label="test for dev 3 sec" value="3000" />
+          <Picker.Item label="1 minute" value="60000" />
+          <Picker.Item label="3 minutes" value="180000" />
+          <Picker.Item label="5 minutes" value="300000" />
+          <Picker.Item label="7 minutes" value="420000" />
+          <Picker.Item label="10 minutes" value="600000" />
+          <Picker.Item label="15 minutes" value="900000" />
+          </Picker>
         </View>
       </ImageBackground>
     );
