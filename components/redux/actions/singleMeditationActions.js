@@ -1,4 +1,4 @@
-import { GOT_TIME, SET_TIME, SET_TIME_LEFT, START_TIMER, TICK_TIMER } from "./types";
+import { GOT_TIME, SET_TIME, SET_TIME_LEFT, START_TIMER, TICK_TIMER} from "./types";
 
 
 export const gotTime = () => ({
@@ -23,6 +23,8 @@ export const tickedTimer = ()=>({
   type: TICK_TIMER
 });
 
+
+
 export const getTime = ()=>{
   return dispatch => dispatch(gotTime())
 };
@@ -44,3 +46,5 @@ export const setLeftTime = (time) =>{
   console.log('got to settimelft, time is', time)
   return dispatch => dispatch(setTimeLeft(time))
 };
+
+

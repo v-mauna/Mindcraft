@@ -21,6 +21,7 @@ import {
 import { updateUser } from "../redux/actions/userActions";
 import singleMeditationReducer from "../redux/reducers/singleMeditationReducer";
 import { loadUser, saveUser } from "../storage/userStorage";
+import Timer from "./timer"
 
 class SingleMeditation extends React.Component {
   constructor(props) {
@@ -33,6 +34,11 @@ class SingleMeditation extends React.Component {
   async componentDidMount() {
     // this.props.getTime();
     this.user = await loadUser();
+    this.props.tickTimer();
+  }
+
+  componentWillUnmount() {
+    this.resetAll();
   }
 
   static navigationOptions = {
@@ -47,7 +53,7 @@ class SingleMeditation extends React.Component {
   };
 
   checkTimer = time => {
-    if (time < 0) {
+    if (time === 0) {
       return true;
     } else {
       return false;
@@ -55,15 +61,15 @@ class SingleMeditation extends React.Component {
   };
 
   renderSphere = () => {
-    if (this.props.timeLeft === -1000) {
+    if (this.props.timeLeft === 0 && this.props.timeWentOff === false) {
       // this.updateMeditations()
-      this.props.setLeftTime("500");
+      // this.props.setLeftTime("500");
       return (
         <View>
-          <Text>Hello world</Text>
+          <Text style={styles.text}>Simply select time to start</Text>
         </View>
       );
-    } else {
+    } else if(this.props.timeLeft>0&&this.props.time>0){
       return (
         <View>
           <PulsatingSphere />
@@ -71,20 +77,20 @@ class SingleMeditation extends React.Component {
       );
     }
   };
-
-  updateMeditations = () => {
-    if (this.user) {
-      newNumberOfMeditations = this.user.totalMeditations + 1;
-      if (this.checkTimer(this.props.timeLeft)) {
-        updateUser(this.user.id, newNumberOfMeditations);
-      }
-    }
-  };
-
-  onReset = () => {
+  resetAll = () => {
     this.props.setLeftTime(0);
     this.props.TimeToBe(0);
     this.props.tickTimer();
+  };
+  updateMeditations = () => {
+    if (this.user) {
+      newNumberOfMeditations = this.user.totalMeditations + 1;
+      if (this.props.timeLeft === 0 && this.props.timeWentOff === true && this.props.time>0) {
+        updateUser(this.user.id, newNumberOfMeditations);
+
+        return <Text style={styles.text}>Great job! </Text>;
+      }
+    }
   };
 
   // onPick = (value) => {
@@ -106,67 +112,52 @@ class SingleMeditation extends React.Component {
       console.log("got here");
       return (
         <View>
-        <Picker
-          selectedValue={this.props.time}
-          onValueChange={value => {
-            this.props.TimeToBe(value);
-            this.props.setLeftTime(value)
-            console.log("Single meditation props:", this.props);
-            console.log("SignleMedittion timeLeft:", this.props.timeLeft);
-          }}
-        >
-          <Picker.Item label="select time to start:" value={0} />
-          <Picker.Item label="test for dev 3 sec" value={3000} />
-          <Picker.Item label="1 minute" value={60000} />
-          <Picker.Item label="3 minutes" value={180000} />
-          <Picker.Item label="5 minutes" value={300000} />
-          <Picker.Item label="7 minutes" value={420000} />
-          <Picker.Item label="10 minutes" value={600000} />
-          <Picker.Item label="15 minutes" value={900000} />
-        </Picker>
-      </View>
+          <Picker
+            selectedValue={this.props.time}
+            onValueChange={value => {
+              this.props.TimeToBe(value);
+              this.props.setLeftTime(value);
+              console.log("Single meditation props:", this.props);
+              console.log("SignleMedittion timeLeft:", this.props.timeLeft);
+            }}
+          >
+            <Picker.Item label="select time to start:" value={0} />
+            <Picker.Item label="test for dev 3 sec" value={3000} />
+            <Picker.Item label="1 minute" value={60000} />
+            <Picker.Item label="3 minutes" value={180000} />
+            <Picker.Item label="5 minutes" value={300000} />
+            <Picker.Item label="7 minutes" value={420000} />
+            <Picker.Item label="10 minutes" value={600000} />
+            <Picker.Item label="15 minutes" value={900000} />
+          </Picker>
+        </View>
       );
     }
   };
 
+  showTimer =()=>{
+    if(this.props.timeWentOff===true){
+      return (
+        <Timer />
+        )
+    }
+  }
   render() {
-    let minutes = Math.floor(this.props.timeLeft / 60000);
-    let seconds = Math.floor((this.props.timeLeft - minutes * 60000) / 1000);
+
     console.log("user in render:", this.user);
+    console.log("time left in SG:", this.props.timeLeft);
+    console.log("time in SG:", this.props.time)
     return (
       <ImageBackground
         style={styles.image}
         source={require("../../assets/images/water.jpg")}
       >
-        <View style={currentStyles.textcontainer}>
-          <Text style={styles.text}> Time to meditate: {minutes} min {seconds} sec
-            {"\n"}
-          </Text>
-        </View>
+<View style={currentStyles.timeContainer}>{this.showTimer()}</View>
         <View style={currentStyles.Spherecontainer}>{this.renderSphere()}</View>
 
         <View style={currentStyles.pickercontainer}>
           {this.displayPicker()}
-          {/* <View>
-            <Picker
-              selectedValue={this.props.time}
-              onValueChange={value => {
-                this.props.TimeToBe(value);
-                this.props.setLeftTime(value)
-                console.log("Single meditation props:", this.props);
-                console.log("SignleMedittion timeLeft:", this.props.timeLeft);
-              }}
-            >
-              <Picker.Item label="select time to start:" value={0} />
-              <Picker.Item label="test for dev 3 sec" value={3000} />
-              <Picker.Item label="1 minute" value={60000} />
-              <Picker.Item label="3 minutes" value={180000} />
-              <Picker.Item label="5 minutes" value={300000} />
-              <Picker.Item label="7 minutes" value={420000} />
-              <Picker.Item label="10 minutes" value={600000} />
-              <Picker.Item label="15 minutes" value={900000} />
-            </Picker>
-          </View> */}
+          {this.updateMeditations()}
         </View>
       </ImageBackground>
     );
@@ -190,6 +181,13 @@ const currentStyles = StyleSheet.create({
   textcontainer: {
     padding: 12,
     alignItems: "center"
+  },
+  timeContainer:{
+    flex: 1,
+    borderTopWidth: 3,
+    borderColor: "pink",
+    padding: 20,
+    margin: 10,
   }
 });
 
