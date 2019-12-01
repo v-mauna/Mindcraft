@@ -4,6 +4,10 @@ const initialState= {
     quizzes: [],
 }
 
+const quizInitialState ={
+    quiz: {}
+}
+
 const getOneQuiz = quiz => ({
     type: GET_ONE_QUIZ,
     quiz
@@ -26,15 +30,16 @@ export const gotAllQuizzes = () => async dispatch =>{
     }
 }
 
-export const quizzesReducer = (state = initialState, action) => {
-    switch(action.type){
-        case GET_ALL_QUIZZES:{
-            return action.quizzes
-        }
-        default: 
-             return state
+export const gotOneQuiz = id => async dispatch => {
+    try{
+        let response = await fetch(`http://localhost:8080/api/quizzes/quiz/${id}`)
+        response = await response.json()
+        dispatch(getOneQuiz(response))
+    }catch(error){
+        console.error(`Your error is:`,error)
     }
 }
+
 
 
 

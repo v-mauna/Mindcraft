@@ -4,6 +4,9 @@ const initialState= {
     quizzes: [],
 }
 
+const quizInitialState ={
+    quiz: {}
+}
 const quizzesReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_ALL_QUIZZES:{
@@ -11,6 +14,16 @@ const quizzesReducer = (state = initialState, action) => {
         }
         default: 
              return state
+    }
+}
+
+export const quizReducer = (state = quizInitialState, action)=>{
+    switch(action.type){
+        case GET_ONE_QUIZ: {
+            return{...state, quiz: action.quiz}
+        }
+        default: 
+            return state
     }
 }
 

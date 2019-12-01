@@ -1,4 +1,4 @@
-import {GOT_TIME, SET_TIME, SET_TIME_LEFT} from '../../redux/actions/types'
+import {GOT_TIME, SET_TIME, SET_TIME_LEFT} from '../actions/types'
 
 
 const initialState = {

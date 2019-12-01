@@ -26,9 +26,11 @@ class Quizzes extends Component{
             <View style={styles.container}>
                 <Text> Quizzes</Text>
                 {quizzesList.map(quiz=>(
+                    <TouchableOpacity key={quiz.id} quiz={quiz} onPress={()=>{this.props.navigation.navigate('Quiz',{quiz})}}>
                     <View key={quiz.id}>
                     <Text>{quiz.name}</Text>
                     </View>
+                    </TouchableOpacity>
                 ))}
             </View>
             </ScrollView>
