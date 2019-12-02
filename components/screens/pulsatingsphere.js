@@ -1,4 +1,3 @@
-import PulsatingCircle from "react-native-pulsating-circle";
 import React, { useState } from "react";
 import {
   Text,

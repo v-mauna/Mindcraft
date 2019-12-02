@@ -9,7 +9,6 @@ import {
 import styles from '../../assets/styles/singleQuiz'
 import {gotOneQuiz} from '../redux/actions/quizActions'
 import {connect} from 'react-redux'
-import { object } from '@hapi/joi'
 
  class Quiz extends Component {
     static navigationOptions = { title : 'Mindcraft',  headerStyle: {
