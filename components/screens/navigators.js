@@ -35,8 +35,6 @@ export const HomeNavigator = createStackNavigator({
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
   Profile: {screen: Profile},
-  UsersList: { screen: UsersList },
-  Profile: {screen: Profile},
   NewDay: {screen: NewDay}
 })
 
