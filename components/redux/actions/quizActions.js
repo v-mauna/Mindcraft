@@ -22,7 +22,7 @@ const getAllQuizzes = quizzes => ({
 
 export const gotAllQuizzes = () => async dispatch =>{
     try{
-        let response = await fetch('http://localhost:8080/api/quizzes/')
+        let response = await fetch('http://mindcraft-api.herokuapp.com/api/tests/')
         response = await response.json()
         dispatch(getAllQuizzes(response))
     }catch(error){
@@ -32,7 +32,7 @@ export const gotAllQuizzes = () => async dispatch =>{
 
 export const gotOneQuiz = id => async dispatch => {
     try{
-        let response = await fetch(`http://localhost:8080/api/quizzes/quiz/${id}`)
+        let response = await fetch(`http://mindcraft-api.herokuapp.com/api/tests/${id}`)
         response = await response.json()
         dispatch(getOneQuiz(response))
     }catch(error){
