@@ -5,7 +5,7 @@ import {
   SET_TIME_LEFT,
   START_TIMER,
   TICK_TIMER
-} from "../../redux/actions/types";
+} from "../actions/types";
 
 
 const initialState = {

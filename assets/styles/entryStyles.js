@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
   },
   inputContainer: {
-    paddingTop: 15
+    paddingTop: 2
   },
   textInput: {
     backgroundColor: 'white',
@@ -63,10 +63,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingLeft:20,
     paddingRight: 20,
-    width: 320,
-    marginLeft: 20,
-    marginRight: 20,
-    justifyContent: 'flex-start'
+    width: 300,
+    marginLeft: 20
   },
   saveButton: {
     borderWidth: 1,

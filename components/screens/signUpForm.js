@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Text } from 'react-native'
 import styles from '../../assets/styles/signupStyles'
-import {signup} from '../redux/actions/authActions'
-import authReducer from '../redux/actions/authActions'
+import {signup} from '../../redux/actions/authActions'
+import authReducer from '../../redux/actions/authActions'
 import {connect} from 'react-redux'
 import { loadUser, saveUser} from '../storage/userStorage'
 
