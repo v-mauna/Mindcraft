@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { View, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Button } from "react-native";
 import styles from '../../assets/styles/loginStyles'
 import RoundedButton from "../buttons/RoundedButton";
-import authReducer from '../redux/actions/authActions'
-import {auth} from '../redux/actions/authActions'
+import authReducer from '../../redux/actions/authActions'
+import {auth} from '../../redux/actions/authActions'
 import {connect} from 'react-redux'
 import {loadUser, saveUser} from '../storage/userStorage'
 

@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native'
 import styles from '../../assets/styles/singleQuiz'
-import {gotOneQuiz} from '../redux/actions/quizActions'
+import {gotOneQuiz} from '../../redux/actions/quizActions'
 import {connect} from 'react-redux'
 
  class Quiz extends Component {

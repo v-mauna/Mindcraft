@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider} from 'react-redux'
-import store from './components/redux/store'
-import MainNavigator from './components/screens/navigators'
+import store from './redux/store'
+import MainNavigator from './navigation/navigators'
 
 export default function App() {
 

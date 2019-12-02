@@ -3,13 +3,21 @@ import {
   TouchableOpacity,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  ImageBackground
 } from 'react-native';
-import styles from '../../assets/styles/usersListStyles'
-import {gotAllQuizzes} from '../redux/actions/quizActions'
+import styles from '../../assets/styles/quizzesStyles'
+import {gotAllQuizzes} from '../../redux/actions/quizActions'
 import  {connect} from 'react-redux'
 
 class Quizzes extends Component{
+    static navigationOptions = { title: 'Mindcraft',headerStyle: {
+        backgroundColor: '#72788d',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },}
     constructor(){
         super()
     }
@@ -22,18 +30,20 @@ class Quizzes extends Component{
         let quizzesList = this.props.quizList
         console.log('data',quizzesList)
         return(
+            <ImageBackground style={styles.image} source={require('../../assets/images/red.jpg')}>
             <ScrollView>
             <View style={styles.container}>
-                <Text> Quizzes</Text>
+                <Text style={styles.text}> Quizzes</Text>
                 {quizzesList.map(quiz=>(
                     <TouchableOpacity key={quiz.id} quiz={quiz} onPress={()=>{this.props.navigation.navigate('Quiz',{quiz})}}>
                     <View key={quiz.id}>
-                    <Text>{quiz.name}</Text>
+                    <Text style={styles.text}>{quiz.name}</Text>
                     </View>
                     </TouchableOpacity>
                 ))}
             </View>
             </ScrollView>
+            </ImageBackground>
         )
         
     }

@@ -6,21 +6,23 @@ import {
   createSwitchNavigator,
 } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import HomePage from './home'
-import Journals from './journals'
-import JournalEntry from './journalEntryForm'
-import Meditations from './meditations'
-import SingleMeditation from './singleMeditation'
-import SingleJournal from './singleJournal'
-import Quizzes from './quizzes'
-import Login from './loginForm'
-import Signup from './signUpForm'
+import HomePage from '../components/screens/home'
+import Journals from '../components/screens/journals'
+import JournalEntry from '../components/screens/journalEntryForm'
+import Meditations from '../components/screens/meditations'
+import SingleMeditation from '../components/screens/singleMeditation'
+import SingleJournal from '../components/screens/singleJournal'
+import Quizzes from '../components/screens/quizzes'
+import Login from '../components/screens/loginForm'
+import Signup from '../components/screens/signUpForm'
 import Icon from 'react-native-vector-icons/Ionicons'
-import AuthLoading from './authLoading'
-import Logout from './Logout'
-import Profile from './userProfile'
-import Quiz from './singleQuiz'
-import NewDay from './newDay'
+import AuthLoading from '../components/screens/authLoading'
+import Logout from '../components/screens/Logout'
+import Profile from '../components/screens/userProfile'
+import Quiz from '../components/screens/singleQuiz'
+import NewDay from '../components/screens/newDay'
+import MoodTracker from '../components/screens/moodRating'
+import SleepTracker from '../components/screens/sleepTracker'
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -35,7 +37,7 @@ export const HomeNavigator = createStackNavigator({
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
   Profile: {screen: Profile},
-  NewDay: {screen: NewDay}
+  DailyCheckIn: {CheckInNavigator}
 })
 
 export const MeditationsNavigator = createStackNavigator(
@@ -53,6 +55,14 @@ export const JournalsNavigator = createStackNavigator({
   JournalEntry: {screen: JournalEntry},
   Home: {screen: HomePage},
 })
+
+export const CheckInNavigator = createStackNavigator(
+  {
+  MoodRating: { screen: MoodTracker },
+  SleepTracker: { screen: SleepTracker },
+},
+{ initialRouteName: 'MoodRating' }
+)
 
 export const BottomTabNavigator = createBottomTabNavigator(
   {
@@ -89,7 +99,6 @@ const MainNavigator = createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoading,
-      NewDay: NewDay,
       Login: authNavigator,
       App: BottomTabNavigator,
     },
