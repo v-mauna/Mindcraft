@@ -56,6 +56,14 @@ export const JournalsNavigator = createStackNavigator({
   Home: {screen: HomePage},
 })
 
+export const CheckInNavigator = createStackNavigator(
+  {
+  MoodRating: { screen: MoodTracker },
+  SleepTracker: { screen: SleepTracker },
+},
+{ initialRouteName: 'MoodRating' }
+)
+
 export const BottomTabNavigator = createBottomTabNavigator(
   {
     Home: HomeNavigator,
