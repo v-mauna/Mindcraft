@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Svg, { G, Path } from 'react-native-svg';
 import styles from '../../assets/styles/bedtimeStyles';
 
@@ -129,7 +129,8 @@ export default class Bedtime extends Component {
           />
         </View>
         </View>
-        <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/>
+        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalEntry')}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+        {/* <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/> */}
       </View>
     );
   }
