@@ -37,7 +37,7 @@ export const HomeNavigator = createStackNavigator({
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
   Profile: {screen: Profile},
-  DailyCheckIn: {screen: MoodTracker}
+  DailyCheckIn: {CheckInNavigator}
 })
 
 export const MeditationsNavigator = createStackNavigator(
@@ -55,6 +55,14 @@ export const JournalsNavigator = createStackNavigator({
   JournalEntry: {screen: JournalEntry},
   Home: {screen: HomePage},
 })
+
+export const CheckInNavigator = createStackNavigator(
+  {
+  MoodRating: { screen: MoodTracker },
+  SleepTracker: { screen: SleepTracker },
+},
+{ initialRouteName: 'MoodRating' }
+)
 
 export const BottomTabNavigator = createBottomTabNavigator(
   {
