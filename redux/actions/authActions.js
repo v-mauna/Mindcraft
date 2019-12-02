@@ -1,5 +1,5 @@
 import {GET_USER, CREATE_USER, REMOVE_USER} from './types'
-import { saveUser } from '../../storage/userStorage'
+import { saveUser } from '../../components/storage/userStorage'
 
 const initialState = {
     user: {}

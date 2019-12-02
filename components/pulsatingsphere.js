@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import {startCountdown} from "./timer"
 import { connect } from "react-redux";
-import styles from "../../assets/styles/meditationStyles";
+import styles from "../assets/styles/meditationStyles";
 import {
   getTime,
   TimeToBe,

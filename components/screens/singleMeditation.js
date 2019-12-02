@@ -5,23 +5,22 @@ import {
   ImageBackground,
   TouchableOpacity,
   Picker,
-  StyleSheet,
   Button
 } from "react-native";
 import { connect } from "react-redux";
 import styles from "../../assets/styles/meditationStyles";
-import PulsatingSphere from "./pulsatingsphere";
+import PulsatingSphere from "../pulsatingsphere";
 import {
   getTime,
   TimeToBe,
   setLeftTime,
   startTimer,
   tickTimer
-} from "../redux/actions/singleMeditationActions";
-import { updateUser } from "../redux/actions/userActions";
-import singleMeditationReducer from "../redux/reducers/singleMeditationReducer";
+} from "../../redux/actions/singleMeditationActions";
+import { updateUser } from "../../redux/actions/userActions";
+import singleMeditationReducer from "../../redux/reducers/singleMeditationReducer";
 import { loadUser, saveUser } from "../storage/userStorage";
-import Timer from "./timer";
+import Timer from "../timer";
 
 class SingleMeditation extends React.Component {
   constructor(props) {

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import styles from "../../assets/styles/meditationStyles";
+import styles from "../assets/styles/meditationStyles";
 import PulsatingSphere from "./pulsatingsphere";
 import {
   getTime,
@@ -20,7 +20,7 @@ import {
   tickTimer
 } from "../redux/actions/singleMeditationActions";
 import { updateUser } from "../redux/actions/userActions";
-import { loadUser, saveUser } from "../storage/userStorage";
+import { loadUser, saveUser } from "./storage/userStorage";
 
 class Timer extends React.Component {
   componentWillUnmount() {
