@@ -3,7 +3,7 @@ import {
   FETCHING_USER_SUCCESS,
   FETCHING_USER_REQUEST
 } from "./types";
-import {saveUser} from '../../storage/userStorage'
+import {saveUser} from '../../components/storage/userStorage'
 
 import axios from 'axios'
 
