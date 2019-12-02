@@ -1,3 +1,4 @@
+
 import {
   GOT_TIME,
   SET_TIME,
@@ -5,7 +6,7 @@ import {
   START_TIMER,
   TICK_TIMER
 } from "../../redux/actions/types";
-// import { resetWarningCache } from "../../../../../Library/Caches/typescript/3.6/node_modules/@types/prop-types";
+
 
 const initialState = {
   time: 0,

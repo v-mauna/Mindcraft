@@ -13,3 +13,8 @@ export const TICK_TIMER = "TICK_TIMER"
 export const GET_USER = 'GET_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const CREATE_USER = 'CREATE_USER'
+
+export const GET_ALL_QUIZZES = 'GET_ALL_QUIZZES'
+export const GET_ONE_QUIZ= 'GET_ONE_QUIZ'
+export const UPDATE_QUIZ = 'UPDATE_QUIZ'
+

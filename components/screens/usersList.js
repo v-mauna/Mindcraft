@@ -7,8 +7,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import styles from '../../assets/styles/usersListStyles'
-import PropTypes from 'prop-types'
-import {fetchingUsersSuccess,fetchUsers} from '../redux/actions/userActions'
+import {fetchUsers} from '../redux/actions/userActions'
 import  {connect} from 'react-redux'
 
 class UsersList extends Component{

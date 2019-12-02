@@ -102,6 +102,7 @@ class SingleMeditation extends React.Component {
       this.props.TimeToBe(value);
     }
   }
+
   displayPicker = () => {
     if (this.props.timeWentOff === false) {
       console.log("got here");

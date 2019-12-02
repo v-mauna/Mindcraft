@@ -31,8 +31,8 @@ export default class HomePage extends React.Component{
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
-                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('UsersList')}>
-                          <Text style={styles.text}>Users List</Text>
+                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('Quizzes')}>
+                          <Text style={styles.text}>Quizzes</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>

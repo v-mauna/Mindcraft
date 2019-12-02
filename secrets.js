@@ -1,0 +1,2 @@
+process.env.IOS_CLIENT_ID = '617628611917-qt2kqgh33udo2m5svnj4p5gilt8k7mn3.apps.googleusercontent.com'
+process.env.GOOGLE_ID = '617628611917-4gaha7qnqqqilovp8urf2jgcv29mudpn.apps.googleusercontent.com'
