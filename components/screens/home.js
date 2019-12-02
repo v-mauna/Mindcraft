@@ -37,8 +37,8 @@ export default class HomePage extends React.Component{
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
-                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewDay')}>
-                          <Text style={styles.text}>New Day</Text>
+                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('DailyCheckIn')}>
+                          <Text style={styles.text}>Daily Check-in</Text>
                       </TouchableOpacity>
                       </View>
                   </View>

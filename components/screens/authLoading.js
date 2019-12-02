@@ -12,7 +12,7 @@ class AuthLoading extends React.Component {
     console.log("AUTH USER", user)
 
     if (user.id !== null) {
-      this.props.navigation.navigate('NewDay')
+      this.props.navigation.navigate('Home')
     } else {
       this.props.navigation.navigate('Login')
     }
