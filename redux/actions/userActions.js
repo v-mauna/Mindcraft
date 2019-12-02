@@ -26,7 +26,8 @@ export const fetchUser = id => {
   return async dispatch => {
     try {
       let response = await fetch(
-        `https://mindcraft-api.herokuapp.com/api/users/${id}`
+        `http://mindcraft-api.herokuapp.com/api/users/${id}`
+
       );
       response = await response.json();
       console.log("Response", response);
@@ -45,11 +46,12 @@ export const updateUser = (id, meditations) => {
   return async () => {
     try {
       const response = await fetch(
-        `https://mindcraft-api.herokuapp.com/api/users/${id}`,
+        // `https://mindcraft-api.herokuapp.com/api/users/${id}`,
+        `http://localhost:8080/api/users/${id}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
-            Accept: "application/json",
+            Accept: "application/json",b
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
