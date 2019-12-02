@@ -38,7 +38,8 @@
     "react-navigation-stack": "^1.10.3",
     "react-navigation-tabs": "^2.6.0",
     "react-navigator": "0.0.0-0",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "webpack-cli": "^3.3.10"
   },
   "devDependencies": {
     "babel-preset-expo": "^7.1.0",
