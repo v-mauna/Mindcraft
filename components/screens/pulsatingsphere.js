@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import {startCountdown} from "./timer"
 import { connect } from "react-redux";
+import styles from "../../assets/styles/meditationStyles";
 import {
   getTime,
   TimeToBe,
@@ -32,13 +33,13 @@ class PulsatingSphere extends React.Component {
     };
     if (this.props.time > 0) {
       return (
-        <View>
+
           <TouchableWithoutFeedback onPress={this.handlePress}>
             <Animated.View
               style={[styles.circle, animatedStyles]}
             ></Animated.View>
           </TouchableWithoutFeedback>
-        </View>
+
       );
     } else {
       return <Text style={styles.text}>Please select time to start</Text>;
@@ -82,22 +83,10 @@ class PulsatingSphere extends React.Component {
   };
 
   render() {
-    return <View style={styles.container}>{this.checkTime()}</View>;
+    return <View style={styles.circleContainer}>{this.checkTime()}</View>;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  circle: {
-    opacity: 0.3,
-    backgroundColor: "blue",
-    borderRadius: 200 / 2
-  }
-});
 
 const mapStateToProps = state => {
   return {

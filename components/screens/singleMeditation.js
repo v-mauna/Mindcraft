@@ -21,7 +21,7 @@ import {
 import { updateUser } from "../redux/actions/userActions";
 import singleMeditationReducer from "../redux/reducers/singleMeditationReducer";
 import { loadUser, saveUser } from "../storage/userStorage";
-import Timer from "./timer"
+import Timer from "./timer";
 
 class SingleMeditation extends React.Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class SingleMeditation extends React.Component {
           <Text style={styles.text}>Simply select time to start</Text>
         </View>
       );
-    } else if(this.props.timeLeft>0&&this.props.time>0){
+    } else if (this.props.timeLeft > 0 && this.props.time > 0) {
       return (
         <View>
           <PulsatingSphere />
@@ -85,22 +85,17 @@ class SingleMeditation extends React.Component {
   updateMeditations = () => {
     if (this.user) {
       newNumberOfMeditations = this.user.totalMeditations + 1;
-      if (this.props.timeLeft === 0 && this.props.timeWentOff === true && this.props.time>0) {
+      if (
+        this.props.timeLeft === 0 &&
+        this.props.timeWentOff === true &&
+        this.props.time > 0
+      ) {
         updateUser(this.user.id, newNumberOfMeditations);
 
         return <Text style={styles.text}>Great job! </Text>;
       }
     }
   };
-
-  // onPick = (value) => {
-  //   console.log('got to onPick function')
-  //   this.props.setLeftTime(value);
-  //   this.props.TimeToBe(value);
-  //   console.log('onPick time after changed time:', this.props.time)
-
-  //   console.log('onPick timeLeft after changed time:', this.props.timeLeft)
-  // };
 
   onValueChange(value) {
     if (value !== this.props.time) {
@@ -135,61 +130,43 @@ class SingleMeditation extends React.Component {
     }
   };
 
-  showTimer =()=>{
-    if(this.props.timeWentOff===true){
-      return (
-        <Timer />
-        )
+  showTimer = () => {
+    if (this.props.timeWentOff === true) {
+      return <Timer />;
     }
-  }
+  };
   render() {
-
     console.log("user in render:", this.user);
     console.log("time left in SG:", this.props.timeLeft);
-    console.log("time in SG:", this.props.time)
+    console.log("time in SG:", this.props.time);
     return (
       <ImageBackground
         style={styles.image}
         source={require("../../assets/images/water.jpg")}
       >
-<View style={currentStyles.timeContainer}>{this.showTimer()}</View>
-        <View style={currentStyles.Spherecontainer}>{this.renderSphere()}</View>
+        <View>
+          <Button
+            title="start over"
+            style={styles.button}
+            onPress={this.resetAll}
+          />
+        </View>
 
-        <View style={currentStyles.pickercontainer}>
-          {this.displayPicker()}
-          {this.updateMeditations()}
+        <View style={styles.singlemeditationcontainer}>
+        <View  style={styles.timeCcontainer}>{this.showTimer()}</View>
+          <View style={styles.Spherecontainer}>{this.renderSphere()}</View>
+
+
+          <View style={styles.pickercontainer}>
+            {this.displayPicker()}
+
+            {this.updateMeditations()}
+          </View>
         </View>
       </ImageBackground>
     );
   }
 }
-
-const currentStyles = StyleSheet.create({
-  pickercontainer: {
-    flex: 1,
-    alignContent: "flex-start",
-    borderColor: "black",
-    borderWidth: 3
-  },
-  Spherecontainer: {
-    flex: 0.7,
-    padding: 20,
-    margin: 10,
-    borderColor: "orange",
-    borderWidth: 3
-  },
-  textcontainer: {
-    padding: 12,
-    alignItems: "center"
-  },
-  timeContainer:{
-    flex: 1,
-    borderTopWidth: 3,
-    borderColor: "pink",
-    padding: 20,
-    margin: 10,
-  }
-});
 
 const mapStateToProps = state => {
   // console.log("state in SG:", state);
