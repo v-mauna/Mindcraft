@@ -8,16 +8,22 @@ import {
   TouchableWithoutFeedback,
   Easing
 } from "react-native";
-
+import {startCountdown} from "./timer"
 import { connect } from "react-redux";
-import { getTime, TimeToBe, setTimeLeft } from "../redux/actions/singleMeditationActions";
+import styles from "../../assets/styles/meditationStyles";
+import {
+  getTime,
+  TimeToBe,
+  setLeftTime,
+  startTimer,
+  tickTimer
+} from "../redux/actions/singleMeditationActions";
+
 
 
 class PulsatingSphere extends React.Component {
   state = {
-    size: new Animated.Value(200),
-    // time: this.props,
-    // timeLeft: this.props
+    size: new Animated.Value(200)
   };
 
   checkTime = () => {
@@ -27,13 +33,13 @@ class PulsatingSphere extends React.Component {
     };
     if (this.props.time > 0) {
       return (
-        <View>
+
           <TouchableWithoutFeedback onPress={this.handlePress}>
             <Animated.View
               style={[styles.circle, animatedStyles]}
             ></Animated.View>
           </TouchableWithoutFeedback>
-        </View>
+
       );
     } else {
       return <Text style={styles.text}>Please select time to start</Text>;
@@ -55,66 +61,48 @@ class PulsatingSphere extends React.Component {
     });
   };
 
-  startCountdown = () => {
-    let timeToReduce=this.props.time
-    setInterval(() => {
-      if (timeToReduce < 0) {
-        this.stopFunction();
-      } else {
-        console.log("time to reduce in sphere component:", timeToReduce);
-
-        timeToReduce -= 1000;
-        this.props.setTimeLeft(timeToReduce)
-        console.log("time left in sphere", this.props.timeLeft)
-      }
-    }, 1000);
-  };
-
   stopAnimation = () => {
     Animated.timing(this.state.size).stop();
   };
 
-  stopFunction = () => {
-    clearInterval(this.startCountdown);
 
-  };
 
   handlePress = () => {
     this.startAnimation();
-    this.startCountdown();
+    startCountdown;
+    this.props.startTimer();
+
+  };
+
+
+
+  resetAll = () => {
+    this.props.setLeftTime(0);
+    this.props.TimeToBe(0);
+    this.props.tickTimer();
   };
 
   render() {
-
-    return <View style={styles.container}>{this.checkTime()}</View>;
+    return <View style={styles.circleContainer}>{this.checkTime()}</View>;
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  circle: {
-    opacity: 0.3,
-    backgroundColor: "blue",
-    borderRadius: 200 / 2
-  }
-});
 
 const mapStateToProps = state => {
-
   return {
     time: state.singleMeditationReducer.time,
-    timeLeft: state.singleMeditationReducer.timeLeft
+    timeLeft: state.singleMeditationReducer.timeLeft,
+    timeWentOff: state.singleMeditationReducer.timeWentOff
   };
 };
 
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
   TimeToBe: newTime => dispatch(TimeToBe(newTime)),
-  setTimeLeft: time => dispatch(setTimeLeft(time))
+  setLeftTime: time => dispatch(setLeftTime(time)),
+  tickTimer: () => dispatch(tickTimer()),
+  startTimer: () => dispatch(startTimer()),
+
 });
 
 export default connect(mapStateToProps, mapDispatch)(PulsatingSphere);
