@@ -40,6 +40,11 @@ export default class HomePage extends React.Component{
                           <Text style={styles.text}>User Profile</Text>
                       </TouchableOpacity>
                       </View>
+                      <View style={styles.journals}>
+                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('NewDay')}>
+                          <Text style={styles.text}>New Day</Text>
+                      </TouchableOpacity>
+                      </View>
                   </View>
 
               </ImageBackground>
