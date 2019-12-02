@@ -137,9 +137,9 @@ class SingleMeditation extends React.Component {
     }
   };
   render() {
-    console.log("user in render:", this.user);
-    console.log("time left in SG:", this.props.timeLeft);
-    console.log("time in SG:", this.props.time);
+    // console.log("user in render:", this.user);
+    // console.log("time left in SG:", this.props.timeLeft);
+    // console.log("time in SG:", this.props.time);
     return (
       <ImageBackground
         style={styles.image}

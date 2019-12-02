@@ -3,7 +3,7 @@ import {
   FETCHING_USER_SUCCESS,
   FETCHING_USER_REQUEST
 } from "./types";
-
+import {saveUser} from '../../storage/userStorage'
 
 import axios from 'axios'
 
@@ -47,36 +47,9 @@ export const updateUser = (id, meditations) => {
 console.log('meditations in updateUser', meditations )
 return async dispatch =>{
   const res= await axios.put(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {totalMeditations: meditations})
-  //  dispatch(updatedUser(res.data))
+
+  saveUser(res.data[1][0])
 }
 }
 
-// export const updateUser = (id, meditations) => {
-//   console.log("got to update user");
-//   console.log("id in update user:", id);
-//     console.log("num of meditation in update user:", meditations)
-//   return async () => {
-//     try {
-//       const response = await fetch(
-//         `https://mindcraft-api.herokuapp.com/api/users/${id}`,
-//         {
-//           method: "POST",
-//           headers: {
-//             Accept: "application/json",
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({
-//             totalMeditations: meditations
-//           })
-
-//         }
-//       );
-//       const resData = await response.json();
-//       console.log(content);
-//     } catch (error) {
-//       console.error("Here is your error", error);
-//       dispatch(fetchingUserFailure(error));
-//     }
-//   };
-// };
 
