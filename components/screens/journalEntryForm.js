@@ -82,7 +82,7 @@ export default class JournalEntry extends React.Component {
               style={styles.textInput2}
               placeholder="Whatever you want"
               onBlur={Keyboard.dismiss}
-              value={this.state.mood}
+              value={this.state.theRest}
               onChangeText={(text)=>this.setState({theRest:text})}
             />
           </View>
