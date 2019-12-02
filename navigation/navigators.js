@@ -37,7 +37,7 @@ export const HomeNavigator = createStackNavigator({
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
   Profile: {screen: Profile},
-  DailyCheckIn: {screen: MoodTracker}
+  DailyCheckIn: {CheckInNavigator}
 })
 
 export const MeditationsNavigator = createStackNavigator(
