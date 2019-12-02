@@ -9,7 +9,6 @@ import {
 import styles from '../../assets/styles/singleQuiz'
 import {gotOneQuiz} from '../redux/actions/quizActions'
 import {connect} from 'react-redux'
-import { object } from '@hapi/joi'
 
  class Quiz extends Component {
     static navigationOptions = { title : 'Mindcraft',  headerStyle: {
@@ -32,14 +31,14 @@ import { object } from '@hapi/joi'
         this.setState(
           state => {
             const nextState = { answered: true };
-    
+
             if (correct) {
               nextState.correctCount = state.correctCount + 1;
               nextState.answerCorrect = true;
             } else {
               nextState.answerCorrect = false;
             }
-    
+
             return nextState;
           },
           () => {
@@ -67,8 +66,8 @@ import { object } from '@hapi/joi'
                             <Text key={id} style={styles.text}>{question.text}</Text>
                     )
                 })}</Text>
-                    
-                    
+
+
             </View>
             </ScrollView>
             </ImageBackground>
@@ -76,7 +75,7 @@ import { object } from '@hapi/joi'
     }
 }
 
-mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return{
       getOneQuiz: (id) => dispatch(gotOneQuiz(id))
     }
