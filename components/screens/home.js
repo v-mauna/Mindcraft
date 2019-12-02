@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text,ImageBackground ,TouchableOpacity, AsyncStorage} from 'react-native';
+import {View, Text,ImageBackground ,TouchableOpacity, ScrollView} from 'react-native';
 import styles from '../../assets/styles/homeStyles'
 
 export default class HomePage extends React.Component{
@@ -13,6 +13,7 @@ export default class HomePage extends React.Component{
       render(){
           return(
               <ImageBackground style={styles.image} source={require('../../assets/images/home.jpg')}>
+                  <ScrollView>
                   <View style={styles.container}>
                       <Text style={styles.header}>Welcome</Text>
                       <View style={styles.journals}>
@@ -23,11 +24,6 @@ export default class HomePage extends React.Component{
                       <View style={styles.journals}>
                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('Journals')}>
                        <Text style={styles.text}>View Journals</Text>
-                      </TouchableOpacity>
-                      </View>
-                      <View style={styles.journals}>
-                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('JournalEntry')}>
-                        <Text style={styles.text}>Make a Journal Entry</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
@@ -46,7 +42,7 @@ export default class HomePage extends React.Component{
                       </TouchableOpacity>
                       </View>
                   </View>
-
+                  </ScrollView>
               </ImageBackground>
           )
       }
