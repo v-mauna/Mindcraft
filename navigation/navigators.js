@@ -34,8 +34,7 @@ export const HomeNavigator = createStackNavigator({
   SingleMeditation: { screen: SingleMeditation },
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
-  Profile: {screen: Profile},
-  NewDay: {screen: NewDay}
+  Profile: {screen: Profile}
 })
 
 export const MeditationsNavigator = createStackNavigator(
@@ -89,7 +88,6 @@ const MainNavigator = createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoading,
-      NewDay: NewDay,
       Login: authNavigator,
       App: BottomTabNavigator,
     },
