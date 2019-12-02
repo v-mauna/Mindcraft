@@ -1,44 +1,76 @@
-import {StyleSheet, Dimensions} from 'react-native'
+import { StyleSheet, Dimensions } from "react-native";
+
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: 30,
-      marginLeft: 20
+  container: {
+    flex: 1,
+    marginTop: 30,
+    marginLeft: 20,
 
-    },
-    text:{
-      color:'white',
-      fontSize: 20,
-      opacity: 0.8,
-      fontFamily: 'Avenir-Medium',
-      fontWeight: '800',
-      marginBottom: 15
-    },
-    image: {
-      width: '100%',
-      height: '100%'
+  },
+  singlemeditationcontainer:{
+    flex: 1,
+    justifyContent: "flex-end"
+  },
+  text: {
+    color: "white",
+    fontSize: 20,
+    opacity: 0.8,
+    fontFamily: "Avenir-Medium",
+    fontWeight: "800",
+    marginBottom: 15
+  },
+  image: {
+    width: "100%",
+    height: "100%"
   },
   button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
     padding: 10,
     width: 180,
-    alignSelf: 'center',
-    justifyContent: 'center',
+    alignSelf: "center",
+    justifyContent: "center",
     marginTop: 20,
     marginBottom: 2,
     opacity: 0.8
   },
   header: {
     fontSize: 20,
-    fontFamily: 'Avenir-Medium',
-    color:'white',
-    fontWeight: '800',
+    fontFamily: "Avenir-Medium",
+    color: "white",
+    fontWeight: "800",
     marginBottom: 20,
     alignItems: "stretch"
+  },
+  pickercontainer: {
+    height: "25%",
+    alignContent: "flex-start"
+  },
+  Spherecontainer: {
+    height: "55%",
+    padding: 5,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  textcontainer: {
+    padding: 12,
+    alignItems: "center"
+  },
+  timeContainer: {
+    height: "10%",
+    padding: 20,
+    margin: 10
+  },
+  circle: {
+    opacity: 0.3,
+    backgroundColor: "blue",
+    borderRadius: 200 / 2
+  },
+  circleContainer: {
+    alignItems: "center",
+    justifyContent: "center"
   }
- 
-  });
+});
 
-export default styles
+export default styles;

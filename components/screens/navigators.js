@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import AuthLoading from './authLoading'
 import Logout from './Logout'
 import Profile from './userProfile'
+import NewDay from './newDay'
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -31,7 +32,8 @@ export const HomeNavigator = createStackNavigator({
   Meditations: { screen: Meditations },
   SingleMeditation: { screen: SingleMeditation },
   UsersList: { screen: UsersList },
-  Profile: {screen: Profile}
+  Profile: {screen: Profile},
+  NewDay: {screen: NewDay}
 })
 
 export const MeditationsNavigator = createStackNavigator(
@@ -85,6 +87,7 @@ const MainNavigator = createAppContainer(
   createSwitchNavigator(
     {
       AuthLoading: AuthLoading,
+      NewDay: NewDay,
       Login: authNavigator,
       App: BottomTabNavigator,
     },
