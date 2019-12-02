@@ -23,9 +23,14 @@
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "~1.3.0",
     "react-native-progress": "^4.0.2",
+<<<<<<< HEAD
     "react-native-reanimated": "^1.4.0",
     "react-native-router-flux": "^4.0.6",
     "react-native-svg": "^9.13.3",
+=======
+    "react-native-pulsating-circle": "^1.0.0",
+    "react-native-pulse": "^1.0.7",
+>>>>>>> 94df581cf03b7ee1304ef8b4c442475b25703de8
     "react-native-redash": "^8.6.0",
     "react-native-safari-view": "^2.1.0",
     "react-native-sound": "^0.11.0",

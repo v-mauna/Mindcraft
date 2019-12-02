@@ -19,6 +19,9 @@ class Profile extends React.Component {
 
     componentDidMount = async() => {
       let userInfo = await loadUser()
+      let past = userInfo.createdAt.split('T')[0]
+      let today = JSON.stringify(new Date()).split('T')[0]
+      console.log("PAST", past, "TODAY", today)
       this.setState(userInfo)
     }
 
@@ -45,11 +48,9 @@ class Profile extends React.Component {
     }
 }
 
-
 const mapState = state => ({
     user: state.authReducer
   })
-
 
   const mapDispatch = dispatch => ({
     signup: (email, password) => dispatch(signup(email, password))

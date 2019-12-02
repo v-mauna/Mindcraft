@@ -1,4 +1,4 @@
-import {GET_USER, CREATE_USER, REMOVE_USER} from '../../redux/actions/types'
+import {GET_USER, CREATE_USER, REMOVE_USER} from '../actions/types'
 
 
 const initialState = {
