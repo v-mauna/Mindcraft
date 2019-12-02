@@ -3,6 +3,9 @@ import {
   FETCHING_USER_SUCCESS,
   FETCHING_USER_REQUEST
 } from "./types";
+import {saveUser} from '../../storage/userStorage'
+
+import axios from 'axios'
 
 export const fetchingUserRequest = () => {
   type: FETCHING_USER_REQUEST;
@@ -21,6 +24,8 @@ export const fetchingUserFailure = error => ({
 export const getUser = user => ({ type: GET_USER, user });
 export const removeUser = () => ({ type: REMOVE_USER });
 export const createUser = newUser => ({ type: CREATE_USER, newUser });
+export const updatedUser = (user) => ({type: GET_USER, user})
+
 
 export const fetchUser = id => {
   return async dispatch => {
@@ -39,31 +44,12 @@ export const fetchUser = id => {
 };
 
 export const updateUser = (id, meditations) => {
-  console.log("got to update user");
-  console.log("id in update user:", id);
-    console.log("num of meditation in update user:", meditations)
-  return async () => {
-    try {
-      const response = await fetch(
-        `https://mindcraft-api.herokuapp.com/api/users/${id}`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            totalMeditations: meditations
-          })
+console.log('meditations in updateUser', meditations )
+return async dispatch =>{
+  const res= await axios.put(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {totalMeditations: meditations})
 
-        }
-      );
-      const resData = await response.json();
-      console.log(content);
-    } catch (error) {
-      console.error("Here is your error", error);
-      dispatch(fetchingUserFailure(error));
-    }
-  };
-};
+  saveUser(res.data[1][0])
+}
+}
+
 

@@ -89,7 +89,7 @@ class SingleMeditation extends React.Component {
         this.props.timeWentOff === true &&
         this.props.time > 0
       ) {
-        updateUser(this.user.id, newNumberOfMeditations);
+        this.props.updateUser(this.user.id, newNumberOfMeditations);
 
         return <Text style={styles.text}>Great job! </Text>;
       }
@@ -136,9 +136,9 @@ class SingleMeditation extends React.Component {
     }
   };
   render() {
-    console.log("user in render:", this.user);
-    console.log("time left in SG:", this.props.timeLeft);
-    console.log("time in SG:", this.props.time);
+    // console.log("user in render:", this.user);
+    // console.log("time left in SG:", this.props.timeLeft);
+    // console.log("time in SG:", this.props.time);
     return (
       <ImageBackground
         style={styles.image}
@@ -180,7 +180,7 @@ const mapStateToProps = state => {
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
   TimeToBe: newTime => dispatch(TimeToBe(newTime)),
-  updateUser: userId => dispatch(updateUser(userId)),
+  updateUser: (userId, meditations) => dispatch(updateUser(userId, meditations)),
   loadUser: () => dispatch(loadUser()),
   saveUser: user => dispatch(saveUser(user)),
   checkTimer: time => dispatch(checkTimer(time)),
