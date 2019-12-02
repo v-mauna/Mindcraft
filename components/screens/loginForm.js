@@ -1,23 +1,48 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, ImageBackground, KeyboardAvoidingView, ScrollView, TouchableOpacity, Button } from "react-native";
 import styles from '../../assets/styles/loginStyles'
-import colors from "../../assets/styles/color";
-import InputField from "../form/inputField";
-import NextArrowButton from "../buttons/nextArrowButton"
 import RoundedButton from "../buttons/RoundedButton";
+import authReducer from '../redux/actions/authActions'
+import {auth} from '../redux/actions/authActions'
+import {connect} from 'react-redux'
+import {loadUser, saveUser} from '../storage/userStorage'
 
-export default class Login extends Component {
-    state = {
+
+class Login extends Component {
+  static navigationOptions = { title : 'Mindcraft',  headerStyle: {
+    backgroundColor: '#F6820D',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },}
+    constructor(){
+    super()
+      this.state = {
         email: '',
-        password: ''
-    }
-    handleLogin = () => {
-        // this.props.login()
-        this.props.navigation.navigate('Home')
+        password: '',
+        showMessage: false
+    };
+    this.logIn = this.logIn.bind(this)
     }
 
-    render() {
-        
+    async logIn() {
+      await this.props.userAuth(this.state.email, this.state.password)
+        if (this.props.user.email=== this.state.email) {
+          saveUser(this.props.user)
+          this.props.navigation.navigate('Home')
+        } else {
+            this.toggleMessage()
+        }
+      }
+
+     toggleMessage() {
+       this.setState({
+         showMessage: !this.state.showMessage
+       })
+      }
+
+      render(){
         return (
             <ImageBackground style={styles.image} source={require('../../assets/images/cabin.jpg')}>
             <KeyboardAvoidingView style={styles.wrapper} behavior="padding">
@@ -38,30 +63,15 @@ export default class Login extends Component {
                     onChangeText={password => this.setState({ password })}
                     placeholder='Password'
                     placeholderTextColor = 'white'
-                    secureTextEntry={true}
+                    secureTextEntry
                 />
-                <RoundedButton text="Login" color = "white" backgroundColor= 'blue' onPress = {this.handleLogin}/>
-                <RoundedButton text="Create Account" color = "white" backgroundColor= '#FFA611' />
-            {/* <InputField 
-              labelText="EMAIL ADDRESS" 
-              labelTextSize={14} 
-              labelColor={colors.white} 
-              textColor={colors.white} 
-              borderBottomColor={colors.white} 
-              inputType="email" 
-              customStyle={{marginBottom:30}} 
-                
-            />
-            <InputField 
-              labelText="PASSWORD" 
-              labelTextSize={14} 
-              labelColor={colors.white} 
-              textColor={colors.white} 
-              borderBottomColor={colors.white} 
-              inputType="password"  
-              customStyle={{marginBottom:30}}
-
-            /> */}
+                <TouchableOpacity onPress={this.logIn} style={styles.button}>
+                  <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Signup')} 
+                style={styles.button}>
+                  <Text style={styles.buttonText}>Create an Account</Text>
+                </TouchableOpacity>
           </ScrollView>
                </View>
              </KeyboardAvoidingView>
@@ -69,3 +79,15 @@ export default class Login extends Component {
           );
         }
       }
+
+      const mapState = state => ({
+        user: state.authReducer
+      })
+
+      const mapDispatch = dispatch => ({
+        userAuth: (email, password) => dispatch(auth(email, password))
+      })
+
+      export default connect(mapState,mapDispatch)(Login)
+
+

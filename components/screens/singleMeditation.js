@@ -19,13 +19,14 @@ export default class SingleMeditation extends React.Component{
                       <Text style={styles.text}>Meditations</Text>
                       <CircularProgressBar   size={120}
                         width={15}
-                        fill={100}
+                        fill={80}
                         tintColor="#00e0ff"
-                        duration={100000000}
+                        duration={3000000000}
                         backgroundColor="#3d5875"
                         padding={10}
                         renderCap={({ center }) => <Circle cx={center.x} cy={center.y} r="10" fill="gray" />}
                         />
+                       
                
                   </View>
               </ImageBackground>

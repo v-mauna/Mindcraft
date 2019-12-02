@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text,ImageBackground ,TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'
 import styles from '../../assets/styles/journalStyles'
 
 export default class Journals extends React.Component{
@@ -16,7 +17,10 @@ export default class Journals extends React.Component{
               <ImageBackground style={styles.image} source={require('../../assets/images/tiles.jpg')}>
                   <View style={styles.container}>
                       <Text style={styles.header}>Journals</Text>
-                  </View>
+                      <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalEntry')}>
+                      <Text style={styles.header}> Make a new entry</Text>
+                      </TouchableOpacity>
+                      </View>
               </ImageBackground>
               
           )
