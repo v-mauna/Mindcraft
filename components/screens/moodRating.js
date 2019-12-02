@@ -4,6 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import CircularSlider from '../rn-circular-slider/CircularSlider'
 import styles from '../../assets/styles/checkinStyles'
 import NextArrowButton from '../buttons/nextArrowButton'
+import SleepTracker from './sleepTracker'
 
 console.disableYellowBox = true
 
@@ -16,8 +17,12 @@ export default class MoodTracker extends Component {
   headerTitleStyle: {
     fontWeight: 'bold',
   },}
-  state = {
-    value: 50
+ 
+  constructor(props){
+    super(props)
+    this.state = {
+      value: 50
+    }
   }
 
   displayEmojii(value) {
@@ -37,11 +42,17 @@ export default class MoodTracker extends Component {
   }
 
   goToNext (){
-    alert("Rating: "+ this.state.value)
+    alert("Go to Next")
+    // this.props.navigator.push({
+    //   component: SleepTracker
+    // })
+    // console.log(this.state.value)
+
   }
 
   render() {
-    const { value } = this.state
+    const  value  = this.state.value
+    console.log("State: "+this.state.value)
     return (
       <View style = {styles.wrapper}>
       <View style={styles.container}>

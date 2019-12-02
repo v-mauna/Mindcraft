@@ -21,6 +21,8 @@ import Logout from '../components/screens/Logout'
 import Profile from '../components/screens/userProfile'
 import Quiz from '../components/screens/singleQuiz'
 import NewDay from '../components/screens/newDay'
+import MoodTracker from '../components/screens/moodRating'
+import SleepTracker from '../components/screens/sleepTracker'
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -34,7 +36,8 @@ export const HomeNavigator = createStackNavigator({
   SingleMeditation: { screen: SingleMeditation },
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
-  Profile: {screen: Profile}
+  Profile: {screen: Profile},
+  DailyCheckIn: {screen: MoodTracker}
 })
 
 export const MeditationsNavigator = createStackNavigator(
