@@ -90,7 +90,7 @@ class SingleMeditation extends React.Component {
         this.props.timeWentOff === true &&
         this.props.time > 0
       ) {
-        updateUser(this.user.id, newNumberOfMeditations);
+        this.props.updateUser(this.user.id, newNumberOfMeditations);
 
         return <Text style={styles.text}>Great job! </Text>;
       }
@@ -181,7 +181,7 @@ const mapStateToProps = state => {
 const mapDispatch = dispatch => ({
   getTime: () => dispatch(getTime()),
   TimeToBe: newTime => dispatch(TimeToBe(newTime)),
-  updateUser: userId => dispatch(updateUser(userId)),
+  updateUser: (userId, meditations) => dispatch(updateUser(userId, meditations)),
   loadUser: () => dispatch(loadUser()),
   saveUser: user => dispatch(saveUser(user)),
   checkTimer: time => dispatch(checkTimer(time)),
