@@ -67,10 +67,9 @@ class Bedtime extends Component {
 
   goToNext= ()=> {
     const minutesLong= calculateMinutesFromAngle(this.state.angleLength)
-    const hours = Math.floor(minutesLong / 60);
-    const minutes = minutesLong - hours * 60;
+    const hours = (minutesLong / 60).toFixed(2)
     alert("hours: "+hours + " \n minutes: " + minutes)
-    this.props.navigation.navigate('JournalEntry'), {hours, minutes}
+    this.props.navigation.navigate('JournalEntry'), {hours}
   }
 
   onUpdate = ({ startAngle, angleLength }) => {
