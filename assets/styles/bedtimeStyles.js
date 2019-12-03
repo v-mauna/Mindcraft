@@ -44,6 +44,13 @@ const styles = StyleSheet.create({
       left: 0,
       right: 0
     },
+    header: {
+      fontSize: 28,
+      color: colors.white,
+      fontWeight: "300",
+      marginBottom: 40,
+      textAlign: 'center'
+    },
     nextButton: {
         flex: 1,
         justifyContent: 'flex-start',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 import CircularSlider from '../rn-circular-slider/CircularSlider'
 import styles from '../../assets/styles/checkinStyles'
@@ -42,10 +42,8 @@ export default class MoodTracker extends Component {
   }
 
   goToNext (){
-    alert("Go to Next")
-    // this.props.navigator.push({
-    //   component: SleepTracker
-    // })
+    // alert("Go to Next")
+    // this.props.navigation.navigate('SleepTracker')
     // console.log(this.state.value)
 
   }
@@ -75,7 +73,8 @@ export default class MoodTracker extends Component {
         >
           <Text style={styles.moodValue}>{this.displayEmojii(value)}</Text>
         </CircularSlider>
-        <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/>
+        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SleepTracker')}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+        {/* <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/> */}
       </View>
       </View>
       </View>

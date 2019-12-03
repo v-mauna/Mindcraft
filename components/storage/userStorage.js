@@ -24,5 +24,6 @@ export const loadUser = async () => {
 }
 
 export const saveUser = (user) => {
+
   AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(user))
 }
