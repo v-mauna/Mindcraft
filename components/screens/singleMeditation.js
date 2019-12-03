@@ -61,8 +61,6 @@ class SingleMeditation extends React.Component {
 
   renderSphere = () => {
     if (this.props.timeLeft === 0 && this.props.timeWentOff === false) {
-      // this.updateMeditations()
-      // this.props.setLeftTime("500");
       return (
         <View>
           <Text style={styles.text}>Simply select time to start</Text>
@@ -113,7 +111,7 @@ class SingleMeditation extends React.Component {
               this.props.TimeToBe(value);
               this.props.setLeftTime(value);
               console.log("Single meditation props:", this.props);
-              console.log("SignleMedittion timeLeft:", this.props.timeLeft);
+              console.log("SingleMeditation timeLeft:", this.props.timeLeft);
             }}
           >
             <Picker.Item label="select time to start:" value={0} />
