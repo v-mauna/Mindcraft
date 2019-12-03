@@ -8,7 +8,9 @@ const DEFAULT_SETTINGS = {
   id: null,
   totalJournalEntries: 0,
   totalMeditations: 0,
-  totalQuizzes: 0
+  totalQuizzes: 0,
+  userLevel: 0,
+  completedQuizzes: []
 }
 
 export const loadUser = async () => {

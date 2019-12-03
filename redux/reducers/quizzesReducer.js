@@ -12,7 +12,7 @@ const quizzesReducer = (state = initialState, action) => {
         case GET_ALL_QUIZZES:{
             return {...state,quizzes: action.quizzes}
         }
-        default: 
+        default:
              return state
     }
 }
@@ -20,9 +20,9 @@ const quizzesReducer = (state = initialState, action) => {
 export const quizReducer = (state = quizInitialState, action)=>{
     switch(action.type){
         case GET_ONE_QUIZ: {
-            return{...state, quiz: action.quiz}
+            return{quiz: action.quiz}
         }
-        default: 
+        default:
             return state
     }
 }
