@@ -5,10 +5,11 @@ import CircularSlider from '../rn-circular-slider/CircularSlider'
 import styles from '../../assets/styles/checkinStyles'
 import NextArrowButton from '../buttons/nextArrowButton'
 import SleepTracker from './sleepTracker'
+import {withNavigation} from 'react-navigation';
 
 console.disableYellowBox = true
 
-export default class MoodTracker extends Component {
+class MoodTracker extends Component {
   
   static navigationOptions = { title : 'Mindcraft',  headerStyle: {
     backgroundColor: '#72788d',
@@ -50,7 +51,6 @@ export default class MoodTracker extends Component {
 
   render() {
     const  value  = this.state.value
-    console.log("State: "+this.state.value)
     return (
       <View style = {styles.wrapper}>
       <View style={styles.container}>
@@ -81,3 +81,5 @@ export default class MoodTracker extends Component {
     );
   }
 }
+
+export default withNavigation(MoodTracker)

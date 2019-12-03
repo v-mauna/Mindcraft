@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Text,ImageBackground ,TouchableOpacity, ScrollView} from 'react-native';
+import {withNavigation} from 'react-navigation';
 import styles from '../../assets/styles/homeStyles'
 
-export default class HomePage extends React.Component{
+class HomePage extends React.Component{
     static navigationOptions = { title : 'Mindcraft',  headerStyle: {
         backgroundColor: '#72788d',
       },
@@ -47,3 +48,6 @@ export default class HomePage extends React.Component{
           )
       }
 }
+
+
+export default withNavigation(HomePage)

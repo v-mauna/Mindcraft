@@ -10,17 +10,20 @@ import {
 import styles from '../../assets/styles/entryStyles'
 import { TextInput } from 'react-native-gesture-handler'
 import { loadSettings, saveSettings } from '../storage/entryStorage'
+import {connect} from 'react-redux'
+import {createEntry} from '../../redux/actions/entryActions'
+import {loadUser} from '../storage/userStorage'
 
-export default class JournalEntry extends React.Component {
+class JournalEntry extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
       mood: '',
-      hoursSlept: '',
+      hoursSLept: '',
       favorite: '',
       least: '',
-      theRest: ''
+      entry: ''
    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -28,6 +31,14 @@ export default class JournalEntry extends React.Component {
   async componentDidMount() {
     const initialState = await loadSettings()
     this.setState(initialState)
+    this.user = await loadUser()
+  }
+
+  componentWillUnMount(){
+    this.setState(
+      {
+    state: {}
+  })
   }
 
   static navigationOptions = {
@@ -41,7 +52,12 @@ export default class JournalEntry extends React.Component {
     },
   }
   handleSubmit() {
-    saveSettings(this.state)
+    console.log("this.user: ", this.user)
+    console.log("Journal: ", this.state)
+    const id = this.user.id
+    const journal = this.state
+    this.props.createEntry(id, journal)
+    this.props.navigation.navigate('Home')
   }
 
   render() {
@@ -72,8 +88,8 @@ export default class JournalEntry extends React.Component {
               placeholder='Hours Slept'
               maxLength={20}
               onBlur={Keyboard.dismiss}
-              value={this.state.hoursSlept}
-              onChangeText={(text)=>this.setState({hoursSlept: text})}
+              value={this.state.hoursSLept}
+              onChangeText={(text)=>this.setState({hoursSLept: text})}
             />
           <View style={styles.inputContainer}>
           <Text style={styles.text}>Share away...</Text>
@@ -82,8 +98,8 @@ export default class JournalEntry extends React.Component {
               style={styles.textInput2}
               placeholder="Whatever you want"
               onBlur={Keyboard.dismiss}
-              value={this.state.theRest}
-              onChangeText={(text)=>this.setState({theRest:text})}
+              value={this.state.entry}
+              onChangeText={(text)=>this.setState({entry:text})}
             />
           </View>
             <TouchableOpacity
@@ -96,3 +112,9 @@ export default class JournalEntry extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  createEntry: (userId, journal) => dispatch(createEntry(userId, journal))
+})
+
+export default connect( null, mapDispatchToProps)(JournalEntry)

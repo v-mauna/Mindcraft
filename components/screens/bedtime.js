@@ -5,7 +5,8 @@ import styles from '../../assets/styles/bedtimeStyles';
 
 import CircularSlider from '../bedtime-slider';
 import TimerText from '../form/TimerText';
-import NextArrowButton from '../buttons/nextArrowButton'
+import NextArrowButton from '../buttons/nextArrowButton';
+import {withNavigation} from 'react-navigation';
 
 const WAKE_ICON = (
   <G>
@@ -53,7 +54,7 @@ function padMinutes(min) {
   return min;
 }
 
-export default class Bedtime extends Component {
+class Bedtime extends Component {
 
   state = {
     startAngle: Math.PI * 10/6,
@@ -82,7 +83,6 @@ export default class Bedtime extends Component {
     const { startAngle, angleLength } = this.state;
     const bedtime = calculateTimeFromAngle(startAngle);
     const waketime = calculateTimeFromAngle((startAngle + angleLength) % (2 * Math.PI));
-
     return (
       <View>
       <View style={styles.container}>
@@ -135,3 +135,5 @@ export default class Bedtime extends Component {
     );
   }
 }
+
+export default withNavigation(Bedtime)
