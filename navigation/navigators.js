@@ -34,7 +34,6 @@ export const HomeNavigator = createStackNavigator({
   Journals: { screen: Journals },
   Meditations: { screen: Meditations },
   SingleMeditation: { screen: SingleMeditation },
-  Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
   Profile: {screen: Profile},
   DailyCheckIn: {screen: MoodTracker},
@@ -90,6 +89,8 @@ export const BottomTabNavigator = createBottomTabNavigator(
           iconName = `ios-book`
         } else if (routeName === 'Logout') {
           iconName = `ios-key`
+        } else if (routeName ==='Check-In'){
+          iconName = 'ios-checkmark-circle'
         }
         return <Icon name={iconName} size={20} color={tintColor} />
       },

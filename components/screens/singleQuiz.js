@@ -9,6 +9,7 @@ import {
 import styles from '../../assets/styles/singleQuiz'
 import {gotOneQuiz} from '../../redux/actions/quizActions'
 import {connect} from 'react-redux'
+import {loadUser} from '../storage/userStorage'
 
  class Quiz extends Component {
     static navigationOptions = { title : 'Mindcraft',  headerStyle: {
@@ -21,10 +22,13 @@ import {connect} from 'react-redux'
     constructor(){
         super()
         this.state={
+                user: {},
+                quiz: {},
                 correctCount: 0,
                 activeQuestionIndex: 0,
                 answered: false,
                 answerCorrect: false
+
         }
     }
     answer(correct){
@@ -48,24 +52,28 @@ import {connect} from 'react-redux'
       };
 
     async componentDidMount(){
-        const {navigation} = this.props
-        const selectedQuiz = navigation.getParam('quiz')
-        await this.props.getOneQuiz(selectedQuiz.id)
+      this.user = await loadUser()
+      console.log('thisUser', this.user)
+      const userId = this.user.id
+      console.log('userId', userId)
+      const currentQuiz = this.props.getOneQuiz(userId)
+      this.setState({quiz: currentQuiz})
     }
 
     render(){
-        const {navigation} = this.props
-        const thisQuiz = navigation.getParam('quiz')
+      console.log('State User', this.state.user)
+      const curQuiz = this.props.quizInfo
+      console.log('current quiz from props', curQuiz)
         return(
             <ImageBackground style={styles.image} source={require('../../assets//images/oceanReef.jpg')}>
             <ScrollView>
             <View style={styles.container}>
-                <Text style={styles.text}> {thisQuiz.name}</Text>
-                <Text>{thisQuiz.questions.map((question,id)=>{
+                {/* <Text style={styles.text}> {th.name}</Text> */}
+                {/* <Text>{thisQuiz.questions.map((question,id)=>{
                         return(
                             <Text key={id} style={styles.text}>{question.text}</Text>
                     )
-                })}</Text>
+                })}</Text> */}
 
 
             </View>
@@ -75,10 +83,16 @@ import {connect} from 'react-redux'
     }
 }
 
+const mapStateToProps = state => {
+  return {
+    quizInfo: state.quizReducer
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return{
       getOneQuiz: (id) => dispatch(gotOneQuiz(id))
     }
 }
 
-export default connect(null,mapDispatchToProps)(Quiz)
+export default connect(mapStateToProps,mapDispatchToProps)(Quiz)
