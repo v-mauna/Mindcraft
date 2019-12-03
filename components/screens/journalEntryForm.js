@@ -17,10 +17,10 @@ import {loadUser} from '../storage/userStorage'
 class JournalEntry extends React.Component {
   constructor(props) {
     super(props)
-
+    console.log("PROPS: ", this.props)
     this.state = {
       mood: '',
-      hoursSLept: '',
+      hoursSlept: '',
       favorite: '',
       least: '',
       entry: ''
@@ -32,13 +32,6 @@ class JournalEntry extends React.Component {
     const initialState = await loadSettings()
     this.setState(initialState)
     this.user = await loadUser()
-  }
-
-  componentWillUnMount(){
-    this.setState(
-      {
-    state: {}
-  })
   }
 
   static navigationOptions = {
@@ -55,8 +48,24 @@ class JournalEntry extends React.Component {
     console.log("this.user: ", this.user)
     console.log("Journal: ", this.state)
     const id = this.user.id
-    const journal = this.state
+    const journal = {
+      hoursSlept: this.state.hoursSlept,
+      mood: this.state.mood,
+      favorite: this.state.favorite,
+      least: this.state.least,
+      entry: this.state.entry,
+      userId: id
+    }
     this.props.createEntry(id, journal)
+    this.setState(
+      {
+        mood: '',
+        hoursSlept: '',
+        minutesSlept: '',
+        favorite: '',
+        least: '',
+        entry: ''
+  });
     this.props.navigation.navigate('Home')
   }
 
@@ -88,8 +97,8 @@ class JournalEntry extends React.Component {
               placeholder='Hours Slept'
               maxLength={20}
               onBlur={Keyboard.dismiss}
-              value={this.state.hoursSLept}
-              onChangeText={(text)=>this.setState({hoursSLept: text})}
+              value={this.state.hoursSlept}
+              onChangeText={(text)=>this.setState({hoursSlept: text})}
             />
           <View style={styles.inputContainer}>
           <Text style={styles.text}>Share away...</Text>

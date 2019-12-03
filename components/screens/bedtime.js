@@ -70,6 +70,7 @@ class Bedtime extends Component {
     const hours = Math.floor(minutesLong / 60);
     const minutes = minutesLong - hours * 60;
     alert("hours: "+hours + " \n minutes: " + minutes)
+    this.props.navigation.navigate('JournalEntry'), {hours, minutes}
   }
 
   onUpdate = ({ startAngle, angleLength }) => {
@@ -129,7 +130,7 @@ class Bedtime extends Component {
           />
         </View>
         </View>
-        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalEntry')}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.header} onPress={this.goToNext}><Text style={styles.header}>Submit</Text></TouchableOpacity>
         {/* <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/> */}
       </View>
     );
