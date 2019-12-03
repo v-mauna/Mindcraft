@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     header: {
       fontSize: 28,
-      color: colors.white,
+      color: 'white',
       fontWeight: "300",
       marginBottom: 40,
       textAlign: 'center'
