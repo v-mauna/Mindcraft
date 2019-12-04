@@ -90,6 +90,8 @@ export const BottomTabNavigator = createBottomTabNavigator(
           iconName = `ios-book`
         } else if (routeName === 'Logout') {
           iconName = `ios-key`
+        } else if (routeName ==='Check-In') {
+          iconName = 'ios-add'
         }
         return <Icon name={iconName} size={20} color={tintColor} />
       },

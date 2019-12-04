@@ -47,7 +47,6 @@ export const updateUser = (id, meditations) => {
 console.log('meditations in updateUser', meditations )
 return async dispatch =>{
   const res= await axios.put(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {totalMeditations: meditations})
-
   saveUser(res.data[1][0])
 }
 }

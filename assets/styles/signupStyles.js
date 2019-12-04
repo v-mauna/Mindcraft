@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     Header: {
         fontSize: 25,
@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         textAlign: 'center',
         fontFamily: 'Avenir-Medium',
+        color: colors.white
       },
     inputBox: {
         width: '75%',
