@@ -27,7 +27,7 @@ class JournalsList extends React.Component{
           const entries = this.props.journals
           console.log('entries', entries)
           return(
-              <ImageBackground style={styles.image} source={require('../../assets/images/tea.jpg')}>
+              <ImageBackground style={styles.image} source={require('../../assets/images/leaves.jpg')}>
                   <View style={styles.container}>
                       <Text style={styles.text}>Date: </Text>
                       {entries.map(entry=>{

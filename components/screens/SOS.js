@@ -3,7 +3,7 @@ import {View, Text,ImageBackground ,TouchableOpacity} from 'react-native';
 import styles from '../../assets/styles/helpStyles'
 
 export default class SOS extends React.Component{
-    static navigationOptions = { title : 'Journal Entries',  headerStyle: {
+    static navigationOptions = { title : 'Assistance Hotlines',  headerStyle: {
         backgroundColor: '#72788d',
       },
       headerTintColor: '#fff',
