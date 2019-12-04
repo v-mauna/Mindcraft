@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import styles from '../../assets/styles/journalStyles'
 
 export default class Journals extends React.Component{
-    static navigationOptions = { title : 'Mindcraft',  headerStyle: {
+    static navigationOptions = { title : 'Journals',  headerStyle: {
         backgroundColor: '#72788d',
       },
       headerTintColor: '#fff',
@@ -16,9 +16,7 @@ export default class Journals extends React.Component{
           return(
               <ImageBackground style={styles.image} source={require('../../assets/images/tiles.jpg')}>
                   <View style={styles.container}>
-                      <Text style={styles.header}>Journals</Text>
                   <View style={styles.card}>
-                      <Text style={styles.text}>Journals</Text>
                       <TouchableOpacity style={styles.text} onPress={()=>this.props.navigation.navigate('DailyCheckIn')}>
                       <Text style={styles.text}> Complete Daily Check-In</Text>
                       </TouchableOpacity>
