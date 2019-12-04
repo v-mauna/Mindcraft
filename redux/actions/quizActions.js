@@ -1,4 +1,4 @@
-import {GET_ONE_QUIZ, GET_ALL_QUIZZES,UPDATE_QUIZ, CHANGED_QUESTION, INCREMENTED_CORRECT_ANSWERS, ANSWERED_CORRECTLY} from './types'
+import {GET_ONE_QUIZ, GET_ALL_QUIZZES,UPDATE_QUIZ, CHANGED_QUESTION, INCREMENTED_CORRECT_ANSWERS, ANSWERED_CORRECTLY, ANSWER_SELECTED} from './types'
 
 const initialState= {
     quizzes: [],
@@ -34,6 +34,11 @@ const answeredCorrectly = () =>({
     type: ANSWERED_CORRECTLY
 })
 
+
+const tickedAnswerSelected =()=>({
+    type: ANSWER_SELECTED
+
+})
 export const gotAllQuizzes = () => async dispatch =>{
     try{
         let response = await fetch('http://mindcraft-api.herokuapp.com/api/tests/')
@@ -66,4 +71,9 @@ export const incrementCorrectAnswers = () => async dispatch =>{
 
 export const answerCorrectly = ()=> async dispatch =>{
     dispatch(answeredCorrectly())
+}
+
+export const tickAnswerSelected = () => async dispatch  =>{
+
+    dispatch (tickedAnswerSelected())
 }

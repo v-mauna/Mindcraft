@@ -14,6 +14,8 @@ import Meditations from '../components/screens/meditations'
 import SingleMeditation from '../components/screens/singleMeditation'
 import SingleJournal from '../components/screens/singleJournal'
 import Quizzes from '../components/screens/quizzes'
+import singleQuiz from '../components/screens/singleQuiz'
+import QuizStats from '../components/screens/quizstats'
 import Login from '../components/screens/loginForm'
 import Signup from '../components/screens/signUpForm'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -25,6 +27,14 @@ import NewDay from '../components/screens/newDay'
 import MoodTracker from '../components/screens/moodRating'
 import SleepTracker from '../components/screens/sleepTracker'
 import SOS from '../components/screens/SOS'
+
+
+export const QuizNavigator = createStackNavigator({
+  Quiz: {screen: Quiz},
+  QuizStats: {screen: QuizStats},
+})
+
+
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -41,7 +51,9 @@ export const HomeNavigator = createStackNavigator({
   Profile: {screen: Profile},
   DailyCheckIn: {screen: MoodTracker},
   SleepTracker: { screen: SleepTracker },
+  QuizStats: {screen: QuizStats},
   SOS: {screen: SOS}
+
 })
 
 export const MeditationsNavigator = createStackNavigator(

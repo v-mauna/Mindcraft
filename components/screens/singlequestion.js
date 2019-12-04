@@ -12,7 +12,8 @@ import {
   gotOneQuiz,
   changeQuestion,
   incrementCorrectAnswers,
-  answerCorrectly
+  answerCorrectly,
+  tickAnswerSelected
 } from "../../redux/actions/quizActions";
 import { connect } from "react-redux";
 import { loadUser } from "../storage/userStorage";
@@ -21,11 +22,12 @@ class SingleQuestion extends Component {
 constructor(){
   super()
   this.state={
-    correctCount: 5
+    correctCount: 5,
+    answerSelected: false
   }
 }
   checkAnswer(userAnswer, testAnswer) {
-
+this.setState({answerSelected: true})
     if (userAnswer === testAnswer) {
       this.props.incrementCorrectAnswers();
       this.props.answerCorrectly();
@@ -35,27 +37,39 @@ constructor(){
 
 
 
+displayButtons(){
+  console.log("answerSelected: ", this.props.quizInfo.answerSelected)
+  if (this.state.answerSelected===false){
+    return <View>
+     <TouchableOpacity
+      onPress={() => this.checkAnswer("Yes", this.props.question.answer)}
+    >
+      <Text style={styles.text}>Yes</Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => this.checkAnswer("No", this.props.question.answer)}
+    >
+      <Text style={styles.text}> No</Text>
+    </TouchableOpacity>
+    </View>
+  }
+  else{
+    return <Text style={styles.text}>{this.props.question.response}</Text>
+  }
+  }
+
   render(){
     console.log('########## correct count single question', this.props.quizInfo.correctCount)
     //
     // console.log("question in singlequestion",this.props.question)
     return(
-      // <ScrollView style={styles.container}>
+
           <View style={styles.container}>
     <Text style={styles.text}> {this.props.question.text}</Text>
+{this.displayButtons()}
 
-      <TouchableOpacity
-              onPress={() => this.checkAnswer("Yes", this.props.question.answer)}
-            >
-              <Text style={styles.text}>Yes</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.checkAnswer("No", this.props.question.answer)}
-            >
-              <Text style={styles.text}> No</Text>
-            </TouchableOpacity>
             </View>
-            // </ ScrollView>
+
 
     )
 
@@ -73,7 +87,8 @@ const mapDispatchToProps = dispatch => {
     getOneQuiz: id => dispatch(gotOneQuiz(id)),
     changeQuestion: question => dispatch(changeQuestion(question)),
     incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
-    answerCorrectly: () => dispatch(answerCorrectly())
+    answerCorrectly: () => dispatch(answerCorrectly()),
+    tickAnswerSelected: ()=> dispatch(tickAnswerSelected())
   };
 };
 
