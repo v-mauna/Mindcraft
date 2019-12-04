@@ -10,17 +10,20 @@ import {
 import styles from '../../assets/styles/entryStyles'
 import { TextInput } from 'react-native-gesture-handler'
 import { loadSettings, saveSettings } from '../storage/entryStorage'
+import {connect} from 'react-redux'
+import {createEntry} from '../../redux/actions/entryActions'
+import {loadUser} from '../storage/userStorage'
 
-export default class JournalEntry extends React.Component {
+class JournalEntry extends React.Component {
   constructor(props) {
     super(props)
-
+    console.log("PROPS: ", this.props)
     this.state = {
       mood: '',
       hoursSlept: '',
       favorite: '',
       least: '',
-      theRest: ''
+      entry: ''
    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -28,6 +31,7 @@ export default class JournalEntry extends React.Component {
   async componentDidMount() {
     const initialState = await loadSettings()
     this.setState(initialState)
+    this.user = await loadUser()
   }
 
   static navigationOptions = {
@@ -41,7 +45,28 @@ export default class JournalEntry extends React.Component {
     },
   }
   handleSubmit() {
-    saveSettings(this.state)
+    console.log("this.user: ", this.user)
+    console.log("Journal: ", this.state)
+    const id = this.user.id
+    const journal = {
+      hoursSlept: this.state.hoursSlept,
+      mood: this.state.mood,
+      favorite: this.state.favorite,
+      least: this.state.least,
+      entry: this.state.entry,
+      userId: id
+    }
+    this.props.createEntry(id, journal)
+    this.setState(
+      {
+        mood: '',
+        hoursSlept: '',
+        minutesSlept: '',
+        favorite: '',
+        least: '',
+        entry: ''
+  });
+    this.props.navigation.navigate('Home')
   }
 
   render() {
@@ -82,8 +107,8 @@ export default class JournalEntry extends React.Component {
               style={styles.textInput2}
               placeholder="Whatever you want"
               onBlur={Keyboard.dismiss}
-              value={this.state.theRest}
-              onChangeText={(text)=>this.setState({theRest:text})}
+              value={this.state.entry}
+              onChangeText={(text)=>this.setState({entry:text})}
             />
           </View>
             <TouchableOpacity
@@ -96,3 +121,9 @@ export default class JournalEntry extends React.Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  createEntry: (userId, journal) => dispatch(createEntry(userId, journal))
+})
+
+export default connect( null, mapDispatchToProps)(JournalEntry)

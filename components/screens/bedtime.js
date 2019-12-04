@@ -5,7 +5,8 @@ import styles from '../../assets/styles/bedtimeStyles';
 
 import CircularSlider from '../bedtime-slider';
 import TimerText from '../form/TimerText';
-import NextArrowButton from '../buttons/nextArrowButton'
+import NextArrowButton from '../buttons/nextArrowButton';
+import {withNavigation} from 'react-navigation';
 
 const WAKE_ICON = (
   <G>
@@ -53,7 +54,7 @@ function padMinutes(min) {
   return min;
 }
 
-export default class Bedtime extends Component {
+class Bedtime extends Component {
 
   state = {
     startAngle: Math.PI * 10/6,
@@ -66,9 +67,9 @@ export default class Bedtime extends Component {
 
   goToNext= ()=> {
     const minutesLong= calculateMinutesFromAngle(this.state.angleLength)
-    const hours = Math.floor(minutesLong / 60);
-    const minutes = minutesLong - hours * 60;
-    alert("hours: "+hours + " \n minutes: " + minutes)
+    const hours = (minutesLong / 60).toFixed(2)
+    alert("hours: "+hours)
+    this.props.navigation.navigate('JournalEntry'), {hours}
   }
 
   onUpdate = ({ startAngle, angleLength }) => {
@@ -82,7 +83,6 @@ export default class Bedtime extends Component {
     const { startAngle, angleLength } = this.state;
     const bedtime = calculateTimeFromAngle(startAngle);
     const waketime = calculateTimeFromAngle((startAngle + angleLength) % (2 * Math.PI));
-
     return (
       <View>
       <View style={styles.container}>
@@ -129,9 +129,11 @@ export default class Bedtime extends Component {
           />
         </View>
         </View>
-        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalEntry')}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.header} onPress={this.goToNext}><Text style={styles.header}>Submit</Text></TouchableOpacity>
         {/* <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/> */}
       </View>
     );
   }
 }
+
+export default withNavigation(Bedtime)
