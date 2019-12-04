@@ -31,7 +31,8 @@ export const fetchUser = id => {
   return async dispatch => {
     try {
       let response = await fetch(
-        `https://mindcraft-api.herokuapp.com/api/users/${id}`
+        `http://mindcraft-api.herokuapp.com/api/users/${id}`
+
       );
       response = await response.json();
       console.log("Response", response);

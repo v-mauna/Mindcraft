@@ -8,6 +8,7 @@ import {
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import HomePage from '../components/screens/home'
 import Journals from '../components/screens/journals'
+import JournalsList from '../components/screens/journalsList'
 import JournalEntry from '../components/screens/journalEntryForm'
 import Meditations from '../components/screens/meditations'
 import SingleMeditation from '../components/screens/singleMeditation'
@@ -54,6 +55,7 @@ export const MeditationsNavigator = createStackNavigator(
 
 export const JournalsNavigator = createStackNavigator({
   Journals: {screen: Journals},
+  JournalsList: {screen: JournalsList},
   Journal: {screen: SingleJournal},
   JournalEntry: {screen: JournalEntry},
   Home: {screen: HomePage},
