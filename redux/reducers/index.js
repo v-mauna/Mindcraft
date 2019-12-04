@@ -5,6 +5,6 @@ import quizzesReducer,{quizReducer} from './quizzesReducer'
 import authReducer from './authReducer'
 
 
-const reducer = combineReducers({usersReducer,singleMeditationReducer,quizzesReducer,quizReducer,authReducer})
+const reducer = combineReducers({usersReducer,singleMeditationReducer,quizReducer,authReducer})
 
 export default reducer
