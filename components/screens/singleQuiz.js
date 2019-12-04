@@ -15,10 +15,12 @@ import {
   incrementCorrectAnswers,
   answerCorrectly
 } from "../../redux/actions/quizActions";
+import {updateUsersQuizzes} from "../../redux/actions/userActions";
 import { connect } from "react-redux";
 import { loadUser } from "../storage/userStorage";
 import SingleQuestion from "./singlequestion"
 import { FlatList } from "react-native-gesture-handler";
+import QuizStats from './quizstats'
 
 class Quiz extends Component {
   static navigationOptions = {
@@ -74,13 +76,19 @@ class Quiz extends Component {
     this.question = this.state.questions[currentIndex];
   }
 
+handlePress(){
+  console.log('journal entries in handle press:', this.user.totalJournalEntries)
 
+  let newNumQuizzes=this.user.totalQuizzes+1
+  this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
+  this.props.navigation.navigate("Home")
+}
 
 
   render() {
-// console.log('########## correctCount', this.state.correctCount)
-console.log('########## correctCount in single quiz:', this.props.quizInfo.correctCount)
+
     return (
+
       <ImageBackground
         style={styles.image}
         source={require("../../assets//images/oceanReef.jpg")}
@@ -92,6 +100,7 @@ console.log('########## correctCount in single quiz:', this.props.quizInfo.corre
 {this.state.questions.map((question, id)=> {
   return <SingleQuestion question={question} key ={id}/>
 })}
+<Button onPress={()=>this.handlePress()} title="submit"> </Button>
           </View>
         </ScrollView>
       </ImageBackground>
@@ -111,7 +120,8 @@ const mapDispatchToProps = dispatch => {
     getOneQuiz: id => dispatch(gotOneQuiz(id)),
     changeQuestion: question => dispatch(changeQuestion(question)),
     incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
-    answerCorrectly: () => dispatch(answerCorrectly())
+    answerCorrectly: () => dispatch(answerCorrectly()),
+    updateUsersQuizzes: (id, quizzes) => dispatch(updateUsersQuizzes(id, quizzes))
   };
 };
 

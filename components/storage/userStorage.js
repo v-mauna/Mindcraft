@@ -18,7 +18,7 @@ export const loadUser = async () => {
     let user = await AsyncStorage.getItem(STORAGE_KEY)
 
     if (user === null) {return DEFAULT_SETTINGS}
-    console.log("USER", user)
+    // console.log("USER", user)
     return JSON.parse(user)
   } catch (error) {
     console.log('Error loading settings', error)
