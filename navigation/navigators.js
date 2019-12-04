@@ -8,6 +8,7 @@ import {
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import HomePage from '../components/screens/home'
 import Journals from '../components/screens/journals'
+import JournalsList from '../components/screens/journalsList'
 import JournalEntry from '../components/screens/journalEntryForm'
 import Meditations from '../components/screens/meditations'
 import SingleMeditation from '../components/screens/singleMeditation'
@@ -25,6 +26,7 @@ import Quiz from '../components/screens/singleQuiz'
 import NewDay from '../components/screens/newDay'
 import MoodTracker from '../components/screens/moodRating'
 import SleepTracker from '../components/screens/sleepTracker'
+import SOS from '../components/screens/SOS'
 
 
 export const QuizNavigator = createStackNavigator({
@@ -49,7 +51,8 @@ export const HomeNavigator = createStackNavigator({
   Profile: {screen: Profile},
   DailyCheckIn: {screen: MoodTracker},
   SleepTracker: { screen: SleepTracker },
-  QuizStats: {screen: QuizStats}
+  QuizStats: {screen: QuizStats},
+  SOS: {screen: SOS}
 
 })
 
@@ -64,6 +67,7 @@ export const MeditationsNavigator = createStackNavigator(
 
 export const JournalsNavigator = createStackNavigator({
   Journals: {screen: Journals},
+  JournalsList: {screen: JournalsList},
   Journal: {screen: SingleJournal},
   JournalEntry: {screen: JournalEntry},
   Home: {screen: HomePage},

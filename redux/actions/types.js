@@ -22,3 +22,7 @@ export const GET_ALL_QUIZZES = 'GET_ALL_QUIZZES'
 export const GET_ONE_QUIZ= 'GET_ONE_QUIZ'
 export const UPDATE_QUIZ = 'UPDATE_QUIZ'
 
+export const GET_ALL_ENTRIES = 'GET_ALL_ENTRIES'
+export const GET_ONE_ENTRY = 'GET_ONE_ENTRY'
+export const CREATE_ENTRY = 'CREATE_ENTRY'
+export const DELETE_ENTRY = 'DELETE_ENTRY'
