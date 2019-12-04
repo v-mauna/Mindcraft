@@ -6,6 +6,7 @@ import {
   ImageBackground,
   ScrollView,
   Keyboard,
+  KeyboardAvoidingView
 } from 'react-native'
 import styles from '../../assets/styles/entryStyles'
 import { TextInput } from 'react-native-gesture-handler'
@@ -21,8 +22,8 @@ class JournalEntry extends React.Component {
       myMood: this.props.navigation.getParam('moodRating', 'okay'),
       hoursSlept: this.props.navigation.getParam('hours', '0'),
       favorite: '',
-      least: 'hello',
-      entry: 'world'
+      least: '',
+      entry: ''
    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -70,7 +71,7 @@ class JournalEntry extends React.Component {
   render() {
     console.log("mood: ",this.state.myMood)
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior = 'padding'>
         <ScrollView>
         <Text style={styles.text}>How are you feeling today?</Text>
           <TextInput
@@ -85,7 +86,6 @@ class JournalEntry extends React.Component {
           <TextInput
               style={styles.textInput}
               placeholder='Favorite'
-              maxLength={20}
               onBlur={Keyboard.dismiss}
               value={this.state.favorite}
               onChangeText={(text)=>this.setState({favorite:text})}
@@ -94,7 +94,6 @@ class JournalEntry extends React.Component {
           <TextInput
               style={styles.textInput}
               placeholder='Least Favorite'
-              maxLength={20}
               onBlur={Keyboard.dismiss}
               value={this.state.least}
               onChangeText={(text)=>this.setState({least:text})}
@@ -112,6 +111,7 @@ class JournalEntry extends React.Component {
           <Text style={styles.text}>Share away...</Text>
 
             <TextInput
+              multiline
               style={styles.textInput2}
               placeholder="Whatever you want"
               onBlur={Keyboard.dismiss}
@@ -125,7 +125,7 @@ class JournalEntry extends React.Component {
               <Text style={styles.text}>Save</Text>
             </TouchableOpacity>
         </ScrollView>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
