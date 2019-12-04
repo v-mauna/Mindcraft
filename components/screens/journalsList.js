@@ -39,6 +39,11 @@ class JournalsList extends React.Component{
                               </TouchableOpacity>
                           )
                       })}
+                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('JournalEntry')}>
+                              <View>
+                            <Text  style={styles.text}>Make a new entry</Text>
+                            </View>
+                              </TouchableOpacity>
                
                   </View>
               </ImageBackground>
