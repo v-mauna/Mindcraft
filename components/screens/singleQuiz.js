@@ -1,120 +1,118 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import {
   Button,
   Text,
   View,
   ImageBackground,
   ScrollView,
-  TouchableOpacity
-} from 'react-native'
-import styles from '../../assets/styles/singleQuiz'
-import { gotOneQuiz } from '../../redux/actions/quizActions'
-import { connect } from 'react-redux'
-import { loadUser } from '../storage/userStorage'
+  TouchableOpacity,
+  Flatlist
+} from "react-native";
+import styles from "../../assets/styles/singleQuiz";
+import {
+  gotOneQuiz,
+  changeQuestion,
+  incrementCorrectAnswers,
+  answerCorrectly
+} from "../../redux/actions/quizActions";
+import { connect } from "react-redux";
+import { loadUser } from "../storage/userStorage";
+import SingleQuestion from "./singlequestion"
+import { FlatList } from "react-native-gesture-handler";
 
 class Quiz extends Component {
   static navigationOptions = {
-    title: 'Mindcraft',
+    title: "Mindcraft",
     headerStyle: {
-      backgroundColor: '#72788d',
+      backgroundColor: "#72788d"
     },
-    headerTintColor: '#fff',
+    headerTintColor: "#fff",
     headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  }
+      fontWeight: "bold"
+    }
+  };
   constructor() {
-    super()
+    super();
     this.state = {
       user: {},
-      quiz: {}, 
+      quiz: {},
       questions: [],
       totalQuestionCount: 0,
-      correctCount: 0,
+      correctCount: 1,
       activeQuestionIndex: 0,
       answered: false,
-      answerCorrect: false,
-    }
-    this.answer = this.answer.bind(this)
-    this.nextQuestion = this.nextQuestion.bind(this)
-  }
-  answer(userAnswer, testAnswer) {
-    this.setState(
-      state => {
-        const nextState = { answered: true }
-        if(userAnswer === testAnswer){
-          nextState.correctCount = state.correctCount + 1
-          nextState.answerCorrect = true
-        } else {
-          nextState.answerCorrect = false
-        }
-        return nextState
-      }
-    )
+      answerCorrect: false
+    };
+
+    this.nextQuestion = this.nextQuestion.bind(this);
   }
 
-  nextQuestion(){
-    this.setState(state => {
-      const nextIndex = state.activeQuestionIndex + 1;
 
-      if (nextIndex >= state.totalQuestionCount) {
-        this.props.navigation.popToTop();
-      }
-      return {
-        activeQuestionIndex: nextIndex,
-        answered: false
-      };
-    });
-  };
+  //function to check the answer and render button next
+  //if the answer is correct a- chnage state, show button
+  //if not - display try again
+
+
+  nextQuestion() {
+    //change index to the following index:
+    const nextIndex = state.activeQuestionIndex + 1;
+    //assign nextQuestion
+    const nextQuestion = this.questions[nextIndex];
+    //change the state using redux:
+    this.props.changeQuestion(nextQuestion);
+  }
 
   async componentDidMount() {
-    this.user = await loadUser()
-    const userId = this.user.id
-    await this.props.getOneQuiz(userId)
-    this.setState({questions: this.props.quizInfo.quiz['test-questions']} )
-    const questionsLength = this.state.questions.length
-    this.setState({totalQuestionCount: questionsLength})
+    this.user = await loadUser();
+    const userId = this.user.id;
+    this.questions = await this.props.getOneQuiz(userId);
+    this.setState({ questions: this.props.quizInfo.quiz["test-questions"] });
+    const questionsLength = this.state.questions.length;
+    this.setState({ totalQuestionCount: questionsLength });
+    this.currentQuiz = this.props.quizInfo.quiz;
+    this.currentIndex = this.state.activeQuestionIndex;
+    this.question = this.state.questions[currentIndex];
   }
 
-  render() {
-    const currentQuiz = this.props.quizInfo.quiz
-    const currentIndex = this.state.activeQuestionIndex
-    const question = this.state.questions[currentIndex]
-    console.log('question', question)
-    console.log('currentIdx', currentIndex)
 
+
+
+  render() {
+// console.log('########## correctCount', this.state.correctCount)
+console.log('########## correctCount in single quiz:', this.props.quizInfo.correctCount)
     return (
       <ImageBackground
         style={styles.image}
-        source={require('../../assets//images/oceanReef.jpg')}>
+        source={require("../../assets//images/oceanReef.jpg")}
+      >
         <ScrollView style={styles.container}>
-        <View style={styles.container}>
-            <Text style={styles.text}> {currentQuiz.description}</Text>
-                  <Text style={styles.text}>
-                    </Text>
-                  <TouchableOpacity onPress={()=>this.answer('Yes', question.answer)}>
-                    <Text style={styles.text}>Yes</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={()=>this.answer('No', question.answer)}>
-                  <Text style={styles.text}> No</Text>
-                  </TouchableOpacity>
-            </View>
+          <View style={styles.container}>
+
+
+{this.state.questions.map((question, id)=> {
+  return <SingleQuestion question={question} key ={id}/>
+})}
+          </View>
         </ScrollView>
       </ImageBackground>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    quizInfo: state.quizReducer
-  }
-}
+    quizInfo: state.quizReducer,
+    correctCount: state.correctCount
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     getOneQuiz: id => dispatch(gotOneQuiz(id)),
-  }
-}
+    changeQuestion: question => dispatch(changeQuestion(question)),
+    incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
+    answerCorrectly: () => dispatch(answerCorrectly())
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quiz)
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
