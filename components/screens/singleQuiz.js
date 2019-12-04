@@ -77,11 +77,13 @@ class Quiz extends Component {
   }
 
 handlePress(){
-  console.log('journal entries in handle press:', this.user.totalJournalEntries)
+  if (this.user) {
+    console.log('journal entries in handle press:', this.user.totalJournalEntries)
+    let newNumQuizzes=this.user.totalQuizzes+1
+    this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
+    this.props.navigation.navigate("Home")
+  }
 
-  let newNumQuizzes=this.user.totalQuizzes+1
-  this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
-  this.props.navigation.navigate("Home")
 }
 
 
@@ -95,7 +97,7 @@ handlePress(){
       >
         <ScrollView style={styles.container}>
           <View style={styles.container}>
-
+    <Text>{this.props.quizInfo.quiz.description}</Text>
 
 {this.state.questions.map((question, id)=> {
   return <SingleQuestion question={question} key ={id}/>
