@@ -18,7 +18,13 @@ const styles = StyleSheet.create({
     text:{
       color: colors.white,
       fontSize: 20,
-      opacity: 0.8,
+      fontFamily: 'Avenir-Medium',
+      fontWeight: '800',
+      marginBottom: 15
+    },
+    response:{
+      color:'black',
+      fontSize: 20,
       fontFamily: 'Avenir-Medium',
       fontWeight: '800',
       marginBottom: 15
