@@ -4,8 +4,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'flex-start',
-      backgroundColor: '#D6D1B1'
-
     },
     text:{
       color:'white',
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 5,
     marginBottom: 30,
-    marginTop: 200,
+    marginTop: 150,
     marginLeft: 30,
     alignContent: 'center',
   }

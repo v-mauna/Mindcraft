@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 20,
     padding: 10,
+    fontFamily: 'Avenir-Medium',
+    fontWeight: '800',
   },
   journals: {
     width: 300,
