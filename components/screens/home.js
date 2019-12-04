@@ -4,13 +4,24 @@ import {withNavigation} from 'react-navigation';
 import styles from '../../assets/styles/homeStyles'
 
 class HomePage extends React.Component{
-    static navigationOptions = { title : 'Mindcraft',  headerStyle: {
+    static navigationOptions = ({navigation}) => {
+    return { 
+        title : 'Mindcraft',  
+        headerStyle: {
         backgroundColor: '#72788d',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',
-      },}
+      },
+      headerRight: () => (
+        <TouchableOpacity
+        onPress={() => navigation.navigate('SOS')}>
+          <Text style= {styles.SOS}>SOS</Text>
+        </TouchableOpacity>
+      ),
+    }
+}
       render(){
           return(
               <ImageBackground style={styles.image} source={require('../../assets/images/home.jpg')}>

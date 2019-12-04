@@ -23,6 +23,7 @@ import Quiz from '../components/screens/singleQuiz'
 import NewDay from '../components/screens/newDay'
 import MoodTracker from '../components/screens/moodRating'
 import SleepTracker from '../components/screens/sleepTracker'
+import SOS from '../components/screens/SOS'
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -39,7 +40,7 @@ export const HomeNavigator = createStackNavigator({
   Profile: {screen: Profile},
   DailyCheckIn: {screen: MoodTracker},
   SleepTracker: { screen: SleepTracker },
-
+  SOS: {screen: SOS}
 })
 
 export const MeditationsNavigator = createStackNavigator(

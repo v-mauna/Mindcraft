@@ -1,10 +1,11 @@
 import { StyleSheet ,Dimensions} from 'react-native'
+import colors from './color'
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A2239'
+    backgroundColor: colors.green01,
   },
   text: {
     marginTop: 30,
