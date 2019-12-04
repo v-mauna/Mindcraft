@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {
-  TouchableOpacity,
+  Button,
   Text,
   View,
   ImageBackground,
   ScrollView,
+  TouchableOpacity
 } from 'react-native'
 import styles from '../../assets/styles/singleQuiz'
 import { gotOneQuiz } from '../../redux/actions/quizActions'
@@ -26,64 +27,78 @@ class Quiz extends Component {
     super()
     this.state = {
       user: {},
-      quiz: {},
+      quiz: {}, 
       questions: [],
+      totalQuestionCount: 0,
       correctCount: 0,
       activeQuestionIndex: 0,
       answered: false,
       answerCorrect: false,
     }
+    this.answer = this.answer.bind(this)
+    this.nextQuestion = this.nextQuestion.bind(this)
   }
-  answer(correct) {
+  answer(userAnswer, testAnswer) {
     this.setState(
       state => {
         const nextState = { answered: true }
-
-        if (correct) {
+        if(userAnswer === testAnswer){
           nextState.correctCount = state.correctCount + 1
           nextState.answerCorrect = true
         } else {
           nextState.answerCorrect = false
         }
-
         return nextState
-      },
-      () => {
-        setTimeout(() => this.nextQuestion(), 750)
       }
     )
   }
+
+  nextQuestion(){
+    this.setState(state => {
+      const nextIndex = state.activeQuestionIndex + 1;
+
+      if (nextIndex >= state.totalQuestionCount) {
+        this.props.navigation.popToTop();
+      }
+      return {
+        activeQuestionIndex: nextIndex,
+        answered: false
+      };
+    });
+  };
 
   async componentDidMount() {
     this.user = await loadUser()
     const userId = this.user.id
     await this.props.getOneQuiz(userId)
     this.setState({questions: this.props.quizInfo.quiz['test-questions']} )
+    const questionsLength = this.state.questions.length
+    this.setState({totalQuestionCount: questionsLength})
   }
 
   render() {
     const currentQuiz = this.props.quizInfo.quiz
-    const questions = this.state.questions
-    const { navigation } = this.props
-    const thisQuiz = navigation.getParam('quiz')
+    const currentIndex = this.state.activeQuestionIndex
+    const question = this.state.questions[currentIndex]
+    console.log('question', question)
+    console.log('currentIdx', currentIndex)
+
     return (
       <ImageBackground
         style={styles.image}
-        source={require('../../assets//images/oceanReef.jpg')}
-      >
-        <ScrollView>
-          <View style={styles.container}>
+        source={require('../../assets//images/oceanReef.jpg')}>
+        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.text}> {currentQuiz.description}</Text>
-            <Text>
-              {questions.map((question, id) => {
-                return (
-                  <Text key={id} style={styles.text}>
-                    {question.text}
-                  </Text>
-                )
-              })}
-            </Text>
-          </View>
+                  <Text style={styles.text}>
+                    </Text>
+                  <TouchableOpacity onPress={()=>this.answer('Yes', question.answer)}>
+                    <Text style={styles.text}>Yes</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>this.answer('No', question.answer)}>
+                  <Text style={styles.text}> No</Text>
+                  </TouchableOpacity>
+            </View>
         </ScrollView>
       </ImageBackground>
     )
