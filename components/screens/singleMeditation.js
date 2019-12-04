@@ -89,7 +89,7 @@ class SingleMeditation extends React.Component {
       ) {
         this.props.updateUser(this.user.id, newNumberOfMeditations);
 
-        return <Text style={styles.text}>Great job! </Text>;
+        return <Text style={styles.text}> Great job! </Text>;
       }
     }
   };
@@ -114,8 +114,8 @@ class SingleMeditation extends React.Component {
               console.log("SingleMeditation timeLeft:", this.props.timeLeft);
             }}
           >
-            <Picker.Item label="select time to start:" value={0} />
-            <Picker.Item label="test for dev 3 sec" value={3000} />
+            <Picker.Item label="Select time to start:" value={0} />
+            <Picker.Item label="3 seconds" value={3000} />
             <Picker.Item label="1 minute" value={60000} />
             <Picker.Item label="3 minutes" value={180000} />
             <Picker.Item label="5 minutes" value={300000} />

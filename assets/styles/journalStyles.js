@@ -4,17 +4,15 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'flex-start',
-      marginLeft: 20,
-      marginTop: 10
+      backgroundColor: '#D6D1B1'
 
     },
     text:{
-      color:'black',
+      color:'white',
       fontSize: 20,
-      opacity: 0.8,
       marginBottom: 10,
       fontFamily: 'Avenir-Medium',
-      fontWeight: '800'
+      fontWeight: '900'
     },
     image: {
       width: '100%',
@@ -40,6 +38,22 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
     marginLeft: 10,
     marginTop: 15,
+  },
+  card: {
+    width: 300,
+    maxWidth: '80%',
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowRadius: 6,
+    shadowOpacity: .25,
+    backgroundColor: '#FE5F55',
+    opacity: .5,
+    padding: 20,
+    borderRadius: 5,
+    marginBottom: 30,
+    marginTop: 200,
+    marginLeft: 30,
+    alignContent: 'center',
   }
  
   });
