@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text,ImageBackground ,TouchableOpacity} from 'react-native';
-import styles from '../../assets/styles/meditationStyles'
+import {View, Text,ImageBackground ,ScrollView} from 'react-native';
+import styles from '../../assets/styles/singleJournalStyles'
 import {gotOneEntry} from '../../redux/actions/journalActions'
 import {loadUser} from '../storage/userStorage'
 import {connect} from 'react-redux'
@@ -26,28 +26,39 @@ class SingleJournal extends React.Component{
 
       render(){
           const thisJournal = this.props.singleJournal
-          console.log('this Journal', thisJournal)
+          console.log('this Journal',thisJournal)
           return(
               <ImageBackground style={styles.image} source={require('../../assets/images/evergreens.jpg')}>
+                  <ScrollView>
                   <View style={styles.container}>
-                      <Text style={styles.text}>Single Journal Page</Text>
-                      {/* {thisJournal.map(journal=>{
-                          return(
-                            <Text>Date
-                            <Text>{journal.date.slice(0,10)}</Text>
-                            <Text>Entry</Text>
-                              <Text>{journal.entry}</Text>
-                              <Text>Favorite Moment</Text>
-                              <Text>{journal.favorite}</Text>
-                              </Text>
-                          )
-                      })} */}
-                    
+                                {thisJournal &&
+                                (<View style={styles.card}>
+                                <View>
+                                <Text style={styles.text}>
+                                    Date: {thisJournal[0].date.slice(0,10)}
+                                </Text>
+                                <Text style={styles.text}> 
+                                Entry: {thisJournal[0].entry}
+                                </Text>
+                                </View>
+                                <View>
+                                <Text style={styles.text}>
+                                Your Favorite Moment: {thisJournal[0].favorite}</Text>
+                                </View>
+                                <View>
+                                <Text style={styles.text}>Your Least Favorite Moment: {thisJournal[0].least}</Text>
+                                </View>
+                                </View>
+                                )
+                                }           
+
                   </View>
+                  </ScrollView>
               </ImageBackground>
               
-          )
-      }
+    
+        )   
+}
 }
 
 mapStateToProps = state => {
