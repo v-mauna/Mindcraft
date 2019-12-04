@@ -24,7 +24,7 @@ import QuizStats from './quizstats'
 
 class Quiz extends Component {
   static navigationOptions = {
-    title: "Mindcraft",
+    title: "Quiz",
     headerStyle: {
       backgroundColor: "#72788d"
     },
@@ -91,21 +91,24 @@ handlePress(){
 
     return (
 
-      <ImageBackground
-        style={styles.image}
-        source={require("../../assets//images/oceanReef.jpg")}
-      >
+      // <ImageBackground
+      //   style={styles.image}
+      //   source={require("../../assets//images/red.jpg")}
+      // >
+        <View style = {styles.wrapper}>
         <ScrollView style={styles.container}>
           <View style={styles.container}>
-    <Text>{this.props.quizInfo.quiz.description}</Text>
+    <Text style={styles.text}>{this.props.quizInfo.quiz.description}</Text>
 
 {this.state.questions.map((question, id)=> {
   return <SingleQuestion question={question} key ={id}/>
 })}
-<Button onPress={()=>this.handlePress()} title="submit"> </Button>
+{/* <Button style ={styles.button} onPress={()=>this.handlePress()} title="submit"> </Button> */}
+<TouchableOpacity style={styles.header} onPress={()=>this.handlePress()}><Text style={styles.header}>Submit</Text></TouchableOpacity>
           </View>
         </ScrollView>
-      </ImageBackground>
+        </View>
+      // </ImageBackground>
     );
   }
 }
