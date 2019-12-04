@@ -17,13 +17,12 @@ import {loadUser} from '../storage/userStorage'
 class JournalEntry extends React.Component {
   constructor(props) {
     super(props)
-    console.log("PROPS: ", this.props)
     this.state = {
-      mood: '',
-      hoursSlept: '',
+      myMood: this.props.navigation.getParam('moodRating', 'okay'),
+      hoursSlept: this.props.navigation.getParam('hours', '0'),
       favorite: '',
-      least: '',
-      entry: ''
+      least: 'hello',
+      entry: 'world'
    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -50,7 +49,7 @@ class JournalEntry extends React.Component {
     const id = this.user.id
     const journal = {
       hoursSlept: this.state.hoursSlept,
-      mood: this.state.mood,
+      mood: this.state.myMood,
       favorite: this.state.favorite,
       least: this.state.least,
       entry: this.state.entry,
@@ -59,9 +58,8 @@ class JournalEntry extends React.Component {
     this.props.createEntry(id, journal)
     this.setState(
       {
-        mood: '',
+        myMood: '',
         hoursSlept: '',
-        minutesSlept: '',
         favorite: '',
         least: '',
         entry: ''
@@ -70,9 +68,19 @@ class JournalEntry extends React.Component {
   }
 
   render() {
+    console.log("mood: ",this.state.myMood)
     return (
       <View style={styles.container}>
         <ScrollView>
+        <Text style={styles.text}>How are you feeling today?</Text>
+          <TextInput
+              style={styles.textInput}
+              placeholder='Mood'
+              maxLength={20}
+              onBlur={Keyboard.dismiss}
+              value={this.state.myMood}
+              onChangeText={(text)=>this.setState({myMood:text})}
+            />
           <Text style={styles.text}>What was your favorite moment today?</Text>
           <TextInput
               style={styles.textInput}
@@ -91,7 +99,7 @@ class JournalEntry extends React.Component {
               value={this.state.least}
               onChangeText={(text)=>this.setState({least:text})}
             />
-            <Text style={styles.text}>Did you get enough sleep last night?</Text>
+            <Text style={styles.text}>How any hours of sleep did you get last night?</Text>
           <TextInput
               style={styles.textInput}
               placeholder='Hours Slept'
