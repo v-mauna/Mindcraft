@@ -31,7 +31,7 @@ class SingleJournal extends React.Component{
               <ImageBackground style={styles.image} source={require('../../assets/images/evergreens.jpg')}>
                   <View style={styles.container}>
                       <Text style={styles.text}>Single Journal Page</Text>
-                      {thisJournal.map(journal=>{
+                      {/* {thisJournal.map(journal=>{
                           return(
                             <Text>Date
                             <Text>{journal.date.slice(0,10)}</Text>
@@ -41,7 +41,8 @@ class SingleJournal extends React.Component{
                               <Text>{journal.favorite}</Text>
                               </Text>
                           )
-                      })}
+                      })} */}
+                    
                   </View>
               </ImageBackground>
               

@@ -11,10 +11,10 @@ import styles from '../../assets/styles/entryStyles'
 import { TextInput } from 'react-native-gesture-handler'
 import { loadSettings, saveSettings } from '../storage/entryStorage'
 import {connect} from 'react-redux'
-import {createEntry} from '../../redux/actions/entryActions'
+import {createEntry, crea} from '../../redux/actions/entryActions'
 import {loadUser} from '../storage/userStorage'
 
-class JournalEntry extends React.Component {
+class JournalEntry extends Component {
   constructor(props) {
     super(props)
     console.log("PROPS: ", this.props)
@@ -56,7 +56,7 @@ class JournalEntry extends React.Component {
       entry: this.state.entry,
       userId: id
     }
-    this.props.createEntry(id, journal)
+    this.props.createdEntry(id, journal)
     this.setState(
       {
         mood: '',
@@ -123,7 +123,7 @@ class JournalEntry extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createEntry: (userId, journal) => dispatch(createEntry(userId, journal))
+  createdEntry: (userId, journal) => dispatch(createEntry(userId, journal))
 })
 
 export default connect( null, mapDispatchToProps)(JournalEntry)

@@ -29,16 +29,13 @@ class JournalsList extends React.Component{
           return(
               <ImageBackground style={styles.image} source={require('../../assets/images/tea.jpg')}>
                   <View style={styles.container}>
-                      <Text style={styles.header}>Journal Entries</Text>
+                      <Text style={styles.text}>Date: </Text>
                       {entries.map(entry=>{
                           return(
                               <TouchableOpacity key={entry.id} onPress={()=>this.props.navigation.navigate('Journal',{entry})}>
                               <View>
-                            <Text  style={styles.text}>Date:</Text>
+                            <Text  style={styles.text}>{entry.createdAt.slice(0,10)}</Text>
                             </View>
-                            <View>
-                                <Text style={styles.text}>{entry.date.slice(0,10)}</Text>
-                              </View>
                               </TouchableOpacity>
                           )
                       })}

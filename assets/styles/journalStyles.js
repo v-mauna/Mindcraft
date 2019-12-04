@@ -4,15 +4,15 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: 'flex-start',
-      marginLeft: 30,
-      marginTop: 20
+      marginLeft: 20,
+      marginTop: 10
 
     },
     text:{
       color:'black',
       fontSize: 20,
       opacity: 0.8,
-      marginBottom: 20,
+      marginBottom: 10,
       fontFamily: 'Avenir-Medium',
       fontWeight: '800'
     },
@@ -35,10 +35,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color:'white',
     fontWeight: '800',
-    opacity: .8,
-    marginBottom: 15,
+    marginBottom: 10,
     fontFamily: 'Avenir-Medium',
-    alignItems: "stretch"
+    alignItems: "stretch",
+    marginLeft: 10,
+    marginTop: 15,
   }
  
   });

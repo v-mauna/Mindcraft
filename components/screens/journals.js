@@ -15,18 +15,18 @@ export default class Journals extends React.Component{
       render(){
           return(
               <ImageBackground style={styles.image} source={require('../../assets/images/tiles.jpg')}>
-                  <View style={styles.container}>
+                  <View style={styles.header}>
                       <Text style={styles.header}>Journals</Text>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('DailyCheckIn')}>
                       <Text style={styles.header}> Complete Daily Check-In</Text>
                       </TouchableOpacity>
                       </View>
-                      <View style={styles.container}>
+                      <View style={styles.header}>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalEntry')}>
                       <Text style={styles.header}> Make a new entry</Text>
                       </TouchableOpacity>
                       </View>
-                      <View style={styles.container}>
+                      <View style={styles.header}>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalsList')}>
                       <Text style={styles.header}> View my Previous Entries</Text>
                       </TouchableOpacity>

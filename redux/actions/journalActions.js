@@ -1,4 +1,5 @@
 import {GET_ALL_ENTRIES, GET_ONE_ENTRY,DELETE_ENTRY,CREATE_ENTRY} from './types'
+import saveSettings from '../../components/storage/entryStorage'
 
 const initialState = {
     entries: []
