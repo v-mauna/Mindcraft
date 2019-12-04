@@ -1,11 +1,19 @@
 import React from 'react'
 import { ImageBackground, KeyboardAvoidingView, Text } from 'react-native'
-import styles from '../../assets/styles/signupStyles'
+import styles from '../../assets/styles/userProfileStyle'
 import {signup} from '../../redux/actions/authActions'
 import {connect} from 'react-redux'
 import { loadUser} from '../storage/userStorage'
 
 class Profile extends React.Component {
+  static navigationOptions = { title : 'Profile',  headerStyle: {
+    backgroundColor: '#72788d',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },}
+
     constructor(){
         super()
         this.state = {
@@ -36,12 +44,12 @@ class Profile extends React.Component {
     render() {
       console.log(this.isNull(this.state.totalJournalEntries))
         return (
-            <ImageBackground style={styles.image} source={require('../../assets/images/bluestones.jpg')}>
+            <ImageBackground style={styles.image} source={require('../../assets/images/bamboo.jpg')}>
             <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-            <Text style={styles.Header}>Welcome Back</Text>
-            <Text style={styles.Header}>You have completed {this.isNull(this.state.totalJournalEntries)} journal entries</Text>
-            <Text style={styles.Header}>You have completed {this.isNull(this.state.totalMeditations)} meditations</Text>
-            <Text style={styles.Header}>You have completed {this.isNull(this.state.totalQuizzes)} quizzes</Text>
+            <Text style={styles.header}>Welcome Back</Text>
+            <Text style={styles.header}>You have completed {this.isNull(this.state.totalJournalEntries)} journal entries</Text>
+            <Text style={styles.header}>You have completed {this.isNull(this.state.totalMeditations)} meditations</Text>
+            <Text style={styles.header}>You have completed {this.isNull(this.state.totalQuizzes)} quizzes</Text>
             </KeyboardAvoidingView>
             </ImageBackground>
         )

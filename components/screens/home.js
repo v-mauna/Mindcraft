@@ -24,12 +24,12 @@ class HomePage extends React.Component{
                       </View>
                       <View style={styles.journals}>
                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('Journals')}>
-                       <Text style={styles.text}>View Journals</Text>
+                       <Text style={styles.text}>View My Journals</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
                       <TouchableOpacity onPress={()=>this.props.navigation.navigate('Quiz')}>
-                          <Text style={styles.text}>Single Quiz</Text>
+                          <Text style={styles.text}>Take A Quiz</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.journals}>
