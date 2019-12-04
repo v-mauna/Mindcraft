@@ -49,6 +49,17 @@ class MoodTracker extends Component {
 
   }
 
+  static navigationOptions = {
+    title: 'Mood',
+    headerStyle: {
+      backgroundColor: '#72788d',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  }
+
   render() {
     const  value  = this.state.value
     return (

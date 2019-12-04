@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import colors from './color'
 
 const styles = StyleSheet.create({
     container: {
@@ -29,6 +30,11 @@ const styles = StyleSheet.create({
     opacity: .8,
     marginBottom: 25,
     alignItems: "stretch"
+  },
+  SOS:{
+    color: 'red',
+    fontSize: 20,
+    padding: 10,
   },
   journals: {
     width: 300,

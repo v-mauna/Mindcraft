@@ -15,6 +15,11 @@ export default class Journals extends React.Component{
       render(){
           return(
               <ImageBackground style={styles.image} source={require('../../assets/images/tiles.jpg')}>
+                  <View style={styles.container}>
+                      <Text style={styles.header}>Journals</Text>
+                      
+                      <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('DailyCheckIn')}>
+                      <Text style={styles.header}> Make a new entry</Text>
                   <View style={styles.card}>
                       <Text style={styles.text}>Journals</Text>
                       <TouchableOpacity style={styles.text} onPress={()=>this.props.navigation.navigate('DailyCheckIn')}>

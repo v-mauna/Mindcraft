@@ -37,7 +37,7 @@ class JournalEntry extends Component {
   static navigationOptions = {
     title: 'Daily Journal',
     headerStyle: {
-      backgroundColor: '#4F0147',
+      backgroundColor: '#72788d',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
