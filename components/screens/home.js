@@ -5,8 +5,8 @@ import styles from '../../assets/styles/homeStyles'
 
 class HomePage extends React.Component{
     static navigationOptions = ({navigation}) => {
-    return { 
-        title : 'Mindcraft',  
+    return {
+        title : 'Mindcraft',
         headerStyle: {
         backgroundColor: '#72788d',
       },

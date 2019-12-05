@@ -27,6 +27,7 @@ import NewDay from '../components/screens/newDay'
 import MoodTracker from '../components/screens/moodRating'
 import SleepTracker from '../components/screens/sleepTracker'
 import SOS from '../components/screens/SOS'
+import LevelPage from '../components/screens/levelpage'
 
 
 export const QuizNavigator = createStackNavigator({
@@ -43,12 +44,13 @@ export const authNavigator = createStackNavigator({
 
 export const HomeNavigator = createStackNavigator({
   Home: { screen: HomePage },
+  NewDay: {screen: NewDay},
   Journals: { screen: Journals },
   Meditations: { screen: Meditations },
   SingleMeditation: { screen: SingleMeditation },
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
-  Profile: {screen: Profile},
+  Profile: {screen: LevelPage},
   DailyCheckIn: {screen: MoodTracker},
   SleepTracker: { screen: SleepTracker },
   QuizStats: {screen: QuizStats},
