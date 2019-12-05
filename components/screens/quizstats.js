@@ -21,9 +21,24 @@ import { loadUser } from "../storage/userStorage";
 class QuizStats extends Component {
 
 
+  checkPercentage(correct, total){
+    const percentage=correct/total*100
+    if(percentage>90){
+      return <Text>Brilliant! You've answered {this.props.correctCount} out of {this.props.questionsLength} correctly </Text>
+    }
+    else if(percentage>50){
+      return <Text>Good job. You've answered {this.props.correctCount} out of {this.props.questionsLength} correctly </Text>
+    }
+    else{
+      return <Text>You've answered {this.props.correctCount} out of {this.props.questionsLength} correctly </Text>
+    }
+  }
+
+
+
+
 render(){
-  console.log('count:', this.props)
-  // console.log('questionsLength:', this.props.quizInfo.questionsLength)
+
   return(
     <ImageBackground
     style={styles.image}
@@ -31,8 +46,14 @@ render(){
   >
     <ScrollView style={styles.container}>
       <View style={styles.container}>
-        <Text>hello world</Text>
+        {this.checkPercentage()}
+        <View style={{flex: 1, alignItems: "center"}}><TouchableOpacity
+      onPress={() => this.props.navigation.navigate("Home")}
+    >
+      <Text> Home </Text>
+    </TouchableOpacity></View>
       </View>
+
         </ScrollView>
       </ImageBackground>
   )
@@ -41,20 +62,14 @@ render(){
 }
 
 
-// const mapStateToProps = state => {
-//   return {
-//     quizInfo: state.quizReducer,
-//     correctCount: state.correctCount
-//   };
-// };
+const mapStateToProps = state => {
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     // getOneQuiz: id => dispatch(gotOneQuiz(id)),
-//     // changeQuestion: question => dispatch(changeQuestion(question)),
-//     // incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
-//     // answerCorrectly: () => dispatch(answerCorrectly())
-//   };
-// };
+  return {
+    questionsLength: state.quizReducer.questionsLength,
+    correctCount: state.quizReducer.correctCount
+  };
+};
 
-export default connect(null, null)(QuizStats);
+
+
+export default connect(mapStateToProps, null)(QuizStats);

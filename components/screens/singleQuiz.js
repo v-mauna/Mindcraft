@@ -79,7 +79,6 @@ class Quiz extends Component {
 
 handlePress(){
   if (this.user) {
-
     let newNumQuizzes=this.user.totalQuizzes+1
     this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
     this.props.getQuestionsLength(this.state.questions.length)
