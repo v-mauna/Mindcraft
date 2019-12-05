@@ -48,6 +48,14 @@ class SingleJournal extends React.Component{
                                 <View>
                                 <Text style={styles.text}>Your Least Favorite Moment: {thisJournal[0].least}</Text>
                                 </View>
+                                <View>
+                                <Text style={styles.text}>
+                                Your mood: {thisJournal[0].mood}</Text>
+                                </View>
+                                <View>
+                                <Text style={styles.text}>
+                                Your sleep time: {thisJournal[0].hoursSlept}</Text>
+                                </View>
                                 </View>
                                 )
                                 }           
