@@ -1,4 +1,4 @@
-import {GET_ONE_QUIZ, GET_ALL_QUIZZES,UPDATE_QUIZ, CHANGED_QUESTION, INCREMENTED_CORRECT_ANSWERS, ANSWERED_CORRECTLY, ANSWER_SELECTED} from '../actions/types'
+import {GET_ONE_QUIZ, GET_ALL_QUIZZES,UPDATE_QUIZ, CHANGED_QUESTION, INCREMENTED_CORRECT_ANSWERS, ANSWERED_CORRECTLY, ANSWER_SELECTED, GOT_QUESTIONS_LENGTH} from '../actions/types'
 
 
 
@@ -7,7 +7,8 @@ const initialState ={
     question: {},
     answerCorrect: false,
     correctCount: 0,
-    answerSelected: false
+    answerSelected: false,
+    questionsLength: 0
 }
 
 
@@ -23,6 +24,8 @@ export const quizReducer = (state = initialState, action)=>{
                 return {...state, answerCorrect: true}
         case ANSWER_SELECTED:
                     return {...state, answerSelected: true}
+        case GOT_QUESTIONS_LENGTH:
+            return {...state, questionsLength: action.length}
         default:
             return state
     }

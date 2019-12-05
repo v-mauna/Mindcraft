@@ -13,7 +13,8 @@ import {
   gotOneQuiz,
   changeQuestion,
   incrementCorrectAnswers,
-  answerCorrectly
+  answerCorrectly,
+  getQuestionsLength
 } from "../../redux/actions/quizActions";
 import {updateUsersQuizzes} from "../../redux/actions/userActions";
 import { connect } from "react-redux";
@@ -81,7 +82,8 @@ handlePress(){
     console.log('journal entries in handle press:', this.user.totalJournalEntries)
     let newNumQuizzes=this.user.totalQuizzes+1
     this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
-    this.props.navigation.navigate("Home")
+    this.props.getQuestionsLength(this.state.questions.length)
+    this.props.navigation.navigate("QuizStats")
   }
 
 }
@@ -126,7 +128,8 @@ const mapDispatchToProps = dispatch => {
     changeQuestion: question => dispatch(changeQuestion(question)),
     incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
     answerCorrectly: () => dispatch(answerCorrectly()),
-    updateUsersQuizzes: (id, quizzes) => dispatch(updateUsersQuizzes(id, quizzes))
+    updateUsersQuizzes: (id, quizzes) => dispatch(updateUsersQuizzes(id, quizzes)),
+    getQuestionsLength: length => dispatch(getQuestionsLength(length))
   };
 };
 

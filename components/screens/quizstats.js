@@ -23,6 +23,7 @@ class QuizStats extends Component {
 
 render(){
   console.log('count:', this.props)
+  // console.log('questionsLength:', this.props.quizInfo.questionsLength)
   return(
     <ImageBackground
     style={styles.image}
