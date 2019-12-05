@@ -13,7 +13,8 @@ import {
   gotOneQuiz,
   changeQuestion,
   incrementCorrectAnswers,
-  answerCorrectly
+  answerCorrectly,
+  getQuestionsLength
 } from "../../redux/actions/quizActions";
 import {updateUsersQuizzes} from "../../redux/actions/userActions";
 import { connect } from "react-redux";
@@ -78,10 +79,10 @@ class Quiz extends Component {
 
 handlePress(){
   if (this.user) {
-    console.log('journal entries in handle press:', this.user.totalJournalEntries)
     let newNumQuizzes=this.user.totalQuizzes+1
     this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
-    this.props.navigation.navigate("Home")
+    this.props.getQuestionsLength(this.state.questions.length)
+    this.props.navigation.navigate("QuizStats")
   }
 
 }
@@ -91,10 +92,7 @@ handlePress(){
 
     return (
 
-      // <ImageBackground
-      //   style={styles.image}
-      //   source={require("../../assets//images/red.jpg")}
-      // >
+
         <View style = {styles.wrapper}>
         <ScrollView style={styles.container}>
           <View style={styles.container}>
@@ -103,12 +101,12 @@ handlePress(){
 {this.state.questions.map((question, id)=> {
   return <SingleQuestion question={question} key ={id}/>
 })}
-{/* <Button style ={styles.button} onPress={()=>this.handlePress()} title="submit"> </Button> */}
+
 <TouchableOpacity style={styles.header} onPress={()=>this.handlePress()}><Text style={styles.header}>Submit</Text></TouchableOpacity>
           </View>
         </ScrollView>
         </View>
-      // </ImageBackground>
+
     );
   }
 }
@@ -126,7 +124,8 @@ const mapDispatchToProps = dispatch => {
     changeQuestion: question => dispatch(changeQuestion(question)),
     incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
     answerCorrectly: () => dispatch(answerCorrectly()),
-    updateUsersQuizzes: (id, quizzes) => dispatch(updateUsersQuizzes(id, quizzes))
+    updateUsersQuizzes: (id, quizzes) => dispatch(updateUsersQuizzes(id, quizzes)),
+    getQuestionsLength: length => dispatch(getQuestionsLength(length))
   };
 };
 
