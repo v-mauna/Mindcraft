@@ -48,13 +48,13 @@ render(){
 //   };
 // };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getOneQuiz: id => dispatch(gotOneQuiz(id)),
-    changeQuestion: question => dispatch(changeQuestion(question)),
-    incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
-    answerCorrectly: () => dispatch(answerCorrectly())
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     // getOneQuiz: id => dispatch(gotOneQuiz(id)),
+//     // changeQuestion: question => dispatch(changeQuestion(question)),
+//     // incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
+//     // answerCorrectly: () => dispatch(answerCorrectly())
+//   };
+// };
 
-export default connect(null, mapDispatchToProps)(QuizStats);
+export default connect(null, null)(QuizStats);

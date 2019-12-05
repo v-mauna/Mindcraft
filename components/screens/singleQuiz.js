@@ -79,7 +79,7 @@ class Quiz extends Component {
 
 handlePress(){
   if (this.user) {
-    console.log('journal entries in handle press:', this.user.totalJournalEntries)
+
     let newNumQuizzes=this.user.totalQuizzes+1
     this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
     this.props.getQuestionsLength(this.state.questions.length)
@@ -93,10 +93,7 @@ handlePress(){
 
     return (
 
-      // <ImageBackground
-      //   style={styles.image}
-      //   source={require("../../assets//images/red.jpg")}
-      // >
+
         <View style = {styles.wrapper}>
         <ScrollView style={styles.container}>
           <View style={styles.container}>
@@ -105,12 +102,12 @@ handlePress(){
 {this.state.questions.map((question, id)=> {
   return <SingleQuestion question={question} key ={id}/>
 })}
-{/* <Button style ={styles.button} onPress={()=>this.handlePress()} title="submit"> </Button> */}
+
 <TouchableOpacity style={styles.header} onPress={()=>this.handlePress()}><Text style={styles.header}>Submit</Text></TouchableOpacity>
           </View>
         </ScrollView>
         </View>
-      // </ImageBackground>
+
     );
   }
 }
