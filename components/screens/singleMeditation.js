@@ -114,14 +114,14 @@ class SingleMeditation extends React.Component {
               console.log("SingleMeditation timeLeft:", this.props.timeLeft);
             }}
           >
-            <Picker.Item label="Select time to start:" value={0} />
-            <Picker.Item label="3 seconds" value={3000} />
-            <Picker.Item label="1 minute" value={60000} />
-            <Picker.Item label="3 minutes" value={180000} />
-            <Picker.Item label="5 minutes" value={300000} />
-            <Picker.Item label="7 minutes" value={420000} />
-            <Picker.Item label="10 minutes" value={600000} />
-            <Picker.Item label="15 minutes" value={900000} />
+            <Picker.Item label="Select time to start:" value={0} color="white"/>
+            <Picker.Item label="3 seconds" value={3000} color="white"/>
+            <Picker.Item label="1 minute" value={60000} color="white"/>
+            <Picker.Item label="3 minutes" value={180000} color="white"/>
+            <Picker.Item label="5 minutes" value={300000} color="white"/>
+            <Picker.Item label="7 minutes" value={420000} color="white"/>
+            <Picker.Item label="10 minutes" value={600000} color="white"/>
+            <Picker.Item label="15 minutes" value={900000} color="white"/>
           </Picker>
         </View>
       );
