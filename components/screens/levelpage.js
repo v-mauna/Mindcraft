@@ -1,5 +1,11 @@
 import React from 'react'
-import { ImageBackground, KeyboardAvoidingView, Text } from 'react-native'
+import {
+  ImageBackground,
+  KeyboardAvoidingView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import styles from '../../assets/styles/userProfileStyle'
 import { connect } from 'react-redux'
 import { loadUser, saveUser } from '../storage/userStorage'
@@ -33,7 +39,9 @@ class LevelPage extends React.Component {
     let userInfo = await loadUser()
     this.setState(userInfo)
     let nextLevel = this.checkLevel()
-    let levels = await fetch(`https://mindcraft-api.herokuapp.com/api/levels/${nextLevel}`)
+    let levels = await fetch(
+      `https://mindcraft-api.herokuapp.com/api/levels/${nextLevel}`
+    )
     levels = await levels.json()
     this.setState({ levels: levels })
     console.log(this.state)
@@ -56,17 +64,20 @@ class LevelPage extends React.Component {
     }
   }
 
-  // && (this.state.user.totalQuizzes >= this.state.levels.quizzes)
-
   updateLevel = async () => {
-    while ((this.state.totalJournalEntries >= this.state.levels.entries) && (this.state.totalMeditations >= this.state.levels.meditations) && (this.state.user.totalQuizzes >= this.state.levels.quizzes)
+    while (
+      this.state.totalJournalEntries >= this.state.levels.entries &&
+      this.state.totalMeditations >= this.state.levels.meditations &&
+      this.state.totalQuizzes >= this.state.levels.quizzes
     ) {
-      console.log("HEY, YOU WIN!! ")
+      console.log('HEY, YOU WIN!! ')
       let nextLevel = this.checkLevel()
-      this.setState({userLevel: nextLevel})
-     }
+      this.setState({ userLevel: nextLevel })
+      await saveUser(this.state)
+      let userInfo = await loadUser()
+      this.setState(userInfo)
     }
-
+  }
 
   render() {
     return (
@@ -84,16 +95,38 @@ class LevelPage extends React.Component {
           </Text>
           <Text style={styles.header}>
             You have completed {this.isNull(this.state.totalJournalEntries)} out
-            of {this.isNull(this.state.levels.entries)} journal entries
+            of {this.isNull(this.state.levels.entries)} daily check-ins.
           </Text>
+          <View style={styles.journals}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('MoodRating')}
+            >
+              <Text style={styles.text}>Check-In Now?</Text>
+            </TouchableOpacity>
+          </View>
           <Text style={styles.header}>
             You have completed {this.isNull(this.state.totalMeditations)} out of{' '}
             {this.isNull(this.state.levels.meditations)} meditations
           </Text>
+          <View style={styles.journals}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Meditations')}
+            >
+              <Text style={styles.text}>Explore Meditations</Text>
+            </TouchableOpacity>
+          </View>
+
           <Text style={styles.header}>
             You have completed {this.isNull(this.state.totalQuizzes)} out of{' '}
             {this.isNull(this.state.levels.quizzes)} quizzes
           </Text>
+          <View style={styles.journals}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Quiz')}
+            >
+              <Text style={styles.text}>Take A Quiz</Text>
+            </TouchableOpacity>
+          </View>
         </KeyboardAvoidingView>
       </ImageBackground>
     )
