@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Button,
   Text,
@@ -6,36 +6,36 @@ import {
   ImageBackground,
   ScrollView,
   TouchableOpacity,
-  Flatlist
-} from "react-native";
-import styles from "../../assets/styles/singleQuiz";
+  Flatlist,
+} from 'react-native'
+import styles from '../../assets/styles/kquiz'
 import {
   gotOneQuiz,
   changeQuestion,
   incrementCorrectAnswers,
   answerCorrectly,
-  getQuestionsLength
-} from "../../redux/actions/quizActions";
-import {updateUsersQuizzes} from "../../redux/actions/userActions";
-import { connect } from "react-redux";
-import { loadUser } from "../storage/userStorage";
-import SingleQuestion from "./singlequestion"
-import { FlatList } from "react-native-gesture-handler";
+  getQuestionsLength,
+} from '../../redux/actions/quizActions'
+import { updateUsersQuizzes } from '../../redux/actions/userActions'
+import { connect } from 'react-redux'
+import { loadUser } from '../storage/userStorage'
+import SingleQuestion from './singlequestion'
+import { FlatList } from 'react-native-gesture-handler'
 import QuizStats from './quizstats'
 
 class Quiz extends Component {
   static navigationOptions = {
-    title: "Quiz",
+    title: 'Quiz',
     headerStyle: {
-      backgroundColor: "#72788d"
+      backgroundColor: 'black',
     },
-    headerTintColor: "#fff",
+    headerTintColor: '#fff',
     headerTitleStyle: {
-      fontWeight: "bold"
-    }
-  };
+      fontWeight: 'bold',
+    },
+  }
   constructor() {
-    super();
+    super()
     this.state = {
       user: {},
       quiz: {},
@@ -44,79 +44,87 @@ class Quiz extends Component {
       correctCount: 1,
       activeQuestionIndex: 0,
       answered: false,
-      answerCorrect: false
-    };
+      answerCorrect: false,
+    }
 
-    this.nextQuestion = this.nextQuestion.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this)
   }
-
 
   //function to check the answer and render button next
   //if the answer is correct a- chnage state, show button
   //if not - display try again
 
-
   nextQuestion() {
     //change index to the following index:
-    const nextIndex = state.activeQuestionIndex + 1;
+    const nextIndex = state.activeQuestionIndex + 1
     //assign nextQuestion
-    const nextQuestion = this.questions[nextIndex];
+    const nextQuestion = this.questions[nextIndex]
     //change the state using redux:
-    this.props.changeQuestion(nextQuestion);
+    this.props.changeQuestion(nextQuestion)
   }
 
   async componentDidMount() {
-    this.user = await loadUser();
-    const userId = this.user.id;
-    this.questions = await this.props.getOneQuiz(userId);
-    this.setState({ questions: this.props.quizInfo.quiz["test-questions"] });
-    const questionsLength = this.state.questions.length;
-    this.setState({ totalQuestionCount: questionsLength });
-    this.currentQuiz = this.props.quizInfo.quiz;
-    this.currentIndex = this.state.activeQuestionIndex;
-    this.question = this.state.questions[currentIndex];
+    this.user = await loadUser()
+    const userId = this.user.id
+    this.questions = await this.props.getOneQuiz(userId)
+    this.setState({ questions: this.props.quizInfo.quiz['test-questions'] })
+    const questionsLength = this.state.questions.length
+    this.setState({ totalQuestionCount: questionsLength })
+    this.currentQuiz = this.props.quizInfo.quiz
+    this.currentIndex = this.state.activeQuestionIndex
+    this.question = this.state.questions[currentIndex]
   }
 
-handlePress(){
-  if (this.user) {
-    let newNumQuizzes=this.user.totalQuizzes+1
-    this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
-    this.props.getQuestionsLength(this.state.questions.length)
-    this.props.navigation.navigate("QuizStats")
+  handlePress() {
+    if (this.user) {
+      let newNumQuizzes = this.user.totalQuizzes + 1
+      this.props.updateUsersQuizzes(this.user.id, newNumQuizzes)
+      this.props.getQuestionsLength(this.state.questions.length)
+      this.props.navigation.navigate('QuizStats')
+    }
   }
-
-}
-
 
   render() {
-
     return (
-
-
-        <View style = {styles.wrapper}>
-        <ScrollView style={styles.container}>
+      <ImageBackground
+      style={styles.image}
+      source={require('../../assets/images/Brain2.jpg')}
+    >
+      <View style={styles.wrapper}>
+        <ScrollView ref={ref => (this.scrollView = ref)}>
           <View style={styles.container}>
-    <Text style={styles.text}>{this.props.quizInfo.quiz.description}</Text>
+            <Text style={styles.description}>
+              {this.props.quizInfo.quiz.description}
+            </Text>
 
-{this.state.questions.map((question, id)=> {
-  return <SingleQuestion question={question} key ={id}/>
-})}
+            {this.state.questions.map((question, id) => {
+              return (
+                <View key={id} style= {styles.questioncontainer}>
+                  <SingleQuestion question={question}  />
+                  </View>
+              )
+            })}
 
-<TouchableOpacity style={styles.header} onPress={()=>this.handlePress()}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+            <TouchableOpacity
+              style={styles.description}
+              onPress={() => this.handlePress()}
+            >
+              <Text style={styles.text}>Submit</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
-        </View>
-
-    );
+      </View>
+      </ImageBackground>
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     quizInfo: state.quizReducer,
-    correctCount: state.correctCount
-  };
-};
+    correctCount: state.correctCount,
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -124,9 +132,10 @@ const mapDispatchToProps = dispatch => {
     changeQuestion: question => dispatch(changeQuestion(question)),
     incrementCorrectAnswers: () => dispatch(incrementCorrectAnswers()),
     answerCorrectly: () => dispatch(answerCorrectly()),
-    updateUsersQuizzes: (id, quizzes) => dispatch(updateUsersQuizzes(id, quizzes)),
-    getQuestionsLength: length => dispatch(getQuestionsLength(length))
-  };
-};
+    updateUsersQuizzes: (id, quizzes) =>
+      dispatch(updateUsersQuizzes(id, quizzes)),
+    getQuestionsLength: length => dispatch(getQuestionsLength(length)),
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz)
