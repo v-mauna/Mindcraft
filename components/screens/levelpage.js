@@ -28,7 +28,7 @@ class LevelPage extends React.Component {
   static navigationOptions = {
     title: "",
     headerStyle: {
-      backgroundColor: '#black',
+      backgroundColor: 'black',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
