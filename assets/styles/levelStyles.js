@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center'
   },
   text: {
     fontSize: 20,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     textAlign: 'center',
-    padding: 20,
+    padding: 10,
     fontFamily: 'Avenir-Medium',
     color: 'white',
     fontWeight: '800',
@@ -44,9 +45,9 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     width: '100%',
     backgroundColor: 'black',
-    paddingTop: 30,
-    paddingBottom: 30,
-    margin: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginBottom: 30,
   },
 })
 

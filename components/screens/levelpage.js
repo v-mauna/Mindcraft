@@ -85,7 +85,7 @@ class LevelPage extends React.Component {
     return (
       <ImageBackground
         style={styles.image}
-        source={require('../../assets/images/brain.jpg')}
+        source={require('../../assets/images/brain2.png')}
       >
         <KeyboardAvoidingView
           style={styles.container}
