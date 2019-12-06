@@ -40,13 +40,6 @@ class Map extends React.Component {
   componentDidMount = async () => {
     let userInfo = await loadUser()
     this.setState(userInfo)
-    let nextLevel = this.checkLevel()
-    let levels = await fetch(
-      `https://mindcraft-api.herokuapp.com/api/levels/${nextLevel}`
-    )
-    levels = await levels.json()
-    this.setState({ levels: levels })
-    this.updateLevel()
   }
 
   isNull = action => {
@@ -57,18 +50,12 @@ class Map extends React.Component {
     }
   }
 
-  checkLevel() {
-    if (this.state.userLevel === null) {
-      return 1
-    } else {
-      return this.state.userLevel + 1
-    }
-  }
-
   handleOnPress(num) {
     if (this.state.userLevel === num) {
+      loadUser()
       this.props.navigation.navigate('Profile')
     } else {
+      loadUser()
       return
     }
   }
@@ -80,22 +67,6 @@ class Map extends React.Component {
       return [styles.circle, place, styles.finished]
     } else {
       return [styles.circle, place, styles.inactive]
-    }
-  }
-
-
-  updateLevel = async () => {
-    while (
-      this.state.totalJournalEntries >= this.state.levels.entries &&
-      this.state.totalMeditations >= this.state.levels.meditations &&
-      this.state.totalQuizzes >= this.state.levels.quizzes
-    ) {
-      console.log('HEY, YOU WIN!! ')
-      let nextLevel = this.checkLevel()
-      this.setState({ userLevel: nextLevel })
-      await saveUser(this.state)
-      let userInfo = await loadUser()
-      this.setState(userInfo)
     }
   }
 
