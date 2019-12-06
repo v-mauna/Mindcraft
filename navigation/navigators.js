@@ -61,9 +61,10 @@ export const HomeNavigator = createStackNavigator({
 
 export const MeditationsNavigator = createStackNavigator(
   {
-    Home: { screen: HomePage },
+    Home: { screen: Map },
     Meditations: { screen: Meditations },
     SingleMeditation: { screen: SingleMeditation },
+    Profile: {screen: LevelPage},
   },
   { initialRouteName: 'Meditations' }
 )

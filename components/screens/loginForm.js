@@ -9,8 +9,8 @@ import {loadUser, saveUser} from '../storage/userStorage'
 
 
 class Login extends Component {
-  static navigationOptions = { title : 'Mindcraft',  headerStyle: {
-    backgroundColor: '#F6820D',
+  static navigationOptions = { title : 'Welcome',  headerStyle: {
+    backgroundColor: '#000',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
@@ -27,14 +27,18 @@ class Login extends Component {
     }
 
     async logIn() {
-      await this.props.userAuth(this.state.email, this.state.password)
+      const email = this.state.email
+        const password = this.state.password
+        if(email === '' || password === ''){
+            return Alert.alert('Email and Password are each required fields')
+        }else{
+        await this.props.userAuth(email, password)
         if (this.props.user.email=== this.state.email) {
           saveUser(this.props.user)
           this.props.navigation.navigate('Home')
-        } else {
-            this.toggleMessage()
-        }
+        } 
       }
+    }
 
      toggleMessage() {
        this.setState({
@@ -44,7 +48,7 @@ class Login extends Component {
 
       render(){
         return (
-            <ImageBackground style={styles.image} source={require('../../assets/images/cabin.jpg')}>
+            <ImageBackground style={styles.image} source={require('../../assets/images/login.jpg')}>
             <KeyboardAvoidingView style={styles.wrapper} behavior="padding">
               <View style={styles.scrollViewWrapper}>
               <ScrollView style={styles.scrollView}>

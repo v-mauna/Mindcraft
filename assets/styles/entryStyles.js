@@ -5,7 +5,8 @@ import colors from './color'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.green01,
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   text: {
     marginTop: 30,
@@ -15,7 +16,9 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     opacity: 0.8,
     marginBottom: 10,
-    fontFamily: 'Avenir-Medium'
+    fontFamily: 'Avenir-Medium',
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   image: {
     width: '100%',
@@ -38,7 +41,8 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     opacity: 0.8,
     marginBottom: 15,
-    alignItems: 'stretch',
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   inputContainer: {
     paddingTop: 2
@@ -65,7 +69,9 @@ const styles = StyleSheet.create({
     paddingLeft:10,
     paddingRight: 10,
     width: 300,
-    marginLeft: 20
+    marginLeft: 20,
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   saveButton: {
     borderWidth: 1,
@@ -76,7 +82,8 @@ const styles = StyleSheet.create({
     margin: 5,
     justifyContent: 'flex-end',
     width: 100,
-    alignContent: "center"
+    justifyContent: 'center',
+    alignContent: 'center'
   },
 })
 

@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 
 class SingleJournal extends React.Component{
     static navigationOptions = { title : 'Mindcraft',  headerStyle: {
-        backgroundColor: '#72788d',
+        backgroundColor: 'black',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -28,7 +28,7 @@ class SingleJournal extends React.Component{
           const thisJournal = this.props.singleJournal
           console.log('this Journal',thisJournal)
           return(
-              <ImageBackground style={styles.image} source={require('../../assets/images/evergreens.jpg')}>
+              <ImageBackground style={styles.image} source={require('../../assets/images/nodes.jpg')}>
                   <ScrollView>
                   <View style={styles.container}>
                                 {thisJournal &&

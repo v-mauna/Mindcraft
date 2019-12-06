@@ -37,7 +37,7 @@ class JournalEntry extends Component {
   static navigationOptions = {
     title: 'Daily Journal',
     headerStyle: {
-      backgroundColor: '#72788d',
+      backgroundColor: 'black',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -72,6 +72,7 @@ class JournalEntry extends Component {
   render() {
     console.log("mood: ",this.state.myMood)
     return (
+      <ImageBackground style={styles.image} source={require('../../assets/images/stock.jpg')}>
       <KeyboardAvoidingView style={styles.container} behavior = 'padding'>
         <ScrollView>
         <Text style={styles.text}>How are you feeling today?</Text>
@@ -127,6 +128,7 @@ class JournalEntry extends Component {
             </TouchableOpacity>
         </ScrollView>
       </KeyboardAvoidingView>
+      </ImageBackground>
     )
   }
 }
