@@ -13,7 +13,7 @@ import { TextInput } from 'react-native-gesture-handler'
 import { loadSettings, saveSettings } from '../storage/entryStorage'
 import {connect} from 'react-redux'
 import {createdEntry} from '../../redux/actions/journalActions'
-import {loadUser} from '../storage/userStorage'
+import {loadUser, saveUser} from '../storage/userStorage'
 
 class JournalEntry extends Component {
   constructor(props) {
@@ -45,8 +45,8 @@ class JournalEntry extends Component {
     },
   }
   handleSubmit() {
-    console.log("this.user: ", this.user)
-    console.log("Journal: ", this.state)
+
+    this.user.totalJournalEntries++
     const id = this.user.id
     const journal = {
       hoursSlept: this.state.hoursSlept,
@@ -65,6 +65,7 @@ class JournalEntry extends Component {
         least: '',
         entry: ''
   });
+  saveUser(this.user)
     this.props.navigation.navigate('Home')
   }
 
