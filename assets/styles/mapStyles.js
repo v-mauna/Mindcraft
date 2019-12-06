@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     justifyContent: 'center',
     alignItems: 'center',
-    opacity: 50,
     marginTop: 30
   },
   active: {
@@ -37,9 +36,11 @@ const styles = StyleSheet.create({
   },
   inactive: {
     backgroundColor: '#C8F7F6',
+    opacity: .7
   },
   finished: {
     backgroundColor: '#C8F7F6',
+    opacity: .7
   },
   left: {
     alignSelf: 'flex-start',

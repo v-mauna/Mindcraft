@@ -112,56 +112,56 @@ class Map extends React.Component {
 
         <TouchableHighlight
           style={this.styleMaybe(8, styles.right)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(8)}
         >
           <Text style={styles.levels}>8</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={this.styleMaybe(7, styles.left)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(7)}
         >
           <Text style={styles.levels}>7</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={this.styleMaybe(6, styles.right)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(6)}
         >
           <Text style={styles.levels}>6</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={this.styleMaybe(5, styles.left)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(5)}
         >
           <Text style={styles.levels}>5</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={this.styleMaybe(4, styles.right)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(4)}
         >
           <Text style={styles.levels}>4</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={this.styleMaybe(3, styles.left)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(3)}
         >
           <Text style={styles.levels}>3</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={this.styleMaybe(2, styles.right)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(2)}
         >
           <Text style={styles.levels}>2</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={this.styleMaybe(1, styles.left)}
-          underlayColor="#ccc"
+          underlayColor="#C8F7F6"
           onPress={() => this.handleOnPress(1)}
         >
           <Text style={styles.levels}>1</Text>
