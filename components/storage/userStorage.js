@@ -9,7 +9,7 @@ const DEFAULT_SETTINGS = {
   totalJournalEntries: 0,
   totalMeditations: 0,
   totalQuizzes: 0,
-  userLevel: 0,
+  userLevel: 1,
   completedQuizzes: []
 }
 
