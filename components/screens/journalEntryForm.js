@@ -12,7 +12,7 @@ import styles from '../../assets/styles/entryStyles'
 import { TextInput } from 'react-native-gesture-handler'
 import { loadSettings, saveSettings } from '../storage/entryStorage'
 import {connect} from 'react-redux'
-import {createEntry, crea} from '../../redux/actions/entryActions'
+import {createdEntry} from '../../redux/actions/journalActions'
 import {loadUser} from '../storage/userStorage'
 
 class JournalEntry extends Component {
@@ -131,7 +131,7 @@ class JournalEntry extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createdEntry: (userId, journal) => dispatch(createEntry(userId, journal))
+  createdEntry: (userId, journal) => dispatch(createdEntry(userId, journal))
 })
 
 export default connect( null, mapDispatchToProps)(JournalEntry)
