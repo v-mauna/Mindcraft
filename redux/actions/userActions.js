@@ -51,4 +51,12 @@ return async dispatch =>{
 }
 }
 
+export const updateUserEntries =(id, entries)=>{
+  console.log("HERE!")
+return async dispatch =>{
+  const res= await axios.put(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {totalJournalEntries: entries})
+  saveUser(res.data[1][0])
+}
+}
+
 

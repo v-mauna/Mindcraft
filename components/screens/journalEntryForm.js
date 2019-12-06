@@ -13,6 +13,7 @@ import { loadSettings, saveSettings } from '../storage/entryStorage'
 import {connect} from 'react-redux'
 import {createEntry} from '../../redux/actions/entryActions'
 import {loadUser} from '../storage/userStorage'
+import {updateUserEntries} from '../../redux/actions/userActions'
 
 class JournalEntry extends React.Component {
   constructor(props) {
@@ -56,12 +57,13 @@ class JournalEntry extends React.Component {
       entry: this.state.entry,
       userId: id
     }
+    const newNumberofEntries = this.user.totalJournalEntries +1
+    this.props.updateUserEntries(id, newNumberofEntries)
     this.props.createEntry(id, journal)
     this.setState(
       {
         mood: '',
         hoursSlept: '',
-        minutesSlept: '',
         favorite: '',
         least: '',
         entry: ''
@@ -123,7 +125,8 @@ class JournalEntry extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createEntry: (userId, journal) => dispatch(createEntry(userId, journal))
+  createEntry: (userId, journal) => dispatch(createEntry(userId, journal)),
+  updateUserEntries: (userId, entries) =>dispatch(updateUserEntries(userId, entries))
 })
 
 export default connect( null, mapDispatchToProps)(JournalEntry)
