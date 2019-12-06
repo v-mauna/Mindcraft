@@ -4,7 +4,8 @@ import {
   KeyboardAvoidingView,
   Text,
   TouchableOpacity,
-  View
+  View,
+  ScrollView,
 } from 'react-native'
 import styles from '../../assets/styles/levelStyles'
 import { connect } from 'react-redux'
@@ -26,14 +27,14 @@ class LevelPage extends React.Component {
   }
 
   static navigationOptions = {
-    title: "",
+    title: '',
     headerStyle: {
       backgroundColor: 'black',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
-      fontSize: 28
+      fontSize: 28,
     },
   }
 
@@ -87,49 +88,49 @@ class LevelPage extends React.Component {
         style={styles.image}
         source={require('../../assets/images/brain2.png')}
       >
-        <KeyboardAvoidingView
-          style={styles.container}
-          behavior="padding"
-          enabled
-        >
-          <Text style={styles.level}>
-            LEVEL {this.state.userLevel}
-          </Text>
-          <Text style={styles.header}>
-            You've completed {this.isNull(this.state.totalJournalEntries)} out
-            of {this.isNull(this.state.levels.entries)} daily check-ins.
-          </Text>
-          <View style={styles.journals}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('MoodRating')}
-            >
-              <Text style={styles.text}>Check-In Now?</Text>
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.header}>
-            You've completed {this.isNull(this.state.totalMeditations)} out of{' '}
-            {this.isNull(this.state.levels.meditations)} meditations
-          </Text>
-          <View style={styles.journals}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Meditations')}
-            >
-              <Text style={styles.text}>Explore Meditations</Text>
-            </TouchableOpacity>
-          </View>
+        <ScrollView ref={ref => (this.scrollView = ref)}>
+          <KeyboardAvoidingView
+            style={styles.container}
+            behavior="padding"
+            enabled
+          >
+            <Text style={styles.level}>LEVEL {this.state.userLevel}</Text>
+            <Text style={styles.header}>
+              You've completed {this.isNull(this.state.totalJournalEntries)} out
+              of {this.isNull(this.state.levels.entries)} daily check-ins.
+            </Text>
+            <View style={styles.journals}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('MoodRating')}
+              >
+                <Text style={styles.text}>Check-In Now?</Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.header}>
+              You've completed {this.isNull(this.state.totalMeditations)} out of{' '}
+              {this.isNull(this.state.levels.meditations)} meditations
+            </Text>
+            <View style={styles.journals}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Meditations')}
+              >
+                <Text style={styles.text}>Explore Meditations</Text>
+              </TouchableOpacity>
+            </View>
 
-          <Text style={styles.header}>
-            You've completed {this.isNull(this.state.totalQuizzes)} out of{' '}
-            {this.isNull(this.state.levels.quizzes)} quizzes
-          </Text>
-          <View style={styles.journals}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Quiz')}
-            >
-              <Text style={styles.text}>Take A Quiz</Text>
-            </TouchableOpacity>
-          </View>
-        </KeyboardAvoidingView>
+            <Text style={styles.header}>
+              You've completed {this.isNull(this.state.totalQuizzes)} out of{' '}
+              {this.isNull(this.state.levels.quizzes)} quizzes
+            </Text>
+            <View style={styles.journals}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Quiz')}
+              >
+                <Text style={styles.text}>Take A Quiz</Text>
+              </TouchableOpacity>
+            </View>
+          </KeyboardAvoidingView>
+        </ScrollView>
       </ImageBackground>
     )
   }
