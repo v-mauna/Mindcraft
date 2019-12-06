@@ -4,7 +4,7 @@ import {
   KeyboardAvoidingView,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native'
 import styles from '../../assets/styles/userProfileStyle'
 import { connect } from 'react-redux'

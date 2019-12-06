@@ -28,6 +28,7 @@ import MoodTracker from '../components/screens/moodRating'
 import SleepTracker from '../components/screens/sleepTracker'
 import SOS from '../components/screens/SOS'
 import LevelPage from '../components/screens/levelpage'
+import Map from '../components/screens/map'
 
 
 export const QuizNavigator = createStackNavigator({
@@ -43,7 +44,7 @@ export const authNavigator = createStackNavigator({
 })
 
 export const HomeNavigator = createStackNavigator({
-  Home: { screen: HomePage },
+  Home: { screen: Map },
   NewDay: {screen: NewDay},
   Journals: { screen: Journals },
   Meditations: { screen: Meditations },
