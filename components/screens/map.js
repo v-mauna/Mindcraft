@@ -50,17 +50,22 @@ class Map extends React.Component {
     }
   }
 
+  reloadUser = async() => {
+    let user = loadUser()
+    console.log("RELOADING USER")
+    this.setState(user)
+    console.log("SETTTING STATE")
+  }
+
   handleOnPress(num) {
     if (this.state.userLevel === num) {
-      loadUser()
       this.props.navigation.navigate('Profile')
     } else {
-      loadUser()
       return
     }
   }
 
-  styleMaybe(num, place) {
+  styleMaybe = (num, place) => {
     if(this.state.userLevel === num) {
       return [styles.circle, place, styles.active]
     } else if (this.state.userLevel > num){
