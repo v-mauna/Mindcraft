@@ -31,7 +31,6 @@ class SingleMeditation extends React.Component {
   }
 
   async componentDidMount() {
-    // this.props.getTime();
     this.user = await loadUser();
     this.props.tickTimer();
   }

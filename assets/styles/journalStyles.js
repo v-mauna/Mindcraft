@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     text:{
       color:'white',
       fontSize: 20,
-      marginBottom: 10,
       fontFamily: 'Avenir-Medium',
       fontWeight: '900'
     },
@@ -25,17 +24,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 20,
     marginBottom: 2,
-    opacity: 0.8
   },
   header: {
     fontSize: 20,
     color:'white',
     fontWeight: '800',
-    marginBottom: 10,
     fontFamily: 'Avenir-Medium',
     alignItems: "stretch",
     marginLeft: 10,
-    marginTop: 15,
+    marginTop: 10,
   },
   card: {
     width: 300,
@@ -45,7 +42,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     shadowOpacity: .25,
     backgroundColor: '#FE5F55',
-    opacity: .5,
+    opacity: .8,
     padding: 20,
     borderRadius: 5,
     marginBottom: 30,

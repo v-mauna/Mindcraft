@@ -13,20 +13,17 @@ export default class Meditations extends React.Component{
 
       render(){
           return(
-              <ImageBackground style={styles.image} source={require('../../assets/images/candles.jpg')}>
+              <ImageBackground style={styles.image} source={require('../../assets/images/br2.jpeg')}>
                   <View style={styles.container}>
                       <Text style={styles.header}>What would you like to do today?</Text>
                       <View>
-                      <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SingleMeditation')}>
+                      <TouchableOpacity onPress={()=>this.props.navigation.navigate('SingleMeditation')}>
                           <Text style={styles.header}> Just breathe and relax</Text>
                       </TouchableOpacity>
-                      </View>
-                      <View>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SingleMeditation')}>
                           <Text style={styles.header}>Relieve stress and anxiety</Text>
                       </TouchableOpacity>
                       </View>
-               
                   </View>
               </ImageBackground>
               

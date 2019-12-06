@@ -14,7 +14,7 @@ export default class Journals extends React.Component{
 
       render(){
           return(
-              <ImageBackground style={styles.image} source={require('../../assets/images/tiles.jpg')}>
+              <ImageBackground style={styles.image} source={require('../../assets/images/brain.jpg')}>
                   <View style={styles.container}>
                   <View style={styles.card}>
                       <TouchableOpacity style={styles.text} onPress={()=>this.props.navigation.navigate('DailyCheckIn')}>
