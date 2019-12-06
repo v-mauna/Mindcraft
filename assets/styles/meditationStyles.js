@@ -5,8 +5,8 @@ import colors from './color'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
-    marginLeft: 20,
+    justifyContent: 'center',
+    alignContent: 'center'
 
   },
   singlemeditationcontainer:{
@@ -19,7 +19,9 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     fontFamily: "Avenir-Medium",
     fontWeight: "800",
-    marginBottom: 15
+    marginBottom: 15,
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   image: {
     width: "100%",
@@ -42,7 +44,9 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "800",
     marginBottom: 20,
-    alignItems: "stretch"
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: "center",
   },
   pickercontainer: {
     height: "25%",

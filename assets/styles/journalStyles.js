@@ -3,13 +3,16 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
+      alignContent: 'center'
     },
     text:{
       color:'white',
       fontSize: 20,
       fontFamily: 'Avenir-Medium',
-      fontWeight: '900'
+      fontWeight: '900',
+      justifyContent: 'center',
+      alignContent: 'center'
     },
     image: {
       width: '100%',
@@ -27,12 +30,13 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    color:'white',
-    fontWeight: '800',
-    fontFamily: 'Avenir-Medium',
-    alignItems: "stretch",
-    marginLeft: 10,
-    marginTop: 10,
+    fontFamily: "Avenir-Medium",
+    color: "white",
+    fontWeight: "800",
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: "center",
   },
   card: {
     width: 300,
@@ -45,10 +49,10 @@ const styles = StyleSheet.create({
     opacity: .8,
     padding: 20,
     borderRadius: 5,
-    marginBottom: 30,
-    marginTop: 150,
-    marginLeft: 30,
+    justifyContent: 'center',
     alignContent: 'center',
+    marginBottom: 30,
+    alignItems: 'center'
   }
  
   });
