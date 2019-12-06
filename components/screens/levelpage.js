@@ -68,7 +68,7 @@ class LevelPage extends React.Component {
   }
 
   updateLevel = async () => {
-    while (
+    if (
       this.state.totalJournalEntries >= this.state.levels.entries &&
       this.state.totalMeditations >= this.state.levels.meditations &&
       this.state.totalQuizzes >= this.state.levels.quizzes
