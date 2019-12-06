@@ -6,22 +6,12 @@ import {
   TouchableOpacity,
   View
 } from 'react-native'
-import styles from '../../assets/styles/userProfileStyle'
+import styles from '../../assets/styles/levelStyles'
 import { connect } from 'react-redux'
 import { loadUser, saveUser } from '../storage/userStorage'
 import { gotOneLevel, gotAllLevels } from '../../redux/actions/levelActions'
-class LevelPage extends React.Component {
-  static navigationOptions = {
-    title: 'Profile',
-    headerStyle: {
-      backgroundColor: '#72788d',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  }
 
+class LevelPage extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -33,6 +23,18 @@ class LevelPage extends React.Component {
       userLevel: 0,
       levels: {},
     }
+  }
+
+  static navigationOptions = {
+    title: "",
+    headerStyle: {
+      backgroundColor: '#black',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fontSize: 28
+    },
   }
 
   componentDidMount = async () => {
@@ -83,18 +85,18 @@ class LevelPage extends React.Component {
     return (
       <ImageBackground
         style={styles.image}
-        source={require('../../assets/images/bamboo.jpg')}
+        source={require('../../assets/images/brain.jpg')}
       >
         <KeyboardAvoidingView
           style={styles.container}
           behavior="padding"
           enabled
         >
-          <Text style={styles.header}>
-            You are currently on Level {this.state.userLevel}
+          <Text style={styles.level}>
+            LEVEL {this.state.userLevel}
           </Text>
           <Text style={styles.header}>
-            You have completed {this.isNull(this.state.totalJournalEntries)} out
+            You've completed {this.isNull(this.state.totalJournalEntries)} out
             of {this.isNull(this.state.levels.entries)} daily check-ins.
           </Text>
           <View style={styles.journals}>
@@ -105,7 +107,7 @@ class LevelPage extends React.Component {
             </TouchableOpacity>
           </View>
           <Text style={styles.header}>
-            You have completed {this.isNull(this.state.totalMeditations)} out of{' '}
+            You've completed {this.isNull(this.state.totalMeditations)} out of{' '}
             {this.isNull(this.state.levels.meditations)} meditations
           </Text>
           <View style={styles.journals}>
@@ -117,7 +119,7 @@ class LevelPage extends React.Component {
           </View>
 
           <Text style={styles.header}>
-            You have completed {this.isNull(this.state.totalQuizzes)} out of{' '}
+            You've completed {this.isNull(this.state.totalQuizzes)} out of{' '}
             {this.isNull(this.state.levels.quizzes)} quizzes
           </Text>
           <View style={styles.journals}>

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 30
 
   }
- 
+
   });
 
 export default styles
