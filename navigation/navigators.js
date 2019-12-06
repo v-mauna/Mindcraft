@@ -8,11 +8,14 @@ import {
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import HomePage from '../components/screens/home'
 import Journals from '../components/screens/journals'
+import JournalsList from '../components/screens/journalsList'
 import JournalEntry from '../components/screens/journalEntryForm'
 import Meditations from '../components/screens/meditations'
 import SingleMeditation from '../components/screens/singleMeditation'
 import SingleJournal from '../components/screens/singleJournal'
 import Quizzes from '../components/screens/quizzes'
+import singleQuiz from '../components/screens/singleQuiz'
+import QuizStats from '../components/screens/quizstats'
 import Login from '../components/screens/loginForm'
 import Signup from '../components/screens/signUpForm'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -23,6 +26,17 @@ import Quiz from '../components/screens/singleQuiz'
 import NewDay from '../components/screens/newDay'
 import MoodTracker from '../components/screens/moodRating'
 import SleepTracker from '../components/screens/sleepTracker'
+import SOS from '../components/screens/SOS'
+import LevelPage from '../components/screens/levelpage'
+import Map from '../components/screens/map'
+
+
+export const QuizNavigator = createStackNavigator({
+  Quiz: {screen: Quiz},
+  QuizStats: {screen: QuizStats},
+})
+
+
 
 export const authNavigator = createStackNavigator({
   Login: { screen: Login },
@@ -30,15 +44,18 @@ export const authNavigator = createStackNavigator({
 })
 
 export const HomeNavigator = createStackNavigator({
-  Home: { screen: HomePage },
+  Home: { screen: Map },
+  NewDay: {screen: NewDay},
   Journals: { screen: Journals },
   Meditations: { screen: Meditations },
   SingleMeditation: { screen: SingleMeditation },
   Quizzes: {screen: Quizzes},
   Quiz: {screen: Quiz},
-  Profile: {screen: Profile},
+  Profile: {screen: LevelPage},
   DailyCheckIn: {screen: MoodTracker},
   SleepTracker: { screen: SleepTracker },
+  QuizStats: {screen: QuizStats},
+  SOS: {screen: SOS}
 
 })
 
@@ -53,6 +70,7 @@ export const MeditationsNavigator = createStackNavigator(
 
 export const JournalsNavigator = createStackNavigator({
   Journals: {screen: Journals},
+  JournalsList: {screen: JournalsList},
   Journal: {screen: SingleJournal},
   JournalEntry: {screen: JournalEntry},
   Home: {screen: HomePage},

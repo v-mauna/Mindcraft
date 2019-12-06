@@ -7,11 +7,12 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 30,
     marginLeft: 20,
-
   },
+  
   text: {
-    color: "white",
+    color: colors.white,
     fontSize: 20,
+    opacity: 0.8,
     fontFamily: "Avenir-Medium",
     fontWeight: "800",
     marginBottom: 15
@@ -37,12 +38,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "800",
     marginBottom: 20,
-    alignItems: "stretch"
+    alignItems: "stretch",
+    textAlign: 'center'
   },
   textcontainer: {
     padding: 12,
     alignItems: "center"
-  }
+  },
 });
 
 export default styles;

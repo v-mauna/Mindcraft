@@ -68,8 +68,7 @@ class Bedtime extends Component {
   goToNext= ()=> {
     const minutesLong= calculateMinutesFromAngle(this.state.angleLength)
     const hours = (minutesLong / 60).toFixed(2)
-    alert("hours: "+hours)
-    this.props.navigation.navigate('JournalEntry'), {hours}
+    this.props.navigation.navigate('JournalEntry', {hours, moodRating: this.props.navigation.getParam('moodRating', 'okay'),})
   }
 
   onUpdate = ({ startAngle, angleLength }) => {

@@ -1,16 +1,30 @@
-import {StyleSheet, Dimensions} from 'react-native'
+import {StyleSheet, Dimensions} from 'react-native';
+import colors from './color';
 
 const styles = StyleSheet.create({
+    wrapper: {
+      display: 'flex',
+      flex: 1,
+      backgroundColor: colors.green01,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     container: {
       flex: 1,
       marginTop: 30,
-      marginLeft: 20
-
+      marginLeft: 20,
+      marginRight: 20
     },
     text:{
-      color:'#72788d',
+      color: colors.white,
       fontSize: 20,
-      opacity: 0.8,
+      fontFamily: 'Avenir-Medium',
+      fontWeight: '800',
+      marginBottom: 15
+    },
+    response:{
+      color:'black',
+      fontSize: 20,
       fontFamily: 'Avenir-Medium',
       fontWeight: '800',
       marginBottom: 15
@@ -21,7 +35,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: 'white',
     padding: 10,
     width: 180,
     alignSelf: 'center',
@@ -33,10 +47,11 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     fontFamily: 'Avenir-Medium',
-    color:'#72788d',
+    color: colors.white,
     fontWeight: '800',
     marginBottom: 20,
-    alignItems: "stretch"
+    alignItems: "stretch",
+    textAlign: 'center'
   }
  
   });

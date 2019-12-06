@@ -28,18 +28,18 @@ class MoodTracker extends Component {
 
   displayEmojii(value) {
     if (value > 80 ){
-      return <Text>Great</Text>
+      return 'Great'
     }
     else if (value > 60 ){
-      return <Text>Good</Text>
+      return 'Good'
     }
     else if (value > 40 ){
-      return <Text>Okay</Text>
+      return 'Okay'
     }
     else if (value > 20 ){
-      return <Text>Bad</Text>
+      return 'Bad'
     }
-    else return <Text>Awful</Text>
+    else return 'Awful'
   }
 
   goToNext (){
@@ -47,6 +47,17 @@ class MoodTracker extends Component {
     // this.props.navigation.navigate('SleepTracker')
     // console.log(this.state.value)
 
+  }
+
+  static navigationOptions = {
+    title: 'Mood',
+    headerStyle: {
+      backgroundColor: '#72788d',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
   }
 
   render() {
@@ -73,7 +84,7 @@ class MoodTracker extends Component {
         >
           <Text style={styles.moodValue}>{this.displayEmojii(value)}</Text>
         </CircularSlider>
-        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SleepTracker')}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SleepTracker', {moodRating: this.displayEmojii(value)})}><Text style={styles.header}>Submit</Text></TouchableOpacity>
         {/* <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/> */}
       </View>
       </View>

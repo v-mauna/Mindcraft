@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: 'Avenir-Medium',
         fontWeight: '800',
-        color: 'black',
+        color: colors.white,
         borderColor: '#d3d3d3',
         borderBottomWidth: 1,
         textAlign: 'center'

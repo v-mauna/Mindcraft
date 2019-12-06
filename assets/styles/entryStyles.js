@@ -1,10 +1,11 @@
 import { StyleSheet ,Dimensions} from 'react-native'
+import colors from './color'
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A2239'
+    backgroundColor: colors.green01,
   },
   text: {
     marginTop: 30,
@@ -49,8 +50,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     height: 50,
     fontSize: 12,
-    paddingLeft:20,
-    paddingRight: 20,
+    paddingLeft:10,
+    paddingRight: 10,
     width: 300,
     marginLeft: 20
   }
@@ -61,8 +62,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     height: 200,
     fontSize: 12,
-    paddingLeft:20,
-    paddingRight: 20,
+    paddingLeft:10,
+    paddingRight: 10,
     width: 300,
     marginLeft: 20
   },

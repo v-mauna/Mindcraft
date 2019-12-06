@@ -31,7 +31,8 @@ export const fetchUser = id => {
   return async dispatch => {
     try {
       let response = await fetch(
-        `https://mindcraft-api.herokuapp.com/api/users/${id}`
+        `http://mindcraft-api.herokuapp.com/api/users/${id}`
+
       );
       response = await response.json();
       console.log("Response", response);
@@ -60,3 +61,11 @@ return async dispatch =>{
 }
 
 
+export const updateUsersQuizzes = (id, quizzes) => {
+  console.log('mquizzes in updateUser', quizzes)
+  return async dispatch =>{
+    const res= await axios.put(`https://mindcraft-api.herokuapp.com/api/users/${id}`, {totalQuizzes: quizzes})
+
+    saveUser(res.data[1][0])
+  }
+  }

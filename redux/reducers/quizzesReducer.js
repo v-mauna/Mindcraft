@@ -1,30 +1,35 @@
-import {GET_ONE_QUIZ, GET_ALL_QUIZZES,UPDATE_QUIZ} from '../actions/types'
+import {GET_ONE_QUIZ, GET_ALL_QUIZZES,UPDATE_QUIZ, CHANGED_QUESTION, INCREMENTED_CORRECT_ANSWERS, ANSWERED_CORRECTLY, ANSWER_SELECTED, GOT_QUESTIONS_LENGTH} from '../actions/types'
 
-const initialState= {
-    quizzes: [],
+
+
+const initialState ={
+    quiz: {},
+    question: {},
+    answerCorrect: false,
+    correctCount: 0,
+    answerSelected: false,
+    questionsLength: 0
 }
 
-const quizInitialState ={
-    quiz: {}
-}
-const quizzesReducer = (state = initialState, action) => {
+
+export const quizReducer = (state = initialState, action)=>{
     switch(action.type){
-        case GET_ALL_QUIZZES:{
-            return {...state,quizzes: action.quizzes}
-        }
-        default:
-             return state
-    }
-}
-
-export const quizReducer = (state = quizInitialState, action)=>{
-    switch(action.type){
-        case GET_ONE_QUIZ: {
-            return{quiz: action.quiz}
-        }
+        case GET_ONE_QUIZ:
+            return{...state, quiz: action.quiz}
+        case CHANGED_QUESTION:
+            return {...state, question: action.question}
+         case INCREMENTED_CORRECT_ANSWERS:
+               return {...state, correctCount: state.correctCount+1}
+        case  ANSWERED_CORRECTLY:
+                return {...state, answerCorrect: true}
+        case ANSWER_SELECTED:
+                    return {...state, answerSelected: true}
+        case GOT_QUESTIONS_LENGTH:
+            return {...state, questionsLength: action.length}
         default:
             return state
     }
 }
 
-export default quizzesReducer
+
+export default quizReducer

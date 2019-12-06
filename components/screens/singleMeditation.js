@@ -61,8 +61,6 @@ class SingleMeditation extends React.Component {
 
   renderSphere = () => {
     if (this.props.timeLeft === 0 && this.props.timeWentOff === false) {
-      // this.updateMeditations()
-      // this.props.setLeftTime("500");
       return (
         <View>
           <Text style={styles.text}>Simply select time to start</Text>
@@ -91,7 +89,7 @@ class SingleMeditation extends React.Component {
       ) {
         this.props.updateUser(this.user.id, newNumberOfMeditations);
 
-        return <Text style={styles.text}>Great job! </Text>;
+        return <Text style={styles.text}> Great job! </Text>;
       }
     }
   };
@@ -113,17 +111,17 @@ class SingleMeditation extends React.Component {
               this.props.TimeToBe(value);
               this.props.setLeftTime(value);
               console.log("Single meditation props:", this.props);
-              console.log("SignleMedittion timeLeft:", this.props.timeLeft);
+              console.log("SingleMeditation timeLeft:", this.props.timeLeft);
             }}
           >
-            <Picker.Item label="select time to start:" value={0} />
-            <Picker.Item label="test for dev 3 sec" value={3000} />
-            <Picker.Item label="1 minute" value={60000} />
-            <Picker.Item label="3 minutes" value={180000} />
-            <Picker.Item label="5 minutes" value={300000} />
-            <Picker.Item label="7 minutes" value={420000} />
-            <Picker.Item label="10 minutes" value={600000} />
-            <Picker.Item label="15 minutes" value={900000} />
+            <Picker.Item label="Select time to start:" value={0} color="white"/>
+            <Picker.Item label="3 seconds" value={3000} color="white"/>
+            <Picker.Item label="1 minute" value={60000} color="white"/>
+            <Picker.Item label="3 minutes" value={180000} color="white"/>
+            <Picker.Item label="5 minutes" value={300000} color="white"/>
+            <Picker.Item label="7 minutes" value={420000} color="white"/>
+            <Picker.Item label="10 minutes" value={600000} color="white"/>
+            <Picker.Item label="15 minutes" value={900000} color="white"/>
           </Picker>
         </View>
       );
@@ -136,9 +134,6 @@ class SingleMeditation extends React.Component {
     }
   };
   render() {
-    // console.log("user in render:", this.user);
-    // console.log("time left in SG:", this.props.timeLeft);
-    // console.log("time in SG:", this.props.time);
     return (
       <ImageBackground
         style={styles.image}
