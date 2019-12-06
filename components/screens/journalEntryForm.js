@@ -12,9 +12,8 @@ import styles from '../../assets/styles/entryStyles'
 import { TextInput } from 'react-native-gesture-handler'
 import { loadSettings, saveSettings } from '../storage/entryStorage'
 import {connect} from 'react-redux'
-import {createEntry, crea} from '../../redux/actions/entryActions'
-import {loadUser} from '../storage/userStorage'
-import {updateUserEntries} from '../../redux/actions/userActions'
+import {createdEntry} from '../../redux/actions/journalActions'
+import {loadUser, saveUser} from '../storage/userStorage'
 
 class JournalEntry extends Component {
   constructor(props) {
@@ -46,8 +45,8 @@ class JournalEntry extends Component {
     },
   }
   handleSubmit() {
-    console.log("this.user: ", this.user)
-    console.log("Journal: ", this.state)
+
+    this.user.totalJournalEntries++
     const id = this.user.id
     const journal = {
       hoursSlept: this.state.hoursSlept,
@@ -66,11 +65,11 @@ class JournalEntry extends Component {
         least: '',
         entry: ''
   });
+  saveUser(this.user)
     this.props.navigation.navigate('Home')
   }
 
   render() {
-    console.log("mood: ",this.state.myMood)
     return (
       <KeyboardAvoidingView style={styles.container} behavior = 'padding'>
         <ScrollView>
@@ -132,7 +131,7 @@ class JournalEntry extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createdEntry: (userId, journal) => dispatch(createEntry(userId, journal))
+  createdEntry: (userId, journal) => dispatch(createdEntry(userId, journal))
 })
 
 export default connect( null, mapDispatchToProps)(JournalEntry)

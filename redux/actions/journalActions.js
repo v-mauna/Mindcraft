@@ -1,5 +1,6 @@
 import {GET_ALL_ENTRIES, GET_ONE_ENTRY,DELETE_ENTRY,CREATE_ENTRY} from './types'
 import saveSettings from '../../components/storage/entryStorage'
+import axios from 'axios'
 
 const initialState = {
     entries: []
@@ -46,26 +47,9 @@ export const gotOneEntry = (userId, entryId) => async dispatch => {
     }
 }
 
-export const createdEntry = (userId,mood, favorite,leastFavorite,hoursSlept,entry) => async dispatch => {
-    try{
-        let response = await fetch(`https://mindcraft-api.herokuapp.com/api/entries/user/${userId}/`, {
-            method: 'POST',
-            headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-            mood: mood,
-            favorite: favorite,
-            least: leastFavorite,
-            hoursSlept: hoursSlept,
-            entry: entry
-            })
-        }
-        )
-        response = await response.json()
-        dispatch(createEntry(response))
-        }catch(error){
-            console.error('Error is: ', error)
-        }
+export const createdEntry = (userId, entry) => {
+    return async dispatch =>{
+      const res= await axios.post(`https://mindcraft-api.herokuapp.com/api/entries/user/${userId}`, entry)
+      saveSettings(res.data)
+    }
     }
