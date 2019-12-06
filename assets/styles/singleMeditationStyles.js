@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignContent: 'center'
+    alignContent: 'center',
+    backgroundColor: 'black',
 
   },
   singlemeditationcontainer:{
@@ -43,8 +44,8 @@ const styles = StyleSheet.create({
     marginLeft: 1,
     marginRight: 1,
     fontFamily: "Avenir-Medium",
-    color: "black",
-    backgroundColor: "white",
+    color: "white",
+    backgroundColor: "black",
     fontWeight: "800",
     justifyContent: 'center',
     alignContent: 'center',
@@ -53,7 +54,9 @@ const styles = StyleSheet.create({
   },
   pickercontainer: {
     height: "25%",
-    alignContent: "flex-start"
+    alignContent: "flex-start",
+    fontFamily: "Avenir-Medium",
+    fontSize: 20
   },
   Spherecontainer: {
     height: "55%",
@@ -63,20 +66,32 @@ const styles = StyleSheet.create({
   },
   textcontainer: {
     padding: 12,
-    alignItems: "center"
+    alignItems: "center",
+    fontFamily: "Avenir-Medium",
   },
   timeContainer: {
     height: "10%",
-    padding: 20,
-    margin: 10
+    padding: 10,
+    margin: 10,
+    fontFamily: "Avenir-Medium"
   },
   circle: {
+    opacity: 0.3,
     backgroundColor: "blue",
     borderRadius: 200 / 2
   },
   circleContainer: {
     alignItems: "center",
     justifyContent: "center"
+  },
+  great: {
+    padding: 10,
+    margin: 10,
+    fontFamily: "Avenir-Medium",
+    fontSize: 20,
+    color: 'white',
+    marginLeft: 120
+
   }
 });
 

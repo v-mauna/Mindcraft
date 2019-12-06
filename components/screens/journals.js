@@ -5,7 +5,7 @@ import styles from '../../assets/styles/journalStyles'
 
 export default class Journals extends React.Component{
     static navigationOptions = { title : 'Journals',  headerStyle: {
-        backgroundColor: '#FE5F55',
+        backgroundColor: 'black',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -18,17 +18,17 @@ export default class Journals extends React.Component{
                   <View style={styles.container}>
                   <View style={styles.header}>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('DailyCheckIn')}>
-                      <Text style={styles.text}> Complete Daily Check-In</Text>
+                      <Text style={styles.header} > Complete Daily Check-In</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.header}>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalEntry')}>
-                      <Text style={styles.text}> Make a new entry</Text>
+                      <Text style={styles.header} > Make a new entry</Text>
                       </TouchableOpacity>
                       </View>
                       <View style={styles.header}>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('JournalsList')}>
-                      <Text style={styles.text}> View my Previous Entries</Text>
+                      <Text style={styles.header}> View my Previous Entries</Text>
                       </TouchableOpacity>
                       </View>
                       </View>

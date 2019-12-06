@@ -5,6 +5,8 @@ const styles = StyleSheet.create({
     wrapper: {
       display: "flex",
       flex: 1,
+      alignContent: 'center',
+      justifyContent: 'center'
     },
     scrollViewWrapper: {
       marginTop: 70,
@@ -26,7 +28,10 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         textAlign: 'center',
         fontFamily: 'Avenir-Medium',
-        fontWeight: '600'
+        fontWeight: '600',
+        alignContent: 'center',
+        justifyContent: 'center',
+        marginLeft: 20
     },
     image: {
         width: '100%',
@@ -44,15 +49,16 @@ const styles = StyleSheet.create({
       marginBottom: 40,
       textAlign: 'center',
       fontFamily: 'Avenir-Medium',
-      fontWeight: '800'
+      fontWeight: '800',
+      alignContent: 'center',
+      justifyContent: 'center'
     },
     button: {
         marginTop: 30,
         marginBottom: 10,
         paddingVertical: 5,
         alignItems: 'center',
-        backgroundColor: '#F6820D',
-        borderColor: '#F6820D',
+        borderColor: 'white',
         justifyContent: 'center',
         alignSelf:'center',
         borderWidth: 1,
@@ -67,11 +73,15 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
         color: 'white',
-        fontFamily: 'Avenir-Medium'
+        fontFamily: 'Avenir-Medium',
+        alignContent: 'center',
+        justifyContent: 'center'
     },
     buttonSignup: {
         fontSize: 12,
-        fontFamily: 'Avenir-Medium'
+        fontFamily: 'Avenir-Medium',
+        alignContent: 'center',
+        justifyContent: 'center'
     },
     nextButtonWrapper: {
         alignItems: "flex-end",

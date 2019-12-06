@@ -18,7 +18,6 @@ export default class Meditations extends React.Component{
                       <View style={styles.header}>
                       <Text style={styles.header}>What would you like to do today?</Text>
                       </View>
-                      <View>
                       <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SingleMeditation')}>
                           <Text style={styles.header}> Just breathe and relax</Text>
                       </TouchableOpacity>
@@ -26,7 +25,6 @@ export default class Meditations extends React.Component{
                           <Text style={styles.header}>Relieve stress and anxiety</Text>
                       </TouchableOpacity>
                       </View>
-                  </View>
               </ImageBackground>
               
           )

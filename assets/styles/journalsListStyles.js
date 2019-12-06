@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignContent: 'center',
-      justifyContent: 'center'
+      marginTop: 30
     },
     text:{
       color:'white',
@@ -46,13 +46,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 20,
     marginRight: 20,
-    marginTop: 20,
     fontFamily: "Avenir-Medium",
     color: "white",
     backgroundColor: "red",
     opacity: .8,
     fontWeight: "800",
     justifyContent: 'center',
+    alignContent: 'center',
     alignItems: "center",
     paddingTop: 5,
     paddingBottom: 5,

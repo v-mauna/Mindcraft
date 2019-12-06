@@ -3,12 +3,12 @@ import {
   View,
   Text,
   ImageBackground,
-  TouchableOpacity,
+  Alert,
   Picker,
   Button
 } from "react-native";
 import { connect } from "react-redux";
-import styles from "../../assets/styles/meditationStyles";
+import styles from "../../assets/styles/singleMeditationStyles";
 import PulsatingSphere from "../pulsatingsphere";
 import {
   getTime,
@@ -40,9 +40,9 @@ class SingleMeditation extends React.Component {
   }
 
   static navigationOptions = {
-    title: "Mindcraft",
+    title: "Meditation",
     headerStyle: {
-      backgroundColor: "#72788d"
+      backgroundColor: "black"
     },
     headerTintColor: "#fff",
     headerTitleStyle: {
@@ -87,8 +87,8 @@ class SingleMeditation extends React.Component {
         this.props.time > 0
       ) {
         this.props.updateUser(this.user.id, newNumberOfMeditations);
-
-        return <Text style={styles.text}> Great job! </Text>;
+          Alert.alert('Great job!');
+          return this.props.navigation.navigate('Profile')
       }
     }
   };
@@ -101,7 +101,6 @@ class SingleMeditation extends React.Component {
 
   displayPicker = () => {
     if (this.props.timeWentOff === false) {
-      console.log("got here");
       return (
         <View>
           <Picker
@@ -109,18 +108,17 @@ class SingleMeditation extends React.Component {
             onValueChange={value => {
               this.props.TimeToBe(value);
               this.props.setLeftTime(value);
-              console.log("Single meditation props:", this.props);
-              console.log("SingleMeditation timeLeft:", this.props.timeLeft);
             }}
+            style={styles.pickercontainer}
           >
-            <Picker.Item label="Select time to start:" value={0} color="white"/>
-            <Picker.Item label="3 seconds" value={3000} color="white"/>
-            <Picker.Item label="1 minute" value={60000} color="white"/>
-            <Picker.Item label="3 minutes" value={180000} color="white"/>
-            <Picker.Item label="5 minutes" value={300000} color="white"/>
-            <Picker.Item label="7 minutes" value={420000} color="white"/>
-            <Picker.Item label="10 minutes" value={600000} color="white"/>
-            <Picker.Item label="15 minutes" value={900000} color="white"/>
+            <Picker.Item style={styles.pickercontainer}label="Choose your meditation length:" value={0} color="white"/>
+            <Picker.Item style={styles.pickercontainer} label="3 seconds" value={3000} color="white"/>
+            <Picker.Item  style={styles.pickercontainer} label="1 minute" value={60000} color="white"/>
+            <Picker.Item style={styles.pickercontainer} label="3 minutes" value={180000} color="white"/>
+            <Picker.Item style={styles.pickercontainer} label="5 minutes" value={300000} color="white"/>
+            <Picker.Item style={styles.pickercontainer} label="7 minutes" value={420000} color="white"/>
+            <Picker.Item style={styles.pickercontainer} label="10 minutes" value={600000} color="white"/>
+            <Picker.Item style={styles.pickercontainer} label="15 minutes" value={900000} color="white"/>
           </Picker>
         </View>
       );
@@ -134,36 +132,27 @@ class SingleMeditation extends React.Component {
   };
   render() {
     return (
-      <ImageBackground
-        style={styles.image}
-        source={require("../../assets/images/water.jpg")}
-      >
-        <View>
+        <View style={styles.container}>
+          
+        <View style={styles.singlemeditationcontainer}>
           <Button
             title="start over"
             style={styles.button}
             onPress={this.resetAll}
           />
-        </View>
-
-        <View style={styles.singlemeditationcontainer}>
-        <View  style={styles.timeCcontainer}>{this.showTimer()}</View>
+        <View  style={styles.timeCcontainer}></View>{this.showTimer()}
           <View style={styles.Spherecontainer}>{this.renderSphere()}</View>
-
-
           <View style={styles.pickercontainer}>
             {this.displayPicker()}
-
             {this.updateMeditations()}
           </View>
         </View>
-      </ImageBackground>
+        </View>
     );
   }
 }
 
 const mapStateToProps = state => {
-  // console.log("state in SG:", state);
   return {
     time: state.singleMeditationReducer.time,
     timeLeft: state.singleMeditationReducer.timeLeft,
