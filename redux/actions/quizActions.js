@@ -57,7 +57,7 @@ export const gotAllQuizzes = () => async dispatch =>{
 
 export const gotOneQuiz = userId => async dispatch => {
     try{
-        let response = await fetch(`http://mindcraft-api.herokuapp.com/api/tests/${userId}`)
+        let response = await fetch(`http://mindcraft-api.herokuapp.com/api/users/${userId}/test`)
         response = await response.json()
         dispatch(getOneQuiz(response))
     }catch(error){
