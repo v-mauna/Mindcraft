@@ -42,6 +42,7 @@ class JournalEntry extends Component {
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
+      fontSize: 28
     },
   }
   handleSubmit() {
@@ -73,8 +74,9 @@ class JournalEntry extends Component {
     console.log("mood: ",this.state.myMood)
     return (
       <ImageBackground style={styles.image} source={require('../../assets/images/stock.jpg')}>
-      <KeyboardAvoidingView style={styles.container} behavior = 'padding'>
+      <KeyboardAvoidingView  behavior = 'padding'>
         <ScrollView>
+          <View style={styles.container}>
         <Text style={styles.text}>How are you feeling today?</Text>
           <TextInput
               style={styles.textInput}
@@ -124,8 +126,9 @@ class JournalEntry extends Component {
             <TouchableOpacity
               onPress={this.handleSubmit}
             >
-              <Text style={styles.text}>Save</Text>
+              <Text style={styles.button}>Save</Text>
             </TouchableOpacity>
+            </View>
         </ScrollView>
       </KeyboardAvoidingView>
       </ImageBackground>

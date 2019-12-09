@@ -7,11 +7,12 @@ export default class SleepTracker extends React.Component{
     static navigationOptions = {
         title: 'Sleep Tracker',
         headerStyle: {
-          backgroundColor: '#72788d',
+          backgroundColor: 'black',
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 28
         },
       }
 
@@ -19,7 +20,7 @@ export default class SleepTracker extends React.Component{
           return(
               <View style = {styles.wrapper}>
                   <View style={styles.container}>
-                      <Bedtime /> 
+                      <Bedtime />
 
                   </View>
               </View>

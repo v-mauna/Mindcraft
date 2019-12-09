@@ -110,7 +110,7 @@ class Bedtime extends Component {
             style={styles.sleepTimeContainer}
             minutesLong={calculateMinutesFromAngle(angleLength)}
           />
-          
+
           <CircularSlider
             startAngle={startAngle}
             angleLength={angleLength}
@@ -128,7 +128,7 @@ class Bedtime extends Component {
           />
         </View>
         </View>
-        <TouchableOpacity style={styles.header} onPress={this.goToNext}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.header} onPress={this.goToNext}><Text style={styles.header}>Next</Text></TouchableOpacity>
         {/* <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/> */}
       </View>
     );

@@ -112,7 +112,7 @@ class SingleMeditation extends React.Component {
             style={styles.pickercontainer}
           >
             <Picker.Item style={styles.pickercontainer}label="Choose your meditation length:" value={0} color="white"/>
-            <Picker.Item style={styles.pickercontainer} label="3 seconds" value={3000} color="white"/>
+            <Picker.Item style={styles.pickercontainer} label="Just Breathe" value={10000} color="white"/>
             <Picker.Item  style={styles.pickercontainer} label="1 minute" value={60000} color="white"/>
             <Picker.Item style={styles.pickercontainer} label="3 minutes" value={180000} color="white"/>
             <Picker.Item style={styles.pickercontainer} label="5 minutes" value={300000} color="white"/>
@@ -133,7 +133,7 @@ class SingleMeditation extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-          
+
         <View style={styles.singlemeditationcontainer}>
           <Button
             title="start over"

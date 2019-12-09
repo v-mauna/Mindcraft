@@ -10,15 +10,15 @@ import {withNavigation} from 'react-navigation';
 console.disableYellowBox = true
 
 class MoodTracker extends Component {
-  
+
   static navigationOptions = { title : 'Mindcraft',  headerStyle: {
-    backgroundColor: '#72788d',
+    backgroundColor: 'black',
   },
   headerTintColor: '#fff',
   headerTitleStyle: {
     fontWeight: 'bold',
   },}
- 
+
   constructor(props){
     super(props)
     this.state = {
@@ -52,11 +52,12 @@ class MoodTracker extends Component {
   static navigationOptions = {
     title: 'Mood',
     headerStyle: {
-      backgroundColor: '#72788d',
+      backgroundColor: 'black',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
+      fontSize: 28
     },
   }
 
@@ -84,7 +85,7 @@ class MoodTracker extends Component {
         >
           <Text style={styles.moodValue}>{this.displayEmojii(value)}</Text>
         </CircularSlider>
-        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SleepTracker', {moodRating: this.displayEmojii(value)})}><Text style={styles.header}>Submit</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.header} onPress={()=>this.props.navigation.navigate('SleepTracker', {moodRating: this.displayEmojii(value)})}><Text style={styles.header}>Next</Text></TouchableOpacity>
         {/* <NextArrowButton style = {styles.nextButton} handlePress = {this.goToNext}/> */}
       </View>
       </View>

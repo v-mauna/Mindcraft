@@ -8,7 +8,7 @@ import NextArrowButton from '../buttons/nextArrowButton'
 
 export default class MoodMeter extends React.Component{
     static navigationOptions = { title : 'Mindcraft',  headerStyle: {
-        backgroundColor: '#72788d',
+        backgroundColor: 'black',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -20,7 +20,7 @@ export default class MoodMeter extends React.Component{
       }
 
       goToNext= ()=> {
-        
+
         alert(this.state.value)
       }
 
@@ -29,7 +29,7 @@ export default class MoodMeter extends React.Component{
               <View style = {styles.wrapper}>
                   <View style={styles.container}>
                       <Text style = {styles.header}> How are you feeling today? </Text>
-                  <CircleSlider 
+                  <CircleSlider
                     value={25}
                     btnRadius={50}
                     dialRadius ={150}

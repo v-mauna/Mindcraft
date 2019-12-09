@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     borderColor: '#CCCCCC',
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    height: 200,
+    height: 150,
     fontSize: 12,
     paddingLeft:10,
     paddingRight: 10,
@@ -85,6 +85,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center'
   },
+  button: {
+    marginTop: 10,
+    fontSize: 28,
+    backgroundColor: 'black',
+     color: 'white',
+     textAlign: 'center'
+
+  }
 })
 
 export default styles
