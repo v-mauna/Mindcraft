@@ -4,18 +4,15 @@ import { StyleSheet, Dimensions } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
-    marginLeft: 20,
-    justifyContent: 'center'
-
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center',
   },
   text: {
     color: "black",
     fontSize: 20,
-    opacity: 0.8,
     fontFamily: "Avenir-Medium",
     fontWeight: "800",
-    marginBottom: 15
   },
   image: {
     width: "100%",
@@ -41,21 +38,25 @@ const styles = StyleSheet.create({
     alignItems: "stretch"
   },
   card: {
-    width: 300,
-    maxWidth: '80%',
+    width: '85%',
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 6,
     shadowOpacity: .25,
     backgroundColor: 'white',
-    opacity: .5,
     padding: 20,
-    borderRadius: 5,
     marginBottom: 30,
-    marginTop: 20,
-    marginLeft: 30,
+    marginTop: 40,
     alignContent: 'center',
-  }
+    borderWidth: 2
+  },
+  text2: {
+    color: "black",
+    fontSize: 18,
+    fontFamily: "Avenir-Medium",
+    marginBottom: 15,
+    marginLeft: 20
+  },
 });
 
 export default styles;

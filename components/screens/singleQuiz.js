@@ -32,6 +32,7 @@ class Quiz extends Component {
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
+      fontSize: 28,
     },
   }
   constructor() {
@@ -87,33 +88,37 @@ class Quiz extends Component {
   render() {
     return (
       <ImageBackground
-      style={styles.image}
-      source={require('../../assets/images/Brain2.jpg')}
-    >
-      <View style={styles.wrapper}>
-        <ScrollView ref={ref => (this.scrollView = ref)}>
-          <View style={styles.container}>
-            <Text style={styles.description}>
-              {this.props.quizInfo.quiz.description}
-            </Text>
+        style={styles.image}
+        source={require('../../assets/images/abstractBrain.jpg')}
+      >
+        <View style={styles.wrapper}>
+          <ScrollView ref={ref => (this.scrollView = ref)}>
+            <View style={styles.container}>
+              <Text style={styles.description}>Instructions</Text>
+              <View style={styles.container}>
+                <Text style={styles.descriptionA}>
+                  {' '}
+                  {this.props.quizInfo.quiz.description}
+                </Text>
+              </View>
 
-            {this.state.questions.map((question, id) => {
-              return (
-                <View key={id} style= {styles.questioncontainer}>
-                  <SingleQuestion question={question}  />
+              {this.state.questions.map((question, id) => {
+                return (
+                  <View style={styles.questioncontainer} key={id}>
+                    <SingleQuestion question={question} />
                   </View>
-              )
-            })}
+                )
+              })}
 
-            <TouchableOpacity
-              style={styles.description}
-              onPress={() => this.handlePress()}
-            >
-              <Text style={styles.text}>Submit</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </View>
+              <TouchableOpacity
+                style={styles.description}
+                onPress={() => this.handlePress()}
+              >
+                <Text style={styles.text}>Submit</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
       </ImageBackground>
     )
   }

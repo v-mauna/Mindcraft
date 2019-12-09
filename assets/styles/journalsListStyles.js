@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       alignContent: 'center',
-      marginTop: 30
+      marginTop: 30,
     },
     text:{
       color:'white',
@@ -43,21 +43,35 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   list: {
-    fontSize: 20,
     marginLeft: 20,
     marginRight: 20,
-    fontFamily: "Avenir-Medium",
-    color: "white",
-    backgroundColor: "red",
-    opacity: .8,
-    fontWeight: "800",
+    backgroundColor: "white",
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: "center",
     paddingTop: 5,
     paddingBottom: 5,
-  }
- 
+    margin: 20
+  },
+  listText: {
+    fontSize: 20,
+    fontFamily: "Avenir-Medium",
+    fontWeight: "800",
+    color: 'black',
+
+  },
+  description: {
+    marginTop: 30,
+    fontSize: 22,
+    fontFamily: 'Avenir-Medium',
+    textAlign: 'center',
+    color: 'white',
+    width: '100%',
+    fontWeight: '800',
+    backgroundColor: 'black',
+    padding: 10,
+  },
+
   });
 
 export default styles

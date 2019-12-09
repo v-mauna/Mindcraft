@@ -4,17 +4,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   text: {
     fontSize: 20,
     color: 'white',
     fontWeight: '800',
     fontFamily: 'Avenir-Medium',
-    margin: 20,
     alignItems: 'stretch',
     textAlign: 'center',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 5,
+    paddingTop: 5
   },
   image: {
     width: '100%',
@@ -39,27 +42,28 @@ const styles = StyleSheet.create({
     borderWidth: 2
   },
   description: {
+    marginTop: 30,
     fontSize: 22,
+    fontFamily: 'Avenir-Medium',
     textAlign: 'center',
     color: 'white',
     width: '100%',
+    fontWeight: '800',
     backgroundColor: 'black',
-    padding: 20,
-    marginBottom: 30,
+    padding: 10,
   },
   answer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    width: '80%'
+    width: '80%',
   },
   yesno: {
-    flex: 1,
     margin: 20,
     justifyContent: 'space-between',
-    borderWidth: 2,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    borderWidth: 1,
   },
   question: {
     fontSize: 20,
@@ -69,22 +73,45 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     textAlign: 'justify',
     backgroundColor: 'white',
-    padding: 10
+    padding: 10,
   },
   questioncontainer: {
-    width: '100%',
+    width: '85%',
     backgroundColor: 'white',
-    marginBottom: 40
+    marginBottom: 60,
+    borderWidth: 1,
+    borderColor: 'black'
   },
   response: {
-    fontSize: 20,
+    fontSize: 18,
     color: 'black',
     fontFamily: 'Avenir-Medium',
-    margin: 20,
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 30,
+    marginRight: 30,
     alignItems: 'stretch',
-    textAlign: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    textAlign: 'justify'
+
   },
+  descriptionA: {
+    fontSize: 18,
+    color: 'black',
+    fontFamily: 'Avenir-Medium',
+    alignItems: 'stretch',
+    textAlign: 'justify',
+    backgroundColor: 'white',
+    padding: 20,
+    marginBottom: 20,
+    paddingLeft: 30,
+    paddingRight: 30,
+    borderWidth: 2,
+    borderColor: 'black'
+    },
+    results: {
+      marginTop: 60
+    }
 })
 
 export default styles
