@@ -10,13 +10,7 @@ and completing a certain amount of journal entries and meditations.
 
 # Technologies
 
-React-Native
-Expo
-Sequelize
-Postgres
-Heroku
-Express 
-Redux
+React-Native, Expo, Sequelize,Postgres, Heroku, Express, Redux
 
 # Screenshots
 <img src='assets/images/MC-Login.png' height="430"/>
